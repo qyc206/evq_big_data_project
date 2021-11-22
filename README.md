@@ -52,7 +52,7 @@ Use the notebook named "Cleaning_The_Dataset.ipynb" in the [notebooks/](https://
 
 ### Resulting Dataset
 
-Our cleaned dataset can be found via [erm2-nwe9_5M_cleaned.csv.gz]().
+Our cleaned dataset can be found via and downloaded from [erm2-nwe9_5M_cleaned.csv.gz]().
 
 # Contact Information
 
