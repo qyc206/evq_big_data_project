@@ -1,4 +1,4 @@
-## EVQ Project
+# EVQ Project (Fall 2021)
 
 ## Table of Contents
 * [PART I: Data Profiling & Cleaning (using pyspark)](#part-i-data-profiling--cleaning-using-pyspark)
