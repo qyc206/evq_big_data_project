@@ -1,4 +1,4 @@
-## EVQ Assignment 3
+## EVQ Project
 # PART I: Data Profiling & Cleaning (using pyspark)
 
 For this assignment, we are assigned the [311 Service Requests from 2010 to Present](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9) dataset and is tasked to explore the dataset to identify data quality issues and then clean this data and create a new version of the dataset. In the following sections, we provide a brief overview of the dataset that is assigned to us and showcase our discoveries along with discussions of our approach to cleaning our dataset. 
