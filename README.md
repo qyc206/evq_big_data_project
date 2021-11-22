@@ -1,10 +1,13 @@
 ## EVQ Project
 
 ## Table of Contents
-1. [PART I: Data Profiling & Cleaning (using pyspark)](#PART-I:-Data-Profiling-&-Cleaning-(using-pyspark))
-    a. [About the Dataset](##About-the-Dataset)
-    b. [Profiling & Cleaning the Dataset](##Profiling-&-Cleaning-the-Dataset)
-2. [Contact Information](#Contact-Information)
+* [PART I: Data Profiling & Cleaning (using pyspark)](#PART-I:-Data-Profiling-&-Cleaning-(using-pyspark))
+    * [About the Dataset](##About-the-Dataset)
+        * [Download Full Dataset (optional)](###Download-Full-Dataset-(optional))
+    * [Profiling & Cleaning the Dataset](##Profiling-&-Cleaning-the-Dataset)
+        * [Profiling the Dataset](###Profiling-the-Dataset)
+        * [Cleaning the Dataset](###Cleaning-the-Dataset)
+* [Contact Information](#Contact-Information)
 
 # PART I: Data Profiling & Cleaning (using pyspark)
 
