@@ -1,4 +1,4 @@
-## EVQ Assignment 3
+## EVQ Project
 
 ## Table of Contents
 1. [PART I: Data Profiling & Cleaning (using pyspark)](#PART-I:-Data-Profiling-&-Cleaning-(using-pyspark))
