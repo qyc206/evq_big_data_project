@@ -50,10 +50,6 @@ Use the notebook named "Cleaning_The_Dataset.ipynb" in the [notebooks/](https://
 
 **Note:** This code is also available via [Google Colab](https://colab.research.google.com/drive/1_EYqXb2oN889RPqRc8jwQaWygmpzKBiF?usp=sharing).
 
-### Resulting Dataset
-
-Our cleaned dataset can be found via and downloaded from [erm2-nwe9_5M_cleaned.csv.gz]().
-
 # Contact Information
 
 Erica Chou (emc689@nyu.edu), Varshitha Chennamsetti (vc2209@nyu.edu), and Qin Ying Chen (qyc206@nyu.edu)
