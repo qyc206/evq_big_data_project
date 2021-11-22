@@ -1,4 +1,11 @@
 ## EVQ Assignment 3
+
+## Table of Contents
+1. [PART I: Data Profiling & Cleaning (using pyspark)](#PART-I:-Data-Profiling-&-Cleaning-(using-pyspark))
+    a. [About the Dataset](##About-the-Dataset)
+    b. [Profiling & Cleaning the Dataset](##Profiling-&-Cleaning-the-Dataset)
+2. [Contact Information](#Contact-Information)
+
 # PART I: Data Profiling & Cleaning (using pyspark)
 
 For this assignment, we are assigned the [311 Service Requests from 2010 to Present](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9) dataset and is tasked to explore the dataset to identify data quality issues and then clean this data and create a new version of the dataset. In the following sections, we provide a brief overview of the dataset that is assigned to us and showcase our discoveries along with discussions of our approach to cleaning our dataset. 
@@ -26,7 +33,7 @@ Use the notebook named "Download_Full_Dataset.ipynb" in the [notebooks/](https:/
 This section goes over the problems that we found while exploring the sample dataset (i.e. the sample dataset with ~5 million rows) as well as our solution to cleaning the data. 
 
 We broke down the problems that we found into the following sub-sections: 
-**Inconsistency, Uniformity, Completeness, Accuracy, and Outlier**
+**Uniformity, Accuracy, Inconsistency, Completeness, and Outlier**
 
 ### Profiling the Dataset
 
