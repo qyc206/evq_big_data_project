@@ -7,10 +7,10 @@
     * [Profiling & Cleaning the Dataset](#profiling--cleaning-the-dataset)
         * [Profiling the Dataset](#profiling-the-dataset)
         * [Cleaning the Dataset](#cleaning-the-dataset)
-* [PART II: Data Cleaning at Scale](#)
-    * [Reference Datasets](#)
-    * [Profiling & Cleaning Notebooks](#)
-    * [Final Paper](#)
+* [PART II: Data Cleaning at Scale](#part-ii-data-cleaning-at-scale)
+    * [Reference Datasets](#reference-datasets)
+    * [Profiling & Cleaning Notebooks](#profiling--cleaning-notebooks)
+    * [Final Paper](#final-paper)
 * [Contact Information](#contact-information)
 
 
@@ -56,15 +56,11 @@ Use the notebook named "Cleaning_The_Dataset.ipynb" in the [notebooks/part1](htt
 **Note:** This code is also available via [Google Colab](https://colab.research.google.com/drive/1_EYqXb2oN889RPqRc8jwQaWygmpzKBiF?usp=sharing).
 
 
-* [Reference Datasets](#)
-* [Profiling & Cleaning Notebooks](#)
-* [Final Paper](#)
-
 # PART II: Data Cleaning at Scale
 
 ## Reference Datasets
 
-Two reference datasets are used during cleaning. One is a dataset with all the location information, i.e all cities, zip codes, latitude and longitudes of them. The second dataset is a custom-made dataset containing agency name and agency acronym. These reference datasets are available via [reference_datasets/]().
+Two reference datasets are used during cleaning. One is a dataset with all the location information, i.e all cities, zip codes, latitude and longitudes of them. The second dataset is a custom-made dataset containing agency name and agency acronym. These reference datasets are available via [reference_datasets/](https://github.com/qyc206/evq_big_data_project/tree/main/reference_datasets).
 
 ## Profiling & Cleaning Notebooks
 
@@ -73,6 +69,8 @@ The notebooks provided for Part II are an extension and improvement of the noteb
 To run the profiling code on Peel, download and upload the Zeppelin notebook named [Profiling_Dataset_peel.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Profiling_Dataset_peel.zpln). If you would only like to view the notebook, check out the notebook named [Profiling_Dataset_peel.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Profiling_Dataset_peel.ipynb).
 
 To run the profiling code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel.zpln](). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel.ipynb]().
+
+The notebooks for Part II are available via [notebooks/part2](https://github.com/qyc206/evq_big_data_project/tree/main/notebooks/part2).
 
 ## Final Paper
 
