@@ -74,7 +74,7 @@ To run the profiling code on Peel, download and upload the Zeppelin notebook nam
 
 To Zeppelin notebooks that are used to clean the datasets are broken down into the following sub-sections: **Uniformity, Accuracy, Inconsistency, Completeness, and Outlier**
 
-Since Zeppelin notebooks cannot be rendered on Github, we also provide a Jupyter notebook version that is **view only**. Please do not try to run the Jupyter  notebook versions as they will not work.
+Since Zeppelin notebooks cannot be rendered on Github, we also provide a Jupyter notebook version that is for **view only**. Please do not try to run the Jupyter  notebook versions as they will not work.
 
 #### Uniformity
 
