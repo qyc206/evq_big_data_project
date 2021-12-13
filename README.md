@@ -66,9 +66,36 @@ Two reference datasets are used during cleaning. One is a dataset with all the l
 
 The notebooks provided for Part II are an extension and improvement of the notebooks from Part I. The code has been tested on the full [311 Service Requests from 2010 to Present](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9) dataset, and the notebooks are also used to profile and clean ten similar datasets found on NYC Open Data.
 
+### Profiling Notebook
+
 To run the profiling code on Peel, download and upload the Zeppelin notebook named [Profiling_Dataset_peel.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Profiling_Dataset_peel.zpln). If you would only like to view the notebook, check out the notebook named [Profiling_Dataset_peel.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Profiling_Dataset_peel.ipynb).
 
-To run the profiling code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel.zpln](). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel.ipynb]().
+### Cleaning Notebooks
+
+To Zeppelin notebooks that are used to clean the datasets are broken down into the following sub-sections: **Uniformity, Accuracy, Inconsistency, Completeness, and Outlier**
+
+Since Zeppelin notebooks cannot be rendered on Github, we also provide a Jupyter notebook version that is **view only**. Please do not try to run the Jupyter  notebook versions as they will not work.
+
+#### Uniformity
+
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Uniformity.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Uniformity.zpln). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Uniformity.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Uniformity.ipynb).
+
+#### Accuracy
+
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Accuracy.zpln](). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Accuracy.ipynb]().
+
+#### Inconsistency
+
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Inconsistency.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Inconsistency.zpln). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Inconsistency.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Inconsistency.ipynb).
+
+#### Completeness
+
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Completeness.zpln](). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Completeness.ipynb]().
+
+#### Outlier
+
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Outlier.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Outlier.zpln). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Outlier.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Outlier.ipynb).
+
 
 The notebooks for Part II are available via [notebooks/part2](https://github.com/qyc206/evq_big_data_project/tree/main/notebooks/part2).
 

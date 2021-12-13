@@ -1,0 +1,618 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Cleaning\n\nThis notebook goes over the cleaning process and results of cleaning the dataset based on the problems observed in the Profiling_The_Dataset.ipynb notebook. Some methods are further modified to have mroe general uses for datasets that are not the original. However, to show our algorithms, we use the original dataset as an example.\n\nJust like the notebook for profiling, this notebook will also be broken down into the following sections: Uniformity, Accuracy, Inconsistency, Completeness, and Outlier. Each section will show the solution that we have come up with to solve the problem posed in the corresponding section in the profiling notebook.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:40:52-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Cleaning</h1>\n<p>This notebook goes over the cleaning process and results of cleaning the dataset based on the problems observed in the Profiling_The_Dataset.ipynb notebook. Some methods are further modified to have mroe general uses for datasets that are not the original. However, to show our algorithms, we use the original dataset as an example.</p>\n<p>Just like the notebook for profiling, this notebook will also be broken down into the following sections: Uniformity, Accuracy, Inconsistency, Completeness, and Outlier. Each section will show the solution that we have come up with to solve the problem posed in the corresponding section in the profiling notebook.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557502_1408017786",
+      "id": "paragraph_1639351721676_1661806922",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10096",
+      "dateFinished": "2021-12-12T20:40:52-0500",
+      "dateStarted": "2021-12-12T20:40:52-0500"
+    },
+    {
+      "text": "%md\n\n## Upload the dataset to Peel cluster & Define dataset path\n\nBefore continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:\n\n```\n# Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] <net_id>@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path \"/user/[netid]/[FILENAME]\")\nhfs -put [FILENAME]\n```\n\nMake sure you can locate your dataset before continuing onwards.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:41:03-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Upload the dataset to Peel cluster &amp; Define dataset path</h2>\n<p>Before continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:</p>\n<pre><code># Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] &lt;net_id&gt;@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path &quot;/user/[netid]/[FILENAME]&quot;)\nhfs -put [FILENAME]\n</code></pre>\n<p>Make sure you can locate your dataset before continuing onwards.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557502_1242194133",
+      "id": "paragraph_1639351751912_960881367",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:10097",
+      "dateFinished": "2021-12-12T20:41:03-0500",
+      "dateStarted": "2021-12-12T20:41:03-0500"
+    },
+    {
+      "text": "%pyspark\n# Define path to dataset on Peel HDFS (NOTE: replace file name with your own if different)\ndataset_path = \"/user/CS-GY-6513/project_data/data-cityofnewyork-us.erm2-nwe9.csv\"",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557502_580379255",
+      "id": "paragraph_1639351760058_1642960684",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10098"
+    },
+    {
+      "text": "%md\n\n## Set up Spark Session\n\nNow that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset. \n\nIf this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:\n\n```\n# Run this command if pyspark is not already installed\n%pip install pyspark\n```",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:41:20-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Set up Spark Session</h2>\n<p>Now that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset.</p>\n<p>If this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:</p>\n<pre><code># Run this command if pyspark is not already installed\n%pip install pyspark\n</code></pre>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_2087657946",
+      "id": "paragraph_1639351778931_1082428749",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:10099",
+      "dateFinished": "2021-12-12T20:41:20-0500",
+      "dateStarted": "2021-12-12T20:41:20-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Set up pyspark session\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession \\\n            .builder \\\n            .appName(\"Python Spark SQL basic example\") \\\n            .config(\"spark.some.config.option\", \"some-value\") \\\n            .config(\"spark.executor.memory\", \"50g\") \\\n            .config(\"spark.driver.memory\", \"50g\") \\\n            .getOrCreate()\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1223861335",
+      "id": "paragraph_1639351787641_1750162629",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10100"
+    },
+    {
+      "text": "%md\n\n## Load dataset using spark\n\nRun the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:41:37-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Load dataset using spark</h2>\n<p>Run the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_2123271480",
+      "id": "paragraph_1639351827518_146196566",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:10101",
+      "dateFinished": "2021-12-12T20:41:37-0500",
+      "dateStarted": "2021-12-12T20:41:37-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Load dataset\ndf = spark.read.format('csv').options(header='true',inferschema='true').load(dataset_path)\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\") ",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1722864883",
+      "id": "paragraph_1639351838191_2072628364",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10102"
+    },
+    {
+      "text": "%md\n\nNotice in the result of running the above cell that most items in the schema is of type string, even if it is not the expected type. To modify the dataset such that the types of each column is what we would expect, we perform type casting for each column that should not be type string.\n\n**NOTE: the following cell is specific for the 311 service report dataset; make sure to modify the following cell to include type casting that is necessary to your dataset, if different",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Notice in the result of running the above cell that most items in the schema is of type string, even if it is not the expected type. To modify the dataset such that the types of each column is what we would expect, we perform type casting for each column that should not be type string.</p>\n<p>**NOTE: the following cell is specific for the 311 service report dataset; make sure to modify the following cell to include type casting that is necessary to your dataset, if different</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_978987183",
+      "id": "paragraph_1639351865973_1984045594",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10103"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\nfrom pyspark.sql.functions import to_timestamp\n\n# Type casting to expected types\ndf = df.withColumn(\"Unique Key\",df[\"Unique Key\"].cast(IntegerType()))\ndf = df.withColumn(\"Due Date\",to_timestamp(df[\"Due Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Created Date\", to_timestamp(df[\"Created Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Closed Date\",to_timestamp(df[\"Closed Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Incident Zip\",df[\"Incident Zip\"].cast(IntegerType()))\ndf = df.withColumn(\"BBL\",df[\"BBL\"].cast(IntegerType()))\ndf = df.withColumn(\"X Coordinate (State Plane)\",df[\"X Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Y Coordinate (State Plane)\",df[\"Y Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Resolution Action Updated Date\",to_timestamp(df[\"Resolution Action Updated Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\n\n\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\")\n\ndf.printSchema()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- Unique Key: integer (nullable = true)\n |-- Created Date: timestamp (nullable = true)\n |-- Closed Date: timestamp (nullable = true)\n |-- Agency: string (nullable = true)\n |-- Agency Name: string (nullable = true)\n |-- Complaint Type: string (nullable = true)\n |-- Descriptor: string (nullable = true)\n |-- Location Type: string (nullable = true)\n |-- Incident Zip: integer (nullable = true)\n |-- Incident Address: string (nullable = true)\n |-- Street Name: string (nullable = true)\n |-- Cross Street 1: string (nullable = true)\n |-- Cross Street 2: string (nullable = true)\n |-- Intersection Street 1: string (nullable = true)\n |-- Intersection Street 2: string (nullable = true)\n |-- Address Type: string (nullable = true)\n |-- City: string (nullable = true)\n |-- Landmark: string (nullable = true)\n |-- Facility Type: string (nullable = true)\n |-- Status: string (nullable = true)\n |-- Due Date: timestamp (nullable = true)\n |-- Resolution Description: string (nullable = true)\n |-- Resolution Action Updated Date: timestamp (nullable = true)\n |-- Community Board: string (nullable = true)\n |-- BBL: integer (nullable = true)\n |-- Borough: string (nullable = true)\n |-- X Coordinate (State Plane): integer (nullable = true)\n |-- Y Coordinate (State Plane): integer (nullable = true)\n |-- Open Data Channel Type: string (nullable = true)\n |-- Park Facility Name: string (nullable = true)\n |-- Park Borough: string (nullable = true)\n |-- Vehicle Type: string (nullable = true)\n |-- Taxi Company Borough: string (nullable = true)\n |-- Taxi Pick Up Location: string (nullable = true)\n |-- Bridge Highway Name: string (nullable = true)\n |-- Bridge Highway Direction: string (nullable = true)\n |-- Road Ramp: string (nullable = true)\n |-- Bridge Highway Segment: string (nullable = true)\n |-- Latitude: double (nullable = true)\n |-- Longitude: double (nullable = true)\n |-- Location: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1571938340",
+      "id": "paragraph_1639351871435_818059262",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10104"
+    },
+    {
+      "text": "%md\n\n## IV. Completeness\n\nDuring profiling, we observed that several values in the City column are null (i.e. missing). One simple way to try and fix the city nulls is by using the \"Borough\" Column because the data set seems to use Borough names for city names. Therefore, we simply replace the null values that have a non null value for its Borough with the Borough name.\n\nManhattan is a slightly special case because New York = Manhattan in the city column. For this case we have to change the value of \"MANHATTAN\" in Borough to New York.\n\nAny null value in \"City\" that also has a null \"Borough\" value will be marked as Unspecified.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:42:18-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>IV. Completeness</h2>\n<p>During profiling, we observed that several values in the City column are null (i.e. missing). One simple way to try and fix the city nulls is by using the &ldquo;Borough&rdquo; Column because the data set seems to use Borough names for city names. Therefore, we simply replace the null values that have a non null value for its Borough with the Borough name.</p>\n<p>Manhattan is a slightly special case because New York = Manhattan in the city column. For this case we have to change the value of &ldquo;MANHATTAN&rdquo; in Borough to New York.</p>\n<p>Any null value in &ldquo;City&rdquo; that also has a null &ldquo;Borough&rdquo; value will be marked as Unspecified.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_149394848",
+      "id": "paragraph_1639351712702_1113735443",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:10105",
+      "dateFinished": "2021-12-12T20:42:18-0500",
+      "dateStarted": "2021-12-12T20:42:18-0500"
+    },
+    {
+      "text": "%md\nTo make this function more applicable to general uses, there a flag for whether you will be able to apply one column to complete the other, or if you are forced to only fill in \"unspecified\" for one column. If there are any two columns that have a similar relationship, the function could be tweaked (ie get rid of the Manhattan to New York cases) to fit the function better",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>To make this function more applicable to general uses, there a flag for whether you will be able to apply one column to complete the other, or if you are forced to only fill in &ldquo;unspecified&rdquo; for one column. If there are any two columns that have a similar relationship, the function could be tweaked (ie get rid of the Manhattan to New York cases) to fit the function better</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1226015512",
+      "id": "paragraph_1639351720236_880853580",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10106"
+    },
+    {
+      "text": "%pyspark\n# Replace null values with \"unspecified\"\nfrom pyspark.sql.functions import when, desc, initcap\n\ndef completeColumn(datframe, targetCol,crossCheckCol,crossColFlag):\n    if(crossColFlag == True):\n        #if we want to cross check our data, we will cross check it here\n        datframe = datframe.withColumn(targetCol,\\\n              when(datframe[targetCol].isNull() & (datframe[crossCheckCol] == \"MANHATTAN\"), \"New York\").when(datframe[targetCol].isNull() &  datframe[crossCheckCol].isNotNull() & (datframe[crossCheckCol] != \"MANHHATAN\"), initcap(df[crossCheckCol])).when(datframe[targetCol].isNull() &  datframe[crossCheckCol].isNull(), \"Unspecified\").otherwise(datframe[targetCol]))\n    else:\n        #Mark the row as unspecified\n        datframe = datframe.withColumn(targetCol, when(datframe[targetCol].isNull(), \"Unspecified\").otherwi(datframe[targetCol]))\n    \n    return datframe\n\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1642296022",
+      "id": "paragraph_1639352175561_867832877",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10107"
+    },
+    {
+      "text": "%pyspark\n\n# Replace null values with \"unspecified\"\n\ndf = completeColumn(df, \"City\",\"Borough\", True)\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_139154689",
+      "id": "paragraph_1639352184759_308006573",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10108"
+    },
+    {
+      "text": "%pyspark\n\n# Re-display number of values in City column\ndf.groupBy('City').count().orderBy(desc(\"count\")).show(20, False)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+-------+\n|City         |count  |\n+-------------+-------+\n|BROOKLYN     |7979694|\n|NEW YORK     |5127521|\n|BRONX        |4967037|\n|STATEN ISLAND|1311489|\n|Unspecified  |434783 |\n|JAMAICA      |376774 |\n|New York     |348047 |\n|Brooklyn     |318968 |\n|Queens       |305324 |\n|FLUSHING     |281400 |\n|Jamaica      |270291 |\n|ASTORIA      |266829 |\n|Bronx        |248039 |\n|RIDGEWOOD    |208513 |\n|Flushing     |189094 |\n|Astoria      |158682 |\n|CORONA       |142196 |\n|Ridgewood    |126383 |\n|WOODSIDE     |125876 |\n|FRESH MEADOWS|125800 |\n+-------------+-------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_583668986",
+      "id": "paragraph_1639352363222_1938540086",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10109"
+    },
+    {
+      "text": "%pyspark\n# Count how many nulls left\ndf.filter(df[\"City\"].isNull()).count()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:39:17-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639359557503_1926458540",
+      "id": "paragraph_1639352374076_1891991497",
+      "dateCreated": "2021-12-12T20:39:17-0500",
+      "status": "READY",
+      "$$hashKey": "object:10110"
+    }
+  ],
+  "name": "Cleaning_Dataset_peel_Completeness",
+  "id": "2GSC4HZMT",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Cleaning_Dataset_peel_Completeness"
+}
