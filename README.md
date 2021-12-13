@@ -82,7 +82,7 @@ To run the cleaning code on Peel, download and upload the Zeppelin notebook name
 
 #### Accuracy
 
-To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Accuracy.zpln](). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Accuracy.ipynb]().
+To run the cleaning code on Peel, download and upload the Zeppelin notebook named [Cleaning_Dataset_peel_Accuracy.zpln](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Accuracy.zpln). If you would only like to view the notebook, check out the notebook named [Cleaning_Dataset_peel_Accuracy.ipynb](https://github.com/qyc206/evq_big_data_project/blob/main/notebooks/part2/Cleaning_Dataset_peel_Accuracy.ipynb).
 
 #### Inconsistency
 
