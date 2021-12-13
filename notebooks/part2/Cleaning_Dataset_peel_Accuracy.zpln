@@ -1,0 +1,1212 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n\n## II. Accuracy\n\nDuring profiling, we used the [uszips.csv](https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing) dataset to uncover several inaccuracies in the City column of our 311 service dataset. To solve this problem, we use the zipcodes in our dataset to match with those in the [uszips.csv](https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing) dataset so that we can find the actual city values to replace those that are inaccurate.\n\nBefore we start, make sure to download and upload the [uszips.csv](https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing) dataset into HDFS just as described in the previous \"Upload the dataset to Peel cluster & Define dataset path\" section. After the reference dataset is downloaded and uploaded into HDFS, run the cells to define the dataset path and make sure the dataset can be read.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T21:59:47-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>II. Accuracy</h2>\n<p>During profiling, we used the <a href=\"https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing\">uszips.csv</a> dataset to uncover several inaccuracies in the City column of our 311 service dataset. To solve this problem, we use the zipcodes in our dataset to match with those in the <a href=\"https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing\">uszips.csv</a> dataset so that we can find the actual city values to replace those that are inaccurate.</p>\n<p>Before we start, make sure to download and upload the <a href=\"https://drive.google.com/file/d/1qd2cXgTx-h-hRd0C7z2s_U4O8VYLAXA7/view?usp=sharing\">uszips.csv</a> dataset into HDFS just as described in the previous &ldquo;Upload the dataset to Peel cluster &amp; Define dataset path&rdquo; section. After the reference dataset is downloaded and uploaded into HDFS, run the cells to define the dataset path and make sure the dataset can be read.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350285668_1994519494",
+      "id": "paragraph_1639350285668_1994519494",
+      "dateCreated": "2021-12-12T18:04:45-0500",
+      "dateStarted": "2021-12-12T21:59:47-0500",
+      "dateFinished": "2021-12-12T21:59:49-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:477"
+    },
+    {
+      "text": "%md\n## Upload the dataset to Peel cluster & Define dataset path\n\nBefore continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:\n\n```\n# Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] <net_id>@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path \"/user/[netid]/[FILENAME]\")\nhfs -put [FILENAME]\n```\n\nMake sure you can locate your dataset before continuing onwards.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T22:00:01-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Upload the dataset to Peel cluster &amp; Define dataset path</h2>\n<p>Before continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:</p>\n<pre><code># Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] &lt;net_id&gt;@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path &quot;/user/[netid]/[FILENAME]&quot;)\nhfs -put [FILENAME]\n</code></pre>\n<p>Make sure you can locate your dataset before continuing onwards.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350452579_2055161441",
+      "id": "paragraph_1639350452579_2055161441",
+      "dateCreated": "2021-12-12T18:07:32-0500",
+      "dateStarted": "2021-12-12T22:00:01-0500",
+      "dateFinished": "2021-12-12T22:00:01-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:478"
+    },
+    {
+      "text": "%pyspark\n# Define path to dataset on Peel HDFS (NOTE: replace file name with your own if different)\ndataset_path = \"/user/CS-GY-6513/project_data/data-cityofnewyork-us.erm2-nwe9.csv\"",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:42:42-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350664889_1716302794",
+      "id": "paragraph_1639350664889_1716302794",
+      "dateCreated": "2021-12-12T18:11:04-0500",
+      "dateStarted": "2021-12-12T18:42:42-0500",
+      "dateFinished": "2021-12-12T18:42:42-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:479"
+    },
+    {
+      "text": "%md\n\n## Set up Spark Session\n\nNow that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset. \n\nIf this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:\n\n```\n# Run this command if pyspark is not already installed\n%pip install pyspark\n```\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T22:00:26-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Set up Spark Session</h2>\n<p>Now that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset.</p>\n<p>If this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:</p>\n<pre><code># Run this command if pyspark is not already installed\n%pip install pyspark\n</code></pre>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350499244_1995634351",
+      "id": "paragraph_1639350499244_1995634351",
+      "dateCreated": "2021-12-12T18:08:19-0500",
+      "dateStarted": "2021-12-12T22:00:26-0500",
+      "dateFinished": "2021-12-12T22:00:26-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:480"
+    },
+    {
+      "text": "%pyspark\n\n# Set up pyspark session\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession \\\n            .builder \\\n            .appName(\"Python Spark SQL basic example\") \\\n            .config(\"spark.some.config.option\", \"some-value\") \\\n            .config(\"spark.executor.memory\", \"35g\") \\\n            .config(\"spark.driver.memory\", \"35g\") \\\n            .getOrCreate()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:42:46-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350508824_2011676666",
+      "id": "paragraph_1639350508824_2011676666",
+      "dateCreated": "2021-12-12T18:08:28-0500",
+      "dateStarted": "2021-12-12T18:42:46-0500",
+      "dateFinished": "2021-12-12T18:42:46-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:481"
+    },
+    {
+      "text": "%md\n\n## Load dataset using spark\n\nRun the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T22:00:53-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Load dataset using spark</h2>\n<p>Run the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350629704_833279044",
+      "id": "paragraph_1639350629704_833279044",
+      "dateCreated": "2021-12-12T18:10:29-0500",
+      "dateStarted": "2021-12-12T22:00:53-0500",
+      "dateFinished": "2021-12-12T22:00:53-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:482"
+    },
+    {
+      "text": "%pyspark\n\n# Load dataset\ndf = spark.read.format('csv').options(header='true',inferschema='true').load(dataset_path)\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\") ",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:42:48-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=6",
+              "$$hashKey": "object:1584"
+            },
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=7",
+              "$$hashKey": "object:1585"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350645600_934793321",
+      "id": "paragraph_1639350645600_934793321",
+      "dateCreated": "2021-12-12T18:10:45-0500",
+      "dateStarted": "2021-12-12T18:42:48-0500",
+      "dateFinished": "2021-12-12T18:45:20-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:483"
+    },
+    {
+      "text": "%md\n### Generalizing Formatting\n\nFor many datasets, to optimally find information about any column that involves time, the column type must be turned into a timestamp type. However, to turn a column type into a timestamp, the data within the column must match the format that is specified when calling the to_timestamp() function ( to_timestamp(dataset[column], format) ). Therefore, it is best to be able to generalize this part of formating to make sure all our date columns are uniforom. This is even more essential since some of our solutions involve dates.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T22:01:15-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h3>Generalizing Formatting</h3>\n<p>For many datasets, to optimally find information about any column that involves time, the column type must be turned into a timestamp type. However, to turn a column type into a timestamp, the data within the column must match the format that is specified when calling the to_timestamp() function ( to_timestamp(dataset[column], format) ). Therefore, it is best to be able to generalize this part of formating to make sure all our date columns are uniforom. This is even more essential since some of our solutions involve dates.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350701384_1459435295",
+      "id": "paragraph_1639350701384_1459435295",
+      "dateCreated": "2021-12-12T18:11:41-0500",
+      "dateStarted": "2021-12-12T22:01:15-0500",
+      "dateFinished": "2021-12-12T22:01:15-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:484"
+    },
+    {
+      "text": "%pyspark\n\ndef formatDate(dataset, col, DateForm):\n    formatedData = dataset.withColumn(col,to_timestamp(dataset[col],DateForm))\n    return formatedData",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:27-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350707890_2111513801",
+      "id": "paragraph_1639350707890_2111513801",
+      "dateCreated": "2021-12-12T18:11:47-0500",
+      "dateStarted": "2021-12-12T18:45:27-0500",
+      "dateFinished": "2021-12-12T18:45:27-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:485"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\nfrom pyspark.sql.functions import to_timestamp\n\n# Type casting to expected types\ndf = df.withColumn(\"Unique Key\",df[\"Unique Key\"].cast(IntegerType()))\ndf = formatDate(df,\"Due Date\",\"MM/dd/yyyy hh:mm:ss a\")\ndf = formatDate(df,\"Created Date\",\"MM/dd/yyyy hh:mm:ss a\")\ndf = formatDate(df,\"Closed Date\",\"MM/dd/yyyy hh:mm:ss a\")\ndf = df.withColumn(\"Incident Zip\",df[\"Incident Zip\"].cast(IntegerType()))\ndf = df.withColumn(\"BBL\",df[\"BBL\"].cast(IntegerType()))\ndf = df.withColumn(\"X Coordinate (State Plane)\",df[\"X Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Y Coordinate (State Plane)\",df[\"Y Coordinate (State Plane)\"].cast(IntegerType()))\ndf = formatDate(df,\"Resolution Action Updated Date\",\"MM/dd/yyyy hh:mm:ss a\")\n\n\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\")\n\ndf.printSchema()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:29-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- Unique Key: integer (nullable = true)\n |-- Created Date: timestamp (nullable = true)\n |-- Closed Date: timestamp (nullable = true)\n |-- Agency: string (nullable = true)\n |-- Agency Name: string (nullable = true)\n |-- Complaint Type: string (nullable = true)\n |-- Descriptor: string (nullable = true)\n |-- Location Type: string (nullable = true)\n |-- Incident Zip: integer (nullable = true)\n |-- Incident Address: string (nullable = true)\n |-- Street Name: string (nullable = true)\n |-- Cross Street 1: string (nullable = true)\n |-- Cross Street 2: string (nullable = true)\n |-- Intersection Street 1: string (nullable = true)\n |-- Intersection Street 2: string (nullable = true)\n |-- Address Type: string (nullable = true)\n |-- City: string (nullable = true)\n |-- Landmark: string (nullable = true)\n |-- Facility Type: string (nullable = true)\n |-- Status: string (nullable = true)\n |-- Due Date: timestamp (nullable = true)\n |-- Resolution Description: string (nullable = true)\n |-- Resolution Action Updated Date: timestamp (nullable = true)\n |-- Community Board: string (nullable = true)\n |-- BBL: integer (nullable = true)\n |-- Borough: string (nullable = true)\n |-- X Coordinate (State Plane): integer (nullable = true)\n |-- Y Coordinate (State Plane): integer (nullable = true)\n |-- Open Data Channel Type: string (nullable = true)\n |-- Park Facility Name: string (nullable = true)\n |-- Park Borough: string (nullable = true)\n |-- Vehicle Type: string (nullable = true)\n |-- Taxi Company Borough: string (nullable = true)\n |-- Taxi Pick Up Location: string (nullable = true)\n |-- Bridge Highway Name: string (nullable = true)\n |-- Bridge Highway Direction: string (nullable = true)\n |-- Road Ramp: string (nullable = true)\n |-- Bridge Highway Segment: string (nullable = true)\n |-- Latitude: double (nullable = true)\n |-- Longitude: double (nullable = true)\n |-- Location: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350715855_2001904126",
+      "id": "paragraph_1639350715855_2001904126",
+      "dateCreated": "2021-12-12T18:11:55-0500",
+      "dateStarted": "2021-12-12T18:45:29-0500",
+      "dateFinished": "2021-12-12T18:45:29-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:486"
+    },
+    {
+      "text": "%pyspark\n\n# Run to remove cache\ndf.unpersist()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:40-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[Unique Key: int, Created Date: timestamp, Closed Date: timestamp, Agency: string, Agency Name: string, Complaint Type: string, Descriptor: string, Location Type: string, Incident Zip: int, Incident Address: string, Street Name: string, Cross Street 1: string, Cross Street 2: string, Intersection Street 1: string, Intersection Street 2: string, Address Type: string, City: string, Landmark: string, Facility Type: string, Status: string, Due Date: timestamp, Resolution Description: string, Resolution Action Updated Date: timestamp, Community Board: string, BBL: int, Borough: string, X Coordinate (State Plane): int, Y Coordinate (State Plane): int, Open Data Channel Type: string, Park Facility Name: string, Park Borough: string, Vehicle Type: string, Taxi Company Borough: string, Taxi Pick Up Location: string, Bridge Highway Name: string, Bridge Highway Direction: string, Road Ramp: string, Bridge Highway Segment: string, Latitude: double, Longitude: double, Location: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350725328_943164285",
+      "id": "paragraph_1639350725328_943164285",
+      "dateCreated": "2021-12-12T18:12:05-0500",
+      "dateStarted": "2021-12-12T18:45:40-0500",
+      "dateFinished": "2021-12-12T18:45:40-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:487"
+    },
+    {
+      "text": "%md\n\nNow that pyspark is set up and the columns of the dataset are updated to types that we expect, we can start using pyspark to explore and clean the dataset!",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T22:02:05-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Now that pyspark is set up and the columns of the dataset are updated to types that we expect, we can start using pyspark to explore and clean the dataset!</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350990296_1273553395",
+      "id": "paragraph_1639350990296_1273553395",
+      "dateCreated": "2021-12-12T18:16:30-0500",
+      "dateStarted": "2021-12-12T22:02:05-0500",
+      "dateFinished": "2021-12-12T22:02:05-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:488"
+    },
+    {
+      "text": "%pyspark\n\n# Define path for US zip dataset\n# (Note: make sure to update to your netid and dataset name)\nuszip_path = \"/user/qyc206/uszips.csv\"",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:42-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350295015_53151154",
+      "id": "paragraph_1639350295015_53151154",
+      "dateCreated": "2021-12-12T18:04:55-0500",
+      "dateStarted": "2021-12-12T18:45:42-0500",
+      "dateFinished": "2021-12-12T18:45:42-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:489"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\n\n# Read the US zip dataset\nus = spark.read.csv(uszip_path, header=True)\nus = us.withColumn(\"zip\",us[\"zip\"].cast(IntegerType()))\nus = us.withColumn(\"lat\",us[\"lat\"].cast(DoubleType()))\nus = us.withColumn(\"lng\",us[\"lng\"].cast(DoubleType()))\nus.show()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:43-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+--------+---------+-------------+--------+-----------+----+-----------+----------+-------+-----------+-------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+\n|zip|     lat|      lng|         city|state_id| state_name|zcta|parent_zcta|population|density|county_fips|  county_name|      county_weights|    county_names_all|     county_fips_all|           imprecise|            military|            timezone|\n+---+--------+---------+-------------+--------+-----------+----+-----------+----------+-------+-----------+-------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+\n|601|18.18005|-66.75218|     Adjuntas|      PR|Puerto Rico|TRUE|       null|     17113|  102.7|      72001|     Adjuntas|\"{\"\"72001\"\": \"\"99...| \"\"72141\"\": \"\"0.5...|     Adjuntas|Utuado|         72001|72141|               FALSE|               FALSE|\n|602|18.36074|-67.17519|       Aguada|      PR|Puerto Rico|TRUE|       null|     37751|  476.0|      72003|       Aguada|\"{\"\"72003\"\": \"\"10...|              Aguada|               72003|               FALSE|               FALSE| America/Puerto_Rico|\n|603| 18.4544|-67.12201|    Aguadilla|      PR|Puerto Rico|TRUE|       null|     47081|  574.9|      72005|    Aguadilla|\"{\"\"72005\"\": \"\"10...|           Aguadilla|               72005|               FALSE|               FALSE| America/Puerto_Rico|\n|606|18.16721|-66.93828|      Maricao|      PR|Puerto Rico|TRUE|       null|      6392|   58.3|      72093|      Maricao|\"{\"\"72093\"\": \"\"94...| \"\"72153\"\": \"\"3.78\"\"| \"\"72121\"\": \"\"1.3...|Maricao|Yauco|Sab...|   72093|72153|72121|               FALSE|\n|610|18.29032|-67.12244|       Anasco|      PR|Puerto Rico|TRUE|       null|     26686|  286.9|      72011|       Añasco|\"{\"\"72011\"\": \"\"99...| \"\"72003\"\": \"\"0.5...|       Añasco|Aguada|         72011|72003|               FALSE|               FALSE|\n|612|18.40699|-66.70805|      Arecibo|      PR|Puerto Rico|TRUE|       null|     59369|  339.1|      72013|      Arecibo|\"{\"\"72013\"\": \"\"99...| \"\"72017\"\": \"\"0.1...| Arecibo|Barceloneta|         72013|72017|               FALSE|               FALSE|\n|616|18.41752|-66.66814|     Bajadero|      PR|Puerto Rico|TRUE|       null|     10022|  335.6|      72013|      Arecibo|\"{\"\"72013\"\": \"\"10...|             Arecibo|               72013|               FALSE|               FALSE| America/Puerto_Rico|\n|617|18.44125|-66.55916|  Barceloneta|      PR|Puerto Rico|TRUE|       null|     23750|  603.5|      72017|  Barceloneta|\"{\"\"72017\"\": \"\"99...| \"\"72054\"\": \"\"0.5...| Barceloneta|Florida|         72017|72054|               FALSE|               FALSE|\n|622|17.99174|-67.15248|     Boqueron|      PR|Puerto Rico|TRUE|       null|      6741|   89.8|      72023|    Cabo Rojo|\"{\"\"72023\"\": \"\"10...|           Cabo Rojo|               72023|               FALSE|               FALSE| America/Puerto_Rico|\n|623|18.08354|-67.15418|    Cabo Rojo|      PR|Puerto Rico|TRUE|       null|     41746|  424.5|      72023|    Cabo Rojo|\"{\"\"72023\"\": \"\"10...|           Cabo Rojo|               72023|               FALSE|               FALSE| America/Puerto_Rico|\n|624|18.06465|-66.71823|     Penuelas|      PR|Puerto Rico|TRUE|       null|     21936|  196.2|      72111|     Peñuelas|\"{\"\"72111\"\": \"\"92...| \"\"72113\"\": \"\"7.4...|      Peñuelas|Ponce|         72111|72113|               FALSE|               FALSE|\n|627|  18.419|-66.86033|        Camuy|      PR|Puerto Rico|TRUE|       null|     31598|  263.2|      72027|        Camuy|\"{\"\"72027\"\": \"\"10...|               Camuy|               72027|               FALSE|               FALSE| America/Puerto_Rico|\n|631|18.18555|-66.83327|     Castaner|      PR|Puerto Rico|TRUE|       null|      1499|  143.9|      72081|        Lares|\"{\"\"72081\"\": \"\"67...| \"\"72001\"\": \"\"32....|      Lares|Adjuntas|         72081|72001|               FALSE|               FALSE|\n|637| 18.0798|-66.94274|Sabana Grande|      PR|Puerto Rico|TRUE|       null|     22383|  250.9|      72121|Sabana Grande|\"{\"\"72121\"\": \"\"99...| \"\"72153\"\": \"\"0.4...| Sabana Grande|Yauco|         72121|72153|               FALSE|               FALSE|\n|638|18.28905| -66.5151|       Ciales|      PR|Puerto Rico|TRUE|       null|     16412|   95.9|      72039|       Ciales|\"{\"\"72039\"\": \"\"98...| \"\"72091\"\": \"\"1.7...|       Ciales|Manatí|         72039|72091|               FALSE|               FALSE|\n|641|18.26408|-66.71376|       Utuado|      PR|Puerto Rico|TRUE|       null|     26712|  110.3|      72141|       Utuado|\"{\"\"72141\"\": \"\"99...| \"\"72001\"\": \"\"0.2...|     Utuado|Adjuntas|         72141|72001|               FALSE|               FALSE|\n|646|18.43401| -66.2833|       Dorado|      PR|Puerto Rico|TRUE|       null|     37095|  691.0|      72051|       Dorado|\"{\"\"72051\"\": \"\"99...| \"\"72143\"\": \"\"0.1...|    Dorado|Vega Alta|         72051|72143|               FALSE|               FALSE|\n|647|17.96612|-66.94383|     Ensenada|      PR|Puerto Rico|TRUE|       null|      5809|  147.5|      72055|      Guánica|\"{\"\"72055\"\": \"\"98...| \"\"72079\"\": \"\"1.1...|       Guánica|Lajas|         72055|72079|               FALSE|               FALSE|\n|650|18.34321|-66.58601|      Florida|      PR|Puerto Rico|TRUE|       null|     14534|  183.9|      72054|      Florida|\"{\"\"72054\"\": \"\"83...| \"\"72141\"\": \"\"11....| \"\"72017\"\": \"\"1.91\"\"| \"\"72013\"\": \"\"1.51\"\"| \"\"72039\"\": \"\"1.1...|Florida|Utuado|Ba...|\n|652|18.45542|-66.60635|  Garrochales|      PR|Puerto Rico|TRUE|       null|      3565|  199.0|      72013|      Arecibo|\"{\"\"72013\"\": \"\"10...|             Arecibo|               72013|               FALSE|               FALSE| America/Puerto_Rico|\n+---+--------+---------+-------------+--------+-----------+----+-----------+----------+-------+-----------+-------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=8",
+              "$$hashKey": "object:1875"
+            },
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=9",
+              "$$hashKey": "object:1876"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350332765_755392087",
+      "id": "paragraph_1639350332765_755392087",
+      "dateCreated": "2021-12-12T18:05:32-0500",
+      "dateStarted": "2021-12-12T18:45:43-0500",
+      "dateFinished": "2021-12-12T18:45:44-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:490"
+    },
+    {
+      "text": "%pyspark\n\n# Run to remove cache\nus.unpersist()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:45-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[zip: int, lat: double, lng: double, city: string, state_id: string, state_name: string, zcta: string, parent_zcta: string, population: string, density: string, county_fips: string, county_name: string, county_weights: string, county_names_all: string, county_fips_all: string, imprecise: string, military: string, timezone: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351100277_1105812847",
+      "id": "paragraph_1639351100277_1105812847",
+      "dateCreated": "2021-12-12T18:18:20-0500",
+      "dateStarted": "2021-12-12T18:45:45-0500",
+      "dateFinished": "2021-12-12T18:45:45-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:491"
+    },
+    {
+      "text": "%pyspark\n\n# All the cities in New york with it's zip code\nny_data = (us.filter(us[\"state_id\"].like('NY'))).select(us[\"zip\"],us[\"city\"]) ",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:48-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350419640_880350814",
+      "id": "paragraph_1639350419640_880350814",
+      "dateCreated": "2021-12-12T18:06:59-0500",
+      "dateStarted": "2021-12-12T18:45:48-0500",
+      "dateFinished": "2021-12-12T18:45:48-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:492"
+    },
+    {
+      "text": "%pyspark\n\n# Run to remove cache\nny_data.unpersist()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:49-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[zip: int, city: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639352032532_1964114103",
+      "id": "paragraph_1639352032532_1964114103",
+      "dateCreated": "2021-12-12T18:33:52-0500",
+      "dateStarted": "2021-12-12T18:45:49-0500",
+      "dateFinished": "2021-12-12T18:45:49-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:493"
+    },
+    {
+      "text": "%md\n\nRun the following cells to solve the inaccuracy problem.",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:16:07-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Run the following cells to solve the inaccuracy problem.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350962374_997831390",
+      "id": "paragraph_1639350962374_997831390",
+      "dateCreated": "2021-12-12T18:16:02-0500",
+      "dateStarted": "2021-12-12T18:16:07-0500",
+      "dateFinished": "2021-12-12T18:16:07-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:494"
+    },
+    {
+      "text": "%pyspark\n\ndef calculate_distinct(col,dataoriginal,get_option=\"count\"):\n    distinct_vals = dataoriginal.select(col).distinct()\n    if get_option==\"count\":\n        return distinct_vals.count()\n    elif get_option == \"distinct\":\n        return distinct_vals",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:52-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351085220_1496371646",
+      "id": "paragraph_1639351085220_1496371646",
+      "dateCreated": "2021-12-12T18:18:05-0500",
+      "dateStarted": "2021-12-12T18:45:52-0500",
+      "dateFinished": "2021-12-12T18:45:52-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:495"
+    },
+    {
+      "text": "%pyspark\n\ndef find_wrong_vals(correct_dataset,dataset_to_clean,col_in_correct,col_to_be_cleaned):\n    \"\"\"\n    Returns a list of wrong values in the dataset given that there is a dataset with all correct values\n    \"\"\"\n    col_vals = calculate_distinct(col_in_correct,correct_dataset,\"distinct\")\n    list_of_correct_vals = [row for row in col_vals.collect()]\n    vals_in_dataset = calculate_distinct(col_to_be_cleaned,dataset_to_clean,\"distinct\")\n    list_of_vals_in_dataset = [row for row in vals_in_dataset.collect()]\n    #Finding the incorrect names\n    list_of_wrong_vals = []\n    for i in list_of_vals_in_dataset:\n        if i not in list_of_correct_vals:\n            list_of_wrong_vals.append(i)\n    return list_of_correct_vals,list_of_wrong_vals",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:53-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639350951974_305442433",
+      "id": "paragraph_1639350951974_305442433",
+      "dateCreated": "2021-12-12T18:15:51-0500",
+      "dateStarted": "2021-12-12T18:45:53-0500",
+      "dateFinished": "2021-12-12T18:45:53-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:496"
+    },
+    {
+      "text": "%pyspark\n\ndef levenshteinDistance(s1, s2):\n    if len(s1) > len(s2):\n        s1, s2 = s2, s1\n\n    distances = range(len(s1) + 1)\n    for i2, c2 in enumerate(s2):\n        distances_ = [i2+1]\n        for i1, c1 in enumerate(s1):\n            if c1 == c2:\n                distances_.append(distances[i1])\n            else:\n                distances_.append(1 + min((distances[i1], distances[i1 + 1], distances_[-1])))\n        distances = distances_\n    return distances[-1]\n\ndef clean_col(list_of_correct_vals,list_of_mispellings):\n    \"\"\"\n    calculates the levenshtein distance between each of the values of correct_vals and mispellings and finds the one that has minimum distance to be used as the new value\n    \"\"\"\n    list_new_values = {}\n    for i in list_of_mispellings:\n        matched = \"\"\n        min_val = 100000000\n        for j in list_of_correct_vals:\n            try:\n                curr_dist = levenshteinDistance(i[0], j[0])\n                if curr_dist<min_val:\n                    min_val =curr_dist\n                    matched = j[0]\n            except:\n                continue\n        list_new_values[str(i[0])] = str(matched)\n    return list_new_values\n            ",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:55-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351031390_306784511",
+      "id": "paragraph_1639351031390_306784511",
+      "dateCreated": "2021-12-12T18:17:11-0500",
+      "dateStarted": "2021-12-12T18:45:55-0500",
+      "dateFinished": "2021-12-12T18:45:55-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:497"
+    },
+    {
+      "text": "%pyspark\n\nlist_of_correct_cities,list_of_wrong_cities = find_wrong_vals(ny_data,df,\"city\",\"City\")\nprint(\"Number of wrong cities before cleaning:\"+str(len(list_of_wrong_cities)))",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:45:57-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Number of wrong cities before cleaning:2527\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=10",
+              "$$hashKey": "object:2206"
+            },
+            {
+              "jobUrl": "http://hc18.nyu.cluster:46279/jobs/job?id=11",
+              "$$hashKey": "object:2207"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351050622_1248885379",
+      "id": "paragraph_1639351050622_1248885379",
+      "dateCreated": "2021-12-12T18:17:30-0500",
+      "dateStarted": "2021-12-12T18:45:57-0500",
+      "dateFinished": "2021-12-12T18:46:53-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:498"
+    },
+    {
+      "text": "%pyspark\n\nlist_of_new_values = clean_col(list_of_correct_cities,list_of_wrong_cities)",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:47:00-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351189311_378393303",
+      "id": "paragraph_1639351189311_378393303",
+      "dateCreated": "2021-12-12T18:19:49-0500",
+      "dateStarted": "2021-12-12T18:47:00-0500",
+      "dateFinished": "2021-12-12T18:49:53-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:499"
+    },
+    {
+      "text": "%md\n\nRun the code for profiling here so that we can use it to compare to cleaned results to see the improvement.",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:20:13-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Run the code for profiling here so that we can use it to compare to cleaned results to see the improvement.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351209396_522787375",
+      "id": "paragraph_1639351209396_522787375",
+      "dateCreated": "2021-12-12T18:20:09-0500",
+      "dateStarted": "2021-12-12T18:20:13-0500",
+      "dateFinished": "2021-12-12T18:20:13-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:500"
+    },
+    {
+      "text": "%pyspark\n\n#This line of code shows you a dictionary of (valuesToBeCorrected:valueToCorrectTo), however, Running this code could cause heap issues when running future lines\nlist_of_new_values",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:23:03-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{'PRINCETON': 'Pond Eddy', 'ENGLEWOOD CLIFTON': 'New Lisbon', 'SOUTH FLORAL PARK': 'South Ozone Park', 'LIVETTOWN': 'Levittown', 'WATERTOWN': 'Worcester', 'COLD SPRING': 'Cold Spring', 'HUSTON': 'Himrod', 'NESCONSET': 'Owego', 'NORTHWEST PROVO': 'New Hyde Park', 'MAHOPAC': 'Auburn', 'SLEEPY HIOLLOW': 'Sag Harbor', 'CUMBERLAND': 'McLean', 'NASSUA COUNTY': 'New City', 'HUDSON COUNTY': 'Howes Cave', 'MARLTON': 'McLean', 'RANDALLS ISLAND': 'Round Lake', 'BAHAMAS': 'Auburn', 'HASBROCK': 'Antwerp', 'RARITAN': 'Auburn', 'VALLEY STREAM': 'Le Roy', 'CHINO': 'Cairo', 'STAMFORD': 'Auburn', 'PLAINVILLE NEW YORK': 'Little Neck', 'GREAT NECK, NEW YORK': 'Red Creek', 'SELINA': 'Elma', 'SAN ANOTNIO': 'Sag Harbor', 'BACDWIN': 'Cairo', 'DARING': 'Avoca', 'ISLAND': 'Lima', 'CLEVAND': 'Corona', 'DEAR PARK': 'Deer Park', 'NEWBURG': 'Elma', 'ROCKLYN CENTER': 'Red Creek', 'BLLOMINGTON': 'Big Indian', 'MANHASETTE': 'Antwerp', 'RIDGEFIELD PARK': 'Rego Park', 'ELMHERST': 'Le Roy', 'LAUREL HOLLOW': 'Lake Hill', 'BOLTIMORE': 'Owego', 'ALPHARATTA': 'Le Roy', 'MIRALOMA': 'McLean', 'LA CROSSE': 'Le Roy', 'PALM BEACH': 'Port Byron', 'DATONA': 'Avoca', 'NORTH WOODMERD NEW YORK': 'North River', 'HUNTINGTON STRATION': 'North River', 'LIBERTY': 'Le Roy', 'EDEN PRIARY': 'Elka Park', 'PLANTATION': 'Antwerp', 'CARTERET': 'Antwerp', 'TALAHASSEE': 'Antwerp', 'PORT WASHINGTON AVENUE': 'West Sand Lake', 'MARIAPA': 'Auburn', 'TWO HARBORS': 'Sag Harbor', 'MANHATTEN': 'Antwerp', 'UNION CITY, NJ': 'New City', 'WOODBOURNE': 'Worcester', 'SOMERVILLE': 'Owego', 'BURLINGTON ORLANDO': 'North River', 'NAUG.': 'Nunda', 'HAWTORNE': 'Antwerp', 'SCARDALE': 'Corona', 'FREEHOLD': 'Fredonia', 'LIDO BEACH': 'Long Eddy', 'WINTERVILLE': 'Worcester', 'BROOKYLN': 'Owego', 'NEW JERSEY': 'New Lisbon', 'VALLY STREAM': 'Le Roy', 'WANTGAH': 'Auburn', 'MINNIAPILIS': 'New Paltz', 'LINDENHRST': 'Lake Hill', 'CLARKSTON': 'Antwerp', 'BUCKEYE': 'Cairo', 'JACKVILLE': 'Antwerp', 'SOUTH PAUL': 'Rego Park', 'STATEN ISNALND': 'Staten Island', 'FT. PIERCE': 'Fly Creek', 'BOORHEES': 'Owego', 'OAKBROOK': 'Antwerp', 'SOUTH GATE': 'Sag Harbor', 'WESTBURY': 'Willet', 'ORLANDO': 'Owego', 'DEER PARK': 'Deer Park', 'SAVANNAH': 'Antwerp', 'Queens': 'Athens', 'CORAL GABLES': 'Feura Bush', 'NS': 'Rye', 'HECKVELLE': 'Corona', 'W NEW YORK': 'New York', 'NORTH MASSAPEQUA': 'New Paltz', 'HORFHAM': 'Owego', 'DAVEY': 'Acra', 'NAZARETH': 'Antwerp', 'JEFFERSON CITY': 'Johnson City', 'STE': 'Rye', 'NORTH TONAWANDA': 'North Tonawanda', 'ALLEN TOWN': 'Lake Hill', 'NESA': 'Elma', 'PHIONEX': 'Phoenix', 'PETALUMA': 'Phoenix', 'HOOBKEN': 'Owego', 'PLAINS': 'Lima', 'FAIR LAWN': 'Fort Ann', 'INDIANAPOLIS': 'Island Park', 'NEWARK AIRPORT': 'North River', 'RIDGEFIELD': 'Rhinebeck', 'NEWHYDE PARK': 'New Hyde Park', 'HEWLETT TOWN': 'Hampton Bays', 'LEYNNWOOD': 'Levittown', 'VILLE': 'Owego', 'HUNGTINGTON': 'Harrison', 'PENFIELD': 'Phoenix', 'AVON': 'Acra', 'TUXEDO PARK': 'Tuxedo Park', 'PALLISADES': 'Antwerp', 'LOUISGILLE': 'Lake Grove', 'REDBANK': 'Elma', 'SPRING VALLEY': 'Pine Valley', 'CHESTER': 'Corona', 'FORT LAUDERDAL': 'Fort Ann', 'RYE': 'Rye', 'WESTON': 'Willet', 'LOS ANGELOS': 'La Fayette', 'SAYVILLE': 'Antwerp', 'ALBERTSON,': 'Le Roy', 'ROCKY POINT': 'Rego Park', 'FAMINGDALE': 'McGraw', 'N/.A': 'Elma', 'FLORHAM PARK': 'Rego Park', 'LENOIA': 'Elma', 'MASSEPEQUA': 'Antwerp', 'COCKEYSVILLE': 'Cold Spring', 'ATLANTA': 'Antwerp', 'CHEEKTOWAGA': 'Owego', 'MOUNT VERNON': 'Mount Vernon', 'GLEN COVER': 'Glen Oaks', 'WILKES-BARRE': 'Le Roy', 'ST JAMES': 'Taberg', 'ORANGEBURG': 'Rhinebeck', 'LYME': 'Lima', 'MONTEREY PARK': 'Orchard Park', 'LITTLE FALLS': 'Lyons Falls', 'AROUND NEW HYDE PARK EXIT': 'New Hyde Park', 'HAWPHORNE': 'Antwerp', 'PORT JEFFERSON': 'Port Jefferson', 'GOLDEN': 'Owego', 'SAG HARBOR': 'Sag Harbor', 'JEARSEY CITY': 'Johnson City', 'FARMIONGDALE': 'McGraw', 'LIVERMOORE': 'Le Roy', 'EAST BRANCH': 'East Berne', 'COLLEYVILLE': 'Owego', 'CHATHEM': 'Corona', 'GUTTEMBERG': 'Great Bend', 'MIDDLE VILLIAGE': 'Middle Village', 'OLANDO': 'Owego', 'CORONA': 'Owego', 'CENTRAL PARK': 'Clifton Park', 'BARNEGAT': 'Antwerp', 'MIAMI': 'Marcy', 'WOBURN': 'Owego', 'OCEANSIDE': 'Owego', 'CENTEREACH': 'Corona', 'RISLANDA': 'Lima', 'FOREST HILL': 'Oak Hill', 'LIVERMORE': 'Le Roy', 'NEW JERCY': 'New City', 'TAMPON SPRINGS': 'Tuxedo Park', 'WILKES-BEARRE': 'Wells Bridge', 'EAST MEADOWN': 'East Marion', 'PORT CHESETR': 'Oak Hill', '311 TEST SERVICE REQ': 'West Sand Lake', 'BREYER WOOD': 'Brant Lake', 'BROOKILYN': 'Owego', 'RYEBROOKE': 'Rhinebeck', 'EAST FETAUKET': 'East Rockaway', 'MEMPHIS': 'Monroe', 'HUNTINGTON STATION': 'Huntington Station', 'HUNTINGTON NEW YORK': 'North Evans', 'FRIDLEY': 'Fonda', 'UNION': 'Upton', 'KEARNY': 'Kanona', 'PRESCOTT': 'Phoenix', 'WEST LINWOOD': 'West Lebanon', 'ALANTA': 'Auburn', 'SHAKER HIGHTS': 'Sag Harbor', 'RICHFIELD': 'Rhinebeck', 'BOWLING GREEN': 'Le Roy', 'CLIFTON NJ': 'Owego', 'HOBOKIN': 'Owego', 'ST. PETERSBURG': 'Bay Shore', 'NORTH  BERGEN': 'Ray Brook', 'PEAKSKILL': 'Port Kent', 'BUFFALOO GROVE': 'Blooming Grove', 'TENNAFLY': 'Taberg', 'STATEB ISLAND': 'Silver Lake', 'BOHEHIAM': 'Owego', 'TWO': 'Rye', \"FARMER'S BRANCH\": 'Feura Bush', 'REAT NECK': 'Rego Park', 'FORT LEE': 'Fort Ann', 'HUNGINGTON': 'Harrison', 'EVENPRAIRIE': 'Phoenix', 'OAKS': 'Ava', 'DES MONES': 'Fly Creek', 'KINGSTON': 'Kanona', 'HEMPSTEAD VILLAGE': 'Pine Valley', 'SCHAUMBURG': 'Antwerp', 'MANHASSETT HILLS': 'Au Sable Forks', 'KATANAH': 'Auburn', 'BIG FLATS': 'Big Flats', 'HEOENIX': 'Owego', 'NE W HYDE PARK': 'New Hyde Park', 'MASTETH': 'Auburn', 'PATERSON': 'Antwerp', 'SCRANTON': 'Corona', 'FORREST HILLS': 'Oak Hill', 'GIG HARBOR': 'Sag Harbor', 'NJ': 'Rye', 'NEW BRUNSWICK': 'New Rochelle', 'SANTA CLARA': 'New City', 'BRONXVILE': 'Owego', 'MOUNT KISCO': 'Mount Kisco', 'WESTBURY -MASSAPEQUA': 'Bay Shore', 'JERSEY': 'Elma', 'RENO': 'Rye', 'MAMHASSET': 'Antwerp', 'HEMSTED VILLAGE': 'East Islip', 'ROBINSVILLE': 'Rock Stream', 'GLENHEAD NY': 'Lily Dale', 'SOUTH HACKENSACK': 'Sag Harbor', 'MAUMEE': 'Monroe', 'WILLIAMSVILLIE': 'West Sand Lake', 'MOBILE': 'Owego', 'BUFFALO GROVE': 'Le Roy', 'EXPORT': 'Elma', 'GETZVILLE': 'Glenham', 'BAY SHORE': 'Bay Shore', 'BLAIN': 'Lima', 'MACOMB': 'Monroe', 'WANTAGH LI': 'Worcester', 'SCEAUCUS': 'Corona', 'SEEKONK': 'Elma', 'FALLBROOK': 'Le Roy', 'LONG ISLAND': 'Long Lake', 'WHITE PLAINS': 'White Plains', 'MONTEREY': 'Owego', 'NASHUA': 'Avoca', 'SATATEN ISLAN': 'Seneca Falls', 'NORTHWEST': 'Owego', 'MORGAN HILL': 'Oak Hill', 'HARISHAW': 'Antwerp', 'BLOOMINGDALE': 'Big Indian', 'ROSELAND': 'Owego', 'STONY BROOK': 'Sound Beach', 'ST PETERSBURG': 'Le Roy', 'MASTIC': 'Monroe', 'ROOSEVET ISALND': 'East Islip', 'OAKLAND': 'Owego', 'THORN WOOD': 'Oak Hill', 'SOUTH FIELD': 'Old Forge', 'OKSPA': 'Owego', 'WORTH': 'Rye', 'DFD': 'Rye', 'NEW ROSHELL': 'New Russia', 'CLEARMONT': 'Le Roy', 'RASPBERRY': 'Ray Brook', 'COURT JEFF STA': 'Old Forge', 'WESBURY': 'Willet', 'COPIAGUE': 'Owego', 'WOODBERRY': 'Worcester', 'SELDEN': 'Elma', 'NORTH ARLINGTON': 'North River', 'HAUPPAGUE': 'Antwerp', 'DES MOINES': 'De Ruyter', 'JACKSO VILLE': 'Cold Brook', 'NEW PORT RICHEY': 'North River', 'COLD SPRING HARBOR': 'Cold Spring Harbor', 'NEWARK NJ': 'Auburn', 'MILLER PLACE': 'Miller Place', 'SANTA ROSA': 'Shrub Oak', 'BAYSIDE': 'Auburn', 'DC': 'Rye', 'WILKINS': 'Willet', 'DOUGLASTON': 'Owego', 'WESTPORT/FAIRFIELD': 'East Rockaway', 'SOUTH ORANGE': 'Stone Ridge', 'ROCKVILL CENTRE': 'Red Creek', 'LAKE RONKONKOMA': 'Le Roy', 'ROCKCHESTER': 'Red Creek', 'RONKONKAMA': 'Rhinebeck', 'ROSLYN HEIGHT': 'Sag Harbor', 'BELMOORE': 'Batavia', 'WILMINTON': 'Worcester', 'FT. LAUDERDALE': 'Fly Creek', 'BREA': 'Rye', 'TARLIN': 'Taberg', 'NOT IN THE COUNTRY': 'New York Mills', 'CAMARILLO': 'Antwerp', 'ANSONIA': 'Antwerp', 'NEW BERLIN': 'New Berlin', 'WHEATON': 'Willet', 'MOUNT LAUREL': 'Brant Lake', 'TRUJILLO ALTO': 'Rego Park', 'GREENVILLE': 'Rhinebeck', 'NORWOOD': 'Owego', 'CIERO': 'Cairo', 'ELMFORD': 'Elma', 'STAMPFORD': 'Shrub Oak', 'SEACACUS': 'Cairo', 'PARSIPPINY': 'Antwerp', 'PERRY TOWN': 'East Otto', 'ALL THAT IS KNOWN MASPETH QUEENS': 'Annandale On Hudson', 'STONE MOUNTAIN': 'South Otselic', 'BERGEN COUNTY': 'Red Creek', 'MANHATAN': 'Antwerp', 'EAST MEADOW': 'East Marion', 'MADISON HEIGHTS': 'Sag Harbor', 'FT. WASHINGTON': 'Fly Creek', 'OCEAN SIDE': 'Oak Hill', 'PORTLAND': 'Owego', 'FAR ROCKWA': 'Fly Creek', 'SOUTH HAMPTON': 'Sag Harbor', 'BETHLEHEM': 'Batavia', 'HEMPSTEAD BAY': 'Eagle Bay', 'MILIPTAS': 'McLean', 'ARLINGTON  HEIGHTS': 'Lake Hill', 'LAURENS': 'Le Roy', 'NEW YORK JFK AIRPORT': 'New York Mills', 'LEVVITOWN': 'Levittown', 'BETHAPAGE': 'Batavia', 'ITHACA': 'Ava', 'POBOX 3517': 'Oak Hill', 'HALLANDALE BEACH': 'Hampton Bays', 'ISLANDIA': 'Avoca', 'BELMORE': 'Batavia', 'MINNEAPOLIS': 'New Paltz', 'FT. WORTH': 'Fly Creek', 'ROCKVILLE CENTRE': 'Red Creek', 'BROOLYN': 'Owego', 'HUNTIGTON': 'Harrison', 'COLOMBUS OHIO': 'Oyster Bay', 'KENNESAW': 'Kanona', 'CITY OF INTERESION': 'Central Islip', 'DENMORE': 'Elma', 'EIMHURST': 'Monroe', 'WEST HAMPTON': 'West Hurley', 'VANCOUVER': 'Antwerp', 'SCARATON': 'Corona', 'BATESBURGE': 'Bay Shore', 'LEVITT TOWN': 'Eagle Bay', 'MT SINAI': 'Taberg', 'MISSIFFAUGA': 'Monroe', 'PERRIS': 'Elma', 'CEDAHURST': 'Corona', 'EAST GREENWICH': 'East Rockaway', 'MALVERN': 'McLean', 'WEST WINDSOR': 'West Nyack', 'ANN': 'Ava', 'NEWYOK': 'Elma', 'EAST ISLIP': 'East Islip', 'WESTBERRY': 'Worcester', 'BALDWIN NY': 'Antwerp', 'PARKRIDGE': 'Antwerp', 'ADINA': 'Avoca', 'POMONA': 'Owego', 'CONNETICUT': 'Owego', 'SAUK RAPIDS': 'Rego Park', 'HUNT BALLY': 'Cold Brook', 'FARMINDELE': 'Fort Drum', 'LAURELSON': 'Le Roy', 'WELLINGTON': 'West Nyack', 'HARRISBURGH': 'Ray Brook', 'GOSHEN': 'Owego', 'NEW YERSEY': 'New York', 'OLD BETHPAGE': 'Oak Hill', 'OLATHE': 'Owego', 'SYOSSETT': 'Owego', 'NEWARDK': 'Elma', 'TERMINAL 8': 'Taberg', 'NBLOOMINGTON': 'Big Indian', 'HOLBOKEN': 'Owego', 'MENDOTA HEIGHTS': 'East Islip', 'GLENCLOVE': 'Cairo', 'INWOOD': 'Nunda', 'PEORIA': 'Elma', '/A': 'Rye', 'OLEANS': 'Owego', 'MOUNT PLEASENT': 'Brant Lake', 'THORNWOOD': 'Owego', 'SARASOTA': 'Antwerp', 'WHITEFULTHUR T STRINNY': 'Huntington Station', 'FORT JEFFERSON STATION': 'Port Jefferson Station', 'VLLA PARK': 'Rego Park', 'ALTON': 'Avoca', 'SADDLEBROOK': 'Le Roy', 'SOMMERSET': 'Owego', 'WESTLAKE': 'Willet', 'HUNTIGTON STATION': 'Union Springs', 'MARMARONECK': 'Mill Neck', 'NORTHPORT': 'Owego', 'DES PLAINES': 'De Peyster', 'FORT MYERS': 'Fly Creek', 'BACOI': 'Acra', 'RAYNHAM': 'Auburn', 'GREENWICH': 'Glen Wild', 'LONDON': 'Owego', 'DOLGEVILLE': 'Owego', 'COUBERSTORT': 'Owego', 'BEACHWOOD': 'Antwerp', 'SLEEPY HOLLOW': 'Sag Harbor', 'HAMBURG': 'Auburn', 'ANTIONO': 'Antwerp', 'NORTHFOLK': 'Owego', 'CAMDEN': 'Corona', 'OLD WESTBURY': 'Old Westbury', 'WILLIMINGTON': 'West Nyack', 'LOWELL': 'Owego', 'SHREWSBURY': 'Harrison', 'CARLFEAD': 'Antwerp', 'PO BOX 11590 ROCK HILL': 'Black River', 'SECAUCUS NEW JERSEY': 'South New Berlin', 'STEWART MANOR': 'Evans Mills', 'LAWARENCE': 'Long Eddy', 'ANGLEWOOD': 'Antwerp', 'COLLEGE STATION': 'Cold Spring', 'FORT JEFFERSON': 'Fort Johnson', 'NORSOLK': 'Owego', 'AUGUSTA': 'Antwerp', 'MT. VERNON': 'Le Roy', 'DENVER': 'Elma', 'SKANEATELESS FALLS': 'Seneca Falls', 'BEAR': 'Burt', 'SCOTTSPLAIN': 'Salt Point', 'BRICK': 'Rye', 'NOTH WOODMERE': 'New Windsor', 'ELK GROVE VILLAGE': 'Kenoza Lake', 'SICKLERVILLE': 'Stone Ridge', 'FAR ROCKAWAY': 'Fly Creek', 'PLEASANTVILLE': 'Lake View', 'BLOOMIGTON': 'McGraw', 'NORTH PROVO': 'North Rose', 'DEER PARK,LONG ISLAND': 'West Sand Lake', 'CROTONA PARK': 'Rego Park', 'ST.PAUL': 'Taberg', '*': 'Rye', 'MASSAURI': 'Antwerp', 'CENTER REACH': 'Cross River', 'NOREROSS': 'Owego', 'MILLSTONE': 'McLean', 'WILKES': 'Willet', 'WEST DES MOINES': 'West Davenport', 'KNOX VALLEY': 'Pine Valley', 'ST LUIS': 'Taberg', 'NA': 'Rye', 'ROSELLE': 'Owego', 'ARDSLEY': 'Antwerp', '0': 'Rye', 'QUENNS': 'Elma', 'QUEEENS': 'Elma', 'MYERSVILLE': 'Monroe', 'SHIRLEY': 'Shushan', 'ROCKLEIGH': 'Rhinebeck', 'DICKSON CITY': 'New City', 'THOROFARE': 'Owego', 'SUFFIX': 'Sidney', 'ROCKAWAY  BLVD': 'Oyster Bay', 'YONKKERS': 'Owego', 'WOODALE': 'Owego', 'KEW GARDENS': 'Kew Gardens', 'FARMING DALE': 'Fort Ann', 'TRENTON': 'Taberg', 'ANTIOCH': 'Antwerp', 'LITTLE ROCK': 'Le Roy', 'PUEBLO': 'Elma', 'SPRINGDALE': 'Peterboro', 'MOUNT BURNIN': 'Mount Upton', 'NEWAR': 'Elma', 'VALLEY VEIW': 'Lake View', 'BABLYLON': 'Antwerp', 'NOT AVAIL': 'New City', 'ROCKDALE CENTER': 'Red Creek', 'WHITEPLAINS': 'West Point', 'TOLEDO': 'Owego', 'DIG HARBOR': 'Sag Harbor', 'JERICHO': 'Elma', 'BAYONNE': 'Auburn', 'UKNOWN': 'Upton', 'CAROL PLACE': 'Crown Point', 'WARWCK': 'Willet', 'SOUTH PORT': 'Shrub Oak', 'HOLYOKE': 'Owego', 'ROBBINSVILLE': 'Bay Shore', 'SPRING': 'Rye', 'SCOTTSDALE': 'Owego', 'WEEHAKEN': 'Willet', 'SAN MATEO': 'Sea Cliff', 'MANHASSET HILLS': 'West Sand Lake', 'EAST MEDOW': 'East Berne', 'GREENLAWN': 'Glenham', 'NAWELL': 'Avoca', 'SHELDON': 'Elma', 'PHOENIX': 'Owego', 'ROSYLYN HIGHTS': 'Sag Harbor', 'N MASSAPEQUA': 'New Paltz', 'BREAT NECK': 'Brant Lake', 'INDUSTRY': 'Nunda', 'WOODLAND PARK': 'Orchard Park', 'NEWBURH': 'Elma', 'MAGNOLIA': 'McGraw', 'TAPPAN': 'Taberg', 'SOMERS': 'Owego', 'SECACUSE': 'Corona', 'CLARKVILLE': 'Antwerp', 'DELRAY BEACH': 'Eagle Bay', 'ROCKVILLE CT.': 'Oyster Bay', 'HOWARD': 'Owego', 'MENDOTA  HEIGHTS': 'East Islip', 'FLORAL PARK': 'Floral Park', 'BELLEVIEW': 'Batavia', 'PACOIMA': 'Cairo', 'ST PETE': 'Taberg', 'BELLEVILLE': 'Batavia', 'CLIFF SIDE': 'Lake Hill', 'PATCH OFE': 'Penn Yan', 'HAWORTH': 'Auburn', 'COL.ANVURES': 'Le Roy', 'STATE CHARLES': 'Sag Harbor', 'JACKSONVILE': 'Antwerp', 'ORANGE PARK, FLORIDA': 'Rock City Falls', 'NORTH RIDGE': 'North River', 'BALTIMORE': 'Antwerp', 'GREENSBORO': 'Glen Spey', 'BROOKLY': 'Owego', 'UNN': 'Rye', 'MUNSTER': 'Monroe', 'SOUTH SALEM': 'South Salem', 'FLORIDA': 'Owego', 'LEVITTTOWN': 'Levittown', 'BELLEROSE VILLAGE': 'Brant Lake', 'MASEPTH': 'Auburn', 'SOMONA': 'Owego', 'NEW CAMAAN': 'New City', 'PEMBROKE PINES': 'Rego Park', 'WATTINGERS FALLS': 'Au Sable Forks', 'NEW HYDE PARK RD': 'New Hyde Park', 'LAKE GROVE': 'Le Roy', 'LITTELE NECK': 'Little Neck', 'PORCHESTER': 'Pond Eddy', 'LI': 'Lima', 'ROCKYHILL': 'Oak Hill', 'HOPKINTON': 'Owego', 'POMPANO': 'Owego', 'SHAKER HEIGHTS': 'Sag Harbor', 'MENOMONEE FALLS': 'Montour Falls', 'None': '', 'BX': 'Rye', 'WOODSTOCK': 'Worcester', 'JACKSON VILLE': 'Cold Brook', 'HARLEM': 'Avoca', 'NATIONAL PARK': 'Tuxedo Park', 'VALLEY STREAM, LONG ISLAND': 'West Sand Lake', 'BELLEMORE': 'Batavia', 'CLARKSVILLE': 'Cold Spring', 'MONMOUTH COUNTY': 'New City', 'CHASKA': 'Corona', 'PHILADELPIA': 'Pond Eddy', 'PORT RICHEY': 'Pine City', 'WASHINTON, D.C.': 'West Sand Lake', 'PLATO': 'Lima', 'RAPID': 'Rye', 'BROKLYN': 'Owego', 'CEDAR FALLS': 'Cold Brook', 'WESTLAKE OH': 'West Kill', 'HAWTHORN': 'Antwerp', 'TORONTO': 'Owego', 'E': 'Elma', 'NORFORD': 'Owego', 'ROCKVILLE': 'Rhinebeck', 'OKLAHOMA CITY, OK': 'Adams Center', 'RIVER FOREST': 'Rego Park', 'GLENN ALLEN': 'Long Lake', 'CAROLL STREAM': 'Cold Spring', 'PORT JEFFERSON STA': 'Port Jefferson', 'PISCUTAWAY': 'Corona', 'CENTRAL ISLIP': 'Central Islip', 'CARROLLTON': 'Antwerp', 'NORTH BRANCHBURG': 'North River', 'CORDOVA': 'Owego', 'FLUHNG': 'Lima', 'INDIANPOLIS': 'New Paltz', 'HELMSTEAD': 'Harrison', 'SPARTA': 'Rye', 'Union': 'Upton', 'NEW JERSEYQ': 'North River', 'HOPEWELL JUNCTION': 'West Chazy', 'ROUND ROCK': 'Rego Park', 'EDANSTON ILL': 'Eagle Bay', 'ROCKAWAY  PARK': 'Rego Park', 'SEWAREN': 'Elma', 'BROOKLIYN': 'Owego', 'STATEN ISLAND NY': 'Silver Springs', 'BORDENTOWN': 'Owego', 'CEDAR HURST': 'Cold Brook', 'MOUNT POCANO': 'Rego Park', 'OAK DALE': 'Oak Hill', 'ENGLISHTOWN': 'Glenham', 'MOHEGAN': 'Owego', 'ANAHEIM': 'Antwerp', 'HEWLETT': 'Elma', 'LORAL PARK': 'Rego Park', 'NEW JER': 'Elma', 'PORT ST LUCIE': 'Round Lake', 'BRONXVILLE': 'Rhinebeck', 'LAKEWOOD': 'Antwerp', 'WESTBURRY': 'Worcester', 'COMMAC': 'Owego', 'ONPARIO': 'Owego', 'RICHMOND NY': 'Rhinebeck', 'CLARA BARTON': 'Cold Brook', 'HOBKEN': 'Owego', 'LEICESTER': 'Corona', 'FORT JEFFERSON STATI': 'Fort Johnson', 'TOBYHANNA': 'Owego', 'BENSALEM': 'Batavia', 'ESDONDIDO': 'Owego', 'ANA HEIM': 'Oak Hill', 'HAUPPAUGD': 'Antwerp', 'MINIOPOLIS': 'Owego', 'NORTH BELMORE': 'North Babylon', 'VALLEY  STREAM': 'Le Roy', 'NYACK': 'Nunda', 'NEW ALBANY': 'New Lisbon', 'LYNBROOKI': 'Le Roy', 'BRONXS': 'Rye', 'SUBLETTE': 'Savannah', 'BAYPORT': 'Auburn', 'NEWTONVILLE': 'Worcester', 'NAVADA': 'Avoca', 'BREEZY POINT': 'Rego Park', 'PLEASANTON': 'Antwerp', 'HOUSTON': 'Owego', 'BRIARCLIFF MANOR': 'Chase Mills', 'HAUPPAGE': 'Antwerp', 'MADISON': 'Auburn', 'PEEKSKILL': 'Port Kent', 'COLTS NECK': 'Oak Hill', 'SYSSET': 'Sidney', 'DOWNEY': 'Owego', 'SUFFERN': 'Shushan', 'MANCHESTIRE': 'Mount Sinai', 'LONG  BEACH': 'Long Eddy', 'CHATTANOOTA': 'Antwerp', 'YONKERS NEW YORK': 'North Evans', 'BRONXSVILLE': 'Bay Shore', 'RYEBROOK': 'Elma', 'CHESTER HEIGHTS': 'Central Islip', 'JAMESBURG': 'Antwerp', 'WOODLAND HILL': 'Lake Hill', 'NORTH BRUNSWICK': 'North River', 'JERICHO, LI': 'East Otto', 'KEARNEY': 'Kanona', 'GREENBOX': 'Glenham', 'BLOOMINGFIELD': 'Big Flats', 'LEVITOWN': 'Elma', 'JERSEY AVE': 'Eagle Bay', 'SHORT HILLS': 'Oak Hill', 'MARRITA': 'Auburn', 'MARIETTA': 'Antwerp', 'ROCKVILLA CENTER': 'Red Creek', 'NATIONAL TENNESSEE': 'North Evans', 'NORTH ANDOVER': 'North River', 'SUISUN CITY': 'New City', 'WYCKOFF': 'Cairo', 'TULSA': 'Tully', 'PALISADES PARK': 'Island Park', 'JACKSONVILLE': 'Antwerp', 'MASON': 'Marcy', 'FLORAL PK': 'Owego', 'HEMPSTED': 'Harrison', 'STATEN ISAND': 'Seneca Falls', 'NEWYORK': 'Elma', 'MASTIC BEACH': 'Mastic Beach', 'GREAT RIVER': 'Great River', 'ENGLWOOD': 'Elma', 'GREEN': 'Rye', 'CHEEKPOWA': 'Corona', 'YAPHANK': 'Auburn', 'ROCHESTER': 'Round Top', 'CHARLESTON, NEVIS': 'Little Neck', 'EAST OWALL': 'East Otto', 'HOFFMAN': 'Owego', 'HOFFMAN INTERSTATE': 'Fort Edward', 'HARSTDALE': 'Antwerp', 'WESTPORT': 'Willet', 'HICKSVILLE NY': 'Indian Lake', 'SHORTHILLS': 'Owego', 'JEFFERSON': 'Elma', 'HAUPPAUGE, SUFFOLK': 'Huntington Station', 'LARGO': 'Lima', 'MCALLEN': 'McLean', 'WHITESTONE': 'Worcester', 'ELIZABETH': 'Elma', 'GREAT NECK': 'Great Neck', 'PEESKILL': 'Phoenix', 'LGA': 'Lima', 'DULUTH': 'Lima', 'HARTHWORNE': 'Antwerp', 'PHILIDELPHIA': 'Pond Eddy', 'WALDORF': 'Auburn', 'CONKLIN': 'Owego', 'MINOLA': 'Monroe', 'GARWOOD': 'Auburn', 'WOODMERE': 'Owego', 'BLOOMINGTON': 'Big Indian', 'BELTSZILLE': 'Bay Shore', 'MINNETONJA': 'Monroe', 'BROOKILLE': 'Owego', 'MAYWOOD': 'Auburn', 'CROTON-ON-HUDSON': 'Croton On Hudson', 'NORTHVALE': 'Owego', 'GRAY': 'Rye', 'NEW HIDE': 'New City', 'WILLIAMSDILLE': 'West Monroe', 'FRANKILN SQUARE': 'North Salem', 'NEWARK AIRPORT TERM.': 'West Sand Lake', 'WOODBERY PO BOX 9004': 'West Sand Lake', 'MINEAPPOLIS': 'New Paltz', 'EAST ORANGE': 'East Otto', 'FRANKLIN LAKES': 'Round Lake', 'HEWLETT HARBOR': 'Eagle Bay', 'ROSALYN': 'Owego', 'LOG BEACH': 'Ray Brook', 'NV': 'Rye', 'WOOSIDE': 'Owego', 'LUISVILLE': 'Levittown', 'YOKNKERS': 'Owego', 'WATCHUNG': 'Antwerp', 'GLEN RIDGE': 'Le Roy', 'N?A': 'Rye', 'KINGS POINT': 'New Paltz', 'EAST ROCKWAY': 'East Otto', 'COLD SPRINGS HARBOR': 'Cold Spring Harbor', 'SECAUCAS': 'Corona', 'HOFFMAN ESTATE': 'Fort Edward', 'QUENS': 'Owego', 'TUCSON': 'Taberg', 'FRMNGDALE': 'McGraw', 'CAMBRIA HEIGHTS': 'Central Islip', 'SCHENECTADY': 'Stony Creek', '.': 'Rye', 'CALABASAS': 'Antwerp', 'PELHAM MANOR': 'Evans Mills', 'NEW PROVIDENCE': 'New Rochelle', 'HARRINGTON PARK': 'Rego Park', 'LIVINGTONS': 'Lake Grove', 'BEAVERTON': 'Antwerp', 'ST PAULS': 'Taberg', 'STATEN ISAD': 'Silver Lake', 'GARDEN GROVE': 'Grand Gorge', 'WEST LYNNWOOD': 'West Lebanon', 'SYOOSSET': 'Owego', 'ENGLISH TOWN': 'New City', 'LAS VAGAS': 'Le Roy', 'ATLATA': 'Auburn', 'HARTHORNE': 'Antwerp', 'BELLMORE': 'Batavia', 'JACKONVILLE': 'Antwerp', 'CHAPPAQUA': 'Antwerp', 'LONG BEACH': 'Long Eddy', 'KEANSBURG': 'Kill Buck', 'EAGLEWOOD CLIFF': 'West Chazy', 'WINTERBINE': 'Worcester', 'NORTH BELLEMORE': 'New Lisbon', 'TAMARA': 'Taberg', 'LA GUARDIA AIRPORTS': 'Rego Park', 'BALITMORE': 'Antwerp', 'REGO PARK': 'Rego Park', 'WARREN': 'Willet', 'CARRY TOWN': 'Shrub Oak', 'FLUSING': 'Lima', 'MARENO VALLEY': 'Mount Vernon', 'TWINS BURG': 'Feura Bush', 'ABERDEEN': 'Antwerp', 'JACKSON HEIGHT': 'Sag Harbor', 'MONTCLEAR': 'McLean', 'WOOD DALE': 'Oak Hill', 'QUUENS': 'Upton', 'BURKE': 'Rye', 'CLIFFWOOD': 'Corona', 'SADDLE BROOK': 'Le Roy', 'BLOOMFIELD': 'Big Flats', 'WALL': 'Ava', 'JUPITER': 'Jericho', 'BRRROKLYN': 'Owego', 'SACREMENTO': 'Antwerp', 'PECK SLIP': 'Pine Bush', 'SOUTH PLAINFIELD': 'Salt Point', '999': 'Rye', 'MANHASSET': 'Antwerp', 'BLADWIN': 'Batavia', 'WESTVILLE': 'Worcester', 'GREENICH': 'Glenham', 'LOS ANGELAS': 'La Fayette', 'ST.LOUIS': 'Taberg', 'WIXOM': 'Wells', 'WILLIAMSPORT': 'Island Park', 'CROTON': 'Corona', 'COURT JEFFERSON': 'Old Forge', 'SANTA': 'Swain', 'ORCHARD PARK': 'Rego Park', 'Irvine': 'Irving', 'KENNASAN': 'Kanona', 'WOODLANE HILL': 'Lake Hill', 'TUCKER': 'Taberg', 'VALLEYSTEAM': 'Van Etten', '00': 'Rye', 'SANTA ANA': 'Shrub Oak', 'BAKERSFIELD': 'Bay Shore', 'ROSELIE': 'Owego', 'SPARKS': 'Rye', 'SHELTER ISLAND HIGHT': 'South Richmond Hill', 'BINGHAMPTON': 'Auburn', 'THOROFAIR': 'Owego', 'INGLEWOOD CLIFF': 'New City', 'LANCASTER': 'Antwerp', 'NORTH CHARLESTON': 'North River', 'SYOSSET': 'Owego', 'FRANKLIN SQUARE': 'North Salem', 'HEWLETTE': 'Harrison', 'JAMICA': 'Avoca', 'GLENCOVE': 'Glenham', 'MILWAUKEE': 'McLean', 'ANYWHERE': 'Antwerp', 'SAIRPORT': 'Antwerp', 'LIBERMORE': 'Le Roy', 'CASTLETON': 'Antwerp', 'LONG ISLANDS': 'Long Lake', 'LITTLE N4ECK': 'Little Neck', 'SOUTHINGTON': 'Sag Harbor', 'FLUSH MEADOWS': 'Felts Mills', 'SUMMERSET': 'Monroe', 'MONMOUTH': 'Owego', 'MONTVALLE': 'Owego', 'ANONYMOUS': 'Antwerp', 'TREVOSE': 'Taberg', 'FORT LAUDERDALE': 'Fort Edward', 'NORWAK': 'Owego', 'SYOSSE': 'Sidney', 'FORT WAYNE': 'Fort Ann', 'MORRISTOWN': 'Owego', 'NY JAMAICA': 'Auburn', 'HASBROCK HEIGHTS': 'Sag Harbor', 'MONROE TOWNSIP': 'Mount Tremper', 'PEQUANNOCK': 'Auburn', 'PITSBURG': 'Phoenix', 'P.O. BOX 643': 'Port Byron', 'MIDDLEVILLAGE': 'McDonough', 'MONTVALE': 'Owego', 'OMESTEAD': 'Owego', 'AURORA': 'Auburn', 'WASHINGTON HEIGHTS': 'Sackets Harbor', 'CLIFFORD': 'Corona', 'SACRAMENTO': 'Antwerp', 'PARK RIDGE': 'Port Byron', 'VALLYSTREAM': 'Le Roy', 'CANOGA PARK': 'Rego Park', 'HEMPSTEAD AVENUE': 'Saint Albans', 'SA': 'Rye', 'ALLENTOWN': 'Antwerp', 'CLIFSIDE PARK': 'Island Park', 'SVORO': 'Swain', 'LONG CITY': 'New City', 'WOOD-RIDGE': 'Worcester', 'RONTER CENTER': 'New City', 'SUNSET': 'Sidney', 'DESPLAINES': 'De Peyster', 'COPAGUE': 'Owego', 'CINCINATTI': 'Corona', 'NYPD': 'Elma', 'MILFORD': 'McLean', 'ROCK HILL': 'Oak Hill', 'AVERNE': 'Auburn', 'HAPPAGUE': 'Antwerp', 'NEW HAVEN': 'New City', 'HICKSVILE': 'Corona', 'BETH PAGE': 'Rego Park', 'PARKVILLE STATION': 'Putnam Station', 'FORT MILL': 'Oak Hill', 'CONEWANGO VALLEY': 'Cherry Valley', 'CA': 'Rye', 'HASTINGS ON HUDSON': 'Ardsley On Hudson', 'BRAINTREE': 'Antwerp', 'WILLIAMSVILLE': 'Lake View', 'AUSTIN': 'Auburn', 'TUCKAHOE': 'Corona', 'FT. JEFFERSON STATION': 'Farmersville Station', 'FARMINGTON HILLS': 'Richmond Hill', 'PORT CHESTER': 'Oak Hill', 'WATERLOO': 'Antwerp', 'NEEDHAM': 'Elma', 'MT. CLEMENS': 'Fly Creek', 'UTUADO': 'Upton', 'OANGEBURG': 'Antwerp', 'THRONWOOD': 'Owego', 'NARCROSS': 'Antwerp', 'SOUTH OZONE PARK': 'South Ozone Park', 'ATLANTIC': 'Antwerp', 'ROSLYN': 'Owego', 'MALVERNE': 'McLean', 'WESTBERY': 'Willet', 'ENGLEWOOD CLIFF': 'New City', 'MALT BONER': 'Cold Brook', 'TRIBORO STATION': 'Bay Shore', 'MORWALK': 'Owego', 'EAST POINT': 'East Otto', 'UPPER DARBY': 'Port Byron', 'LEONIA': 'Elma', 'LONG ILAND': 'Long Lake', 'FARROCKWAY': 'Fly Creek', 'LITTLE NECK': 'Little Neck', 'WARRENVILLE': 'West Nyack', 'TITUSVILLE': 'Taberg', 'WATERVILLE': 'Worcester', 'EAST NORWALK': 'East Otto', 'FLUSHING QUEENS': 'Long Eddy', 'CAROL SPRINGS': 'Cold Spring', 'CHARLOTTES': 'Antwerp', 'GREENS BOROUGH': 'East Berne', 'LONG ISLAND  CITY': 'Long Island City', 'OAKLAND GARDENS': 'Oakland Gardens', 'HAMILITON': 'McLean', 'NEW ROCHELLE': 'New City', 'GREENWOOD VILLAGE': 'Round Lake', 'LINDEHURSTN': 'Lake Hill', 'HUNTINGTION': 'Harrison', 'EAST NORWICH': 'East Otto', 'COCONUT': 'Owego', 'HENDERSON': 'Harrison', 'EASTPOINT': 'East Otto', 'SUN CITY': 'New City', 'BINGHMATON': 'Batavia', 'FIVE TOWN': 'Fort Ann', 'ELMSDORF': 'Monroe', 'ALATHA': 'Auburn', 'DECATUR': 'Cairo', 'LINDENURST, LONG ISLAND': 'West Sand Lake', 'FLORAL OARK': 'Fort Ann', 'LAKE HIAWATHA': 'Lake Hill', 'ST. ALBANS': 'Sag Harbor', 'WHITPLAINS': 'Worcester', 'INDIANAPOLLIS': 'Island Park', 'TUSLA': 'Tully', 'NASHVILLE': 'Antwerp', 'SANDERSVILLE': 'South Salem', 'WEST BABYLON AVE': 'West Bloomfield', 'MONROE': 'Owego', 'MAHATTAN': 'Antwerp', 'BUFFOLA': 'Batavia', 'BEALVIEW': 'Auburn', 'NEWARRK': 'Elma', 'MT VERNON': 'Le Roy', 'WARWICK': 'Auburn', 'FANWOOD': 'Auburn', 'HAMPTON': 'Auburn', 'HARRIMAN': 'Antwerp', 'ASTOIA': 'Auburn', 'ATLANTICA': 'Antwerp', 'RICHMOND COUNTY': 'Red Creek', 'EAST GARDEN CITY': 'East Rockaway', 'BRADENTON': 'Antwerp', 'SEAGIRT': 'Elma', 'HORSHAN': 'Owego', 'FORT WASHINGTON': 'Oak Hill', 'CITY OF INDUSTRY': 'Central Islip', 'NEWARKK': 'Elma', 'PARLIN': 'Avoca', 'VERNON': 'Elma', 'KE GARDENS HILLS': 'Rock Hill', 'KINGS PARK': 'Kings Park', 'EL PASO': 'Elma', 'CLEMENTON': 'Corona', 'UNKWN': 'Upton', 'SCHENTADY': 'Corona', 'FRESH MEDOWS RD': 'Felts Mills', 'RAEFORD': 'Auburn', 'LOUISVILLE': 'Lake View', 'RICHMON HILL': 'Rock Hill', 'SLYVANIA': 'Savannah', 'ORANGE BURGS': 'Oyster Bay', 'RICHARDSON': 'Rhinebeck', 'N. BELLMORE': 'New Lisbon', 'MONTCLAIR': 'McLean', 'EDEN PRAIRE': 'Elka Park', 'FORTJEFFERSON': 'Fort Edward', 'SAINT CLOUD': 'Stony Creek', 'HUNTNGTON STATION': 'Union Springs', 'ROOSEVELT AVENUE': 'Saint Albans', 'GARDEN CITY PAK': 'Red Creek', 'DANBURY': 'Auburn', 'EWR': 'Elma', 'WEST HEMPTSTEAD': 'West Henrietta', 'WILLIAM VILLE': 'Lake View', 'RONKONKOMA': 'Rhinebeck', 'PITTSBURGH': 'Port Byron', 'GROVE CITY': 'Glen Cove', 'LINDEN': 'Lima', 'W. LYNNWOOD': 'West Nyack', 'STATEN': 'Sidney', 'VALLEY STREAM BLVD.': 'West Sand Lake', 'GREAT NECKS': 'Great Neck', 'MANARONECK': 'Mill Neck', 'BANNOCKBURN': 'Antwerp', 'ST. JOHNS': 'Sea Cliff', 'OAK RIDGE': 'Oak Hill', 'DAIMOND SCAR': 'Oak Hill', 'BRIDGEPORT': 'Rego Park', 'DOUGLASVILLE': 'Antwerp', 'NEW WINDSOR': 'New Windsor', 'ISLIP': 'Islip', 'ELMSORDD': 'Le Roy', 'HAUPPEUGE': 'Antwerp', 'BATAZIA': 'Auburn', 'HAUTPAUGE': 'Antwerp', 'HOUTON': 'Owego', 'WEST BABYLON': 'West Babylon', 'UUNKNOWN': 'Nunda', 'MAPLEWOOD': 'McLean', 'RADIO CITY STATION': 'Rock City Falls', 'WESCHESTER COUNTY': 'West Sand Lake', 'ALPHARETTA': 'Long Eddy', 'BELLMOORE': 'Batavia', 'NEW HEMPSTEAD': 'New Paltz', 'FRESHMEDOWS': 'Fishs Eddy', 'WEEHAWKIN': 'Worcester', 'ROCKAWAY BECH': 'Oyster Bay', 'NEW MLFORD': 'New Lisbon', 'EWING': 'Elma', 'PHILA.': 'Purdys', 'CO OP CITY': 'New City', 'KENT': 'Kent', 'ALBERTSON': 'Le Roy', 'TRAVIS': 'Taberg', 'COMACK': 'Owego', 'QUEENS': 'Elma', 'BETHPAGE': 'Batavia', 'MERRICK': 'Monroe', 'SAN ANTONIO': 'Sag Harbor', 'DES PLAINS': 'New Paltz', 'WIXON': 'Wells', 'CORAM': 'Cairo', 'PATCHOUGE': 'Antwerp', 'LOWER EASTSIDE': 'Long Eddy', 'TINLEY': 'Taberg', 'FARMINDALE': 'Fort Ann', 'UNKNWN': 'Nunda', 'PINE LAKE': 'Pine Bush', 'ANDOVER': 'Antwerp', 'WILLIAMSTOWN': 'West Monroe', 'GRAPE VINE': 'Rego Park', 'MANCHESTER': 'Antwerp', 'FLEETWOOD': 'Fredonia', 'WOODMEAR': 'Owego', 'HILLSDALE': 'Harrison', 'OKLAHOMA': 'Oak Hill', 'RAPID CITY': 'Rego Park', 'EAST SETAUKET': 'East Syracuse', 'VALHALLA': 'Antwerp', 'LYNNWOOD': 'Lynbrook', 'WHITE PLANS': 'West Point', 'COLUMBUS OHIO': 'Oyster Bay', 'SOMERSET': 'Owego', 'ELMHUSRT': 'Monroe', 'RONKOMKOMA': 'Rhinebeck', 'LLNG ISLAND': 'Long Lake', 'FAR RAOCKAWAY': 'Fly Creek', 'PETERBOROUGH': 'Port Byron', 'NORTH SALEM': 'North Salem', 'NEWBURNSWICK': 'Bay Shore', 'JERSITY CITY': 'Johnson City', 'BLUE BELL': 'Le Roy', 'GERMANTOWN': 'Auburn', 'ISLANCIA': 'Avoca', 'VALLEYSTREAM': 'Le Roy', 'SECAUCUS': 'Corona', 'MANORVILLE': 'Antwerp', 'BABYLON': 'Auburn', 'ESCONDIDO': 'Owego', 'LINHOPE': 'Lima', 'NEW HOPE': 'New City', 'WHITING': 'Willet', 'PROVIDENCE': 'Pond Eddy', 'NORTH PLAINFIELD': 'North Lawrence', 'SECACUS': 'Cairo', 'WEST BURRY': 'Cold Brook', 'OX': 'Rye', 'BEAVER TOWN': 'Brant Lake', 'ROCKAWAY PARK': 'Rego Park', 'GIG HABOUR': 'Sag Harbor', 'MEW ROCHELLE': 'Fly Creek', 'WASHINGTON': 'West Nyack', 'ROOSEVELT ISLAND': 'Round Lake', 'GREATNECK': 'Auburn', 'PORT JEFFERSON STATI': 'Port Jefferson', 'AIRMONT': 'Antwerp', 'WOODBRIDGE TOWNSHIP': 'West Oneonta', 'LEXINGTON': 'Levittown', 'SAINT PAULS': 'Salt Point', 'LEHIGH VALLEY': 'Locust Valley', 'BOCARATON': 'Owego', 'JERICO': 'Elma', 'FAIR FIELD': 'Fly Creek', 'ROOSERVELT': 'Rhinebeck', 'SINGAPORE': 'Shrub Oak', 'SYLVANIA': 'Savannah', 'BUFFALO GROOVE': 'Black River', 'BREWSTER': 'Batavia', 'BEDFORD HILLS': 'Oak Hill', 'PARSIPPANY': 'Antwerp', 'OLD GREENWICH': 'Le Roy', 'PLAINFIELD': 'Antwerp', 'IFLANDIA': 'Avoca', 'ANTONIO': 'Antwerp', 'VAUXHALL': 'Antwerp', 'PORRINGTON': 'Owego', 'EAST RUTTERFORD': 'East Rockaway', 'WALKILL': 'Auburn', 'HAMMOND': 'Auburn', 'BROOKLYN': 'Owego', 'ELMHURST': 'Le Roy', 'EAST ELMHURST': 'East Elmhurst', 'WEST PALM BEACH': 'West Sand Lake', 'SMITHTOWN': 'Shrub Oak', 'NEW  YORK': 'New York', 'MEADVILLE': 'Antwerp', 'LYNDHURST': 'Le Roy', 'CLIFFHILL PARK,': 'Island Park', 'LYNDENURST': 'Le Roy', 'SOUTH HEMPSTEAD': 'Sag Harbor', 'WURTSBORO': 'Worcester', 'KALISPELL': 'Antwerp', 'HAYWARD': 'Auburn', 'GLENN OAKS': 'Glen Oaks', 'BELLEVUE': 'Batavia', 'MOUT VERNON': 'Pine Valley', 'FAIRPORT': 'Antwerp', 'QNS': 'Rye', 'STONY POINT': 'Salt Point', 'GRACIE STATION': 'Glen Spey', 'MANALABAN': 'McLean', 'CORAL SPRINGS': 'Cold Spring', 'WYOMING': 'Owego', 'LYNETTE': 'Elma', 'WOODRIDGE': 'Worcester', 'MILLBURN': 'McLean', 'ASBURY PARK': 'Rego Park', 'NEW CANAAN': 'New City', 'SECAUCAUS': 'Corona', 'EDINA': 'Elma', 'FLUSHING': 'Fredonia', 'NAUGATUCK': 'Antwerp', 'CLIFFSIDE PARK': 'Island Park', 'COPIAUE': 'Owego', 'MONSEY': 'Owego', 'NEW': 'Rye', 'CUMANCK': 'Corona', 'EDGE WOOD': 'East Otto', 'SENTEREACH': 'Taberg', 'MOUNT VERON': 'Oak Hill', 'SADLEBROOK': 'Le Roy', 'NORTH BALDWIN': 'North Babylon', 'MIRAMAR': 'Monroe', 'CARLSDAD': 'Antwerp', 'GRANDVIEW': 'Antwerp', 'NORWELL': 'Owego', 'CARLASBAD': 'Antwerp', 'MONTROSE': 'Owego', 'WESTCHESTER': 'West Hurley', 'EAST NORTH PORT': 'East Rockaway', 'MASSAPAQUA': 'Antwerp', 'PHILADELHIA': 'Pond Eddy', 'SALLS': 'Swain', 'P.O. BOX 1233': 'Port Byron', 'BURNSIDE': 'Batavia', 'PT LOOKOUT': 'Port Kent', 'LONG BRANCH': 'Le Roy', 'BOHENIA': 'Owego', 'VOORHEES': 'Owego', 'PELLA': 'Elma', 'ISLAND PARK': 'Island Park', 'NEW LONDON': 'New Lisbon', 'TEXAS': 'Elma', 'PORTCHESTER': 'Oak Hill', 'COLONIA': 'Owego', 'RICH FIELD PARK': 'Rego Park', 'RYBROOK': 'Rye', 'WEST NYACK': 'West Nyack', 'ESSEX COUNTY': 'East Otto', 'HALBOCKEN': 'Antwerp', 'BRAIN TREE': 'Brant Lake', 'BENTON HARBOR': 'Eagle Bay', 'DENBER': 'Elma', 'SALEM': 'Swain', 'BAYSHORE': 'Antwerp', 'ST.ALBANS': 'Auburn', 'GILLETTE,': 'Glenham', 'FLATBUSH': 'Fredonia', 'WESTBOROUGH': 'East Otto', 'GARDINER': 'Antwerp', 'RENSSELAER': 'Round Lake', 'PRINCETON JUNCTION': 'New City', 'COLUBMUS': 'Owego', 'JERSY CITY': 'New City', 'SCOTRUN': 'Owego', 'JACKSON HEIGHTS': 'Jackson Heights', 'UNK': 'Rye', 'ELMWOOD PARK': 'West Park', 'CARROLITON TX': 'Rock Tavern', 'PASSAIC': 'Auburn', 'HOLTSVILLE': 'Owego', 'TARYTOWN': 'Antwerp', 'ROTKBILLE CENTRE': 'Red Creek', 'HOBOEKEN': 'Owego', 'PHILDELPHIA': 'Pond Eddy', 'HIGHLAND': 'Harrison', 'LAS  VEGAS': 'Long Eddy', 'PLEASENTVILLE': 'Lake View', 'PHOENNIX': 'Owego', 'LORFORK': 'Owego', 'HORSHAM': 'Owego', 'WANTAGH': 'Auburn', 'SCARSDALE': 'Antwerp', 'XX': 'Rye', 'DICKSHILLS': 'Corona', 'FREDERICKSBURG': 'Feura Bush', 'GREAT NECK NY': 'Red Creek', 'CRANBURY': 'Corona', 'WOODHAVEN': 'Worcester', 'KENNSHAW': 'Kanona', 'CAPITAL HEIGHTS': 'Central Islip', 'PEACH TREE CORNERS GEORGIA': 'Ardsley On Hudson', 'HERKIMER': 'Harrison', 'MELLVILLE': 'McLean', 'QWYNN OAKS': 'Glen Oaks', 'BONX': 'Burt', 'HAMDEN': 'Avoca', 'LEVITS TOWN': 'Eagle Bay', 'PLAINVIEUW (NEW YORK': 'Little Neck', 'SUCCESS DRIVE': 'Seneca Falls', 'GREELEY': 'Glenham', '220': 'Rye', 'DALLAS': 'Avoca', 'CHARLOTTE': 'Antwerp', 'NORTH BABYLON': 'North Babylon', 'DUBLIN': 'Dayton', 'STATEN ISLANDE': 'Silver Lake', 'FAMINDALE': 'Fort Ann', 'LOCAL': 'Lima', 'JERSEYCITY': 'Elma', 'VALLEY VIEW': 'Lake View', 'NILES': 'Nunda', 'CO-OP CITY SECTION 5': 'Cold Spring', 'MASPETH': 'Auburn', 'MIDDLE VILLAGE': 'Middle Village', 'BIRMINGHAM': 'Big Indian', 'N. CANTON': 'New City', 'MESA': 'Elma', 'JAMAICA QUEENS': 'Mount Upton', 'GLEN ALLEN': 'Glen Aubrey', 'CARLISLE': 'Antwerp', 'New Hyde park': 'New Hyde Park', 'MEXICALI': 'Monroe', 'HIOBOKEN': 'Owego', 'AL': 'Ava', 'NEWTON': 'Elma', 'MOORE': 'Marcy', 'LINDBROOK': 'Le Roy', 'BAY SIDE': 'Bay Shore', 'BASKING RIDGE': 'Black River', 'RIVER VALE': 'Rego Park', 'LONG ISLAND CITY': 'Long Island City', 'PROVO': 'Rye', 'WOODBURY': 'Owego', 'NEWARK': 'Elma', 'PORT JEFFERSON STATION': 'Port Jefferson Station', 'RARETAN': 'Auburn', 'HOBOKEN': 'Owego', 'FAIRLAWN': 'Fort Ann', 'NORTH HILLS': 'Oak Hill', 'ISLIN': 'Islip', 'ST CHARLES': 'Sag Harbor', 'VRIGINIA BEACH': 'Ray Brook', 'SARPORT': 'Auburn', 'LANDOVER': 'Antwerp', 'BROXTON': 'Owego', 'GLENDALE': 'Glenham', 'GREEN BAY': 'Eagle Bay', 'LONGWOOD': 'Owego', 'BERGEN FIELD': 'Big Flats', 'WESTCHESTOR': 'West Hurley', 'LOS ANGOLES': 'La Fayette', 'BEFDORD': 'Batavia', 'METAIRIE': 'Taberg', 'GREENVILE': 'Glenham', 'CANARSIE': 'Antwerp', 'RD': 'Rye', 'NORTH HEMPSTEAD': 'Oak Hill', 'HI-NELLA': 'Harrison', 'BELLEROSE': 'Le Roy', 'PATCHOGUE': 'Antwerp', 'NEW ORLEANS': 'New Russia', 'HOLLYWOOD': 'Owego', 'OSSINING': 'Owego', 'OTTAWA': 'Owego', 'GREENVIEW': 'Glenham', 'CRANFORD': 'Corona', 'SOUTH AMBOY': 'Oyster Bay', 'BUFFALY': 'Batavia', 'GREEN VILLAGE': 'Great Valley', 'SAN ANTOINIO': 'Sag Harbor', 'ELMIRA': 'Elma', 'NORTHBROOK': 'North Rose', 'CHERRY HILLS': 'Red Hook', 'AVENEL': 'Auburn', 'AMYTVILLE': 'Antwerp', 'PRINSTON': 'Phoenix', 'BAYSIDE AND 25TH AVENUES,': 'Annandale On Hudson', 'NORTH FORT': 'New City', 'ATLANTIC BEACH': 'Long Eddy', 'UNKNOWN': 'Nunda', 'BK': 'Rye', 'ROSLYN HEIGHTS': 'Sag Harbor', 'LAUDERDALE': 'Le Roy', 'CARROL': 'Corona', 'LIVINGSTON': 'Lake Grove', 'CLOSTER': 'Owego', 'MENDHAM': 'Monroe', 'ENGELWOOD CLIFFS': 'New City', 'DOVER': 'Dale', 'PORT ELIZABETH': 'Pine Island', 'METAIRE': 'Monroe', 'DICKSON': 'Cairo', 'NOWELL': 'Owego', 'BOCA RACON': 'Bay Shore', 'FRANKLIN  SQUARE': 'North Salem', 'GLEN COVE': 'Glen Cove', 'SOUTHGATE': 'Owego', 'PARAMUS': 'Auburn', 'WEST NEW YORK': 'West Nyack', 'LAWRENCEVILLE': 'Long Eddy', 'EAST ROCKAWAY': 'East Rockaway', 'GREAT FALLS': 'Glens Falls', 'NEW YORK NEW YORK': 'New York Mills', 'POUKEPSIE': 'Owego', 'CATONAH': 'Corona', 'CINNAMON': 'Corona', 'GRAND JUNCTION': 'Red Creek', 'DAYONNE': 'Auburn', 'BRIARWOOD': 'Auburn', 'BROOKVILLE': 'Rhinebeck', 'FRANKLYN SQ': 'Rhinebeck', 'OZONE PARK': 'Ozone Park', 'LYNNWOOD,': 'Levittown', 'PLAIN VIEW': 'Lake View', 'KENILWORTH': 'East Otto', 'SCARDALES': 'Antwerp', 'ROCVILLE': 'Owego', 'N.Y': 'Rye', 'VALLEY SPRING': 'Le Roy', 'KISCO': 'Kent', 'STATAN ISLAND': 'Silver Lake', 'UNKOWN': 'Nunda', 'SYIFFET': 'Shushan', 'MARION RD': 'Mill Neck', 'NASSAU': 'Avoca', 'GLEN HEAD': 'Glen Head', 'OXFORD': 'Owego', 'GREENVALE': 'Glenham', 'LYNWOOD': 'Lima', 'SOLON': 'Swain', 'NORTH WOODNERE': 'New Windsor', 'HUNTSVILLE': 'Harrison', 'GRAND RAPIDS': 'Rego Park', 'JAIMCA': 'Avoca', 'SAN ANTIONIO': 'Sag Harbor', 'ITHICA': 'Islip', 'CORTLANDT MANOR': 'Chase Mills', 'MONTBILLE': 'Owego', 'GARDEN CITY': 'Garden City', 'COLUMUS': 'Owego', 'METUCHEN': 'Taberg', 'ROCKAWAY BEACH': 'Oyster Bay', 'PARSITPANY': 'Antwerp', 'HORSAM': 'Owego', 'FLORENCE': 'Owego', 'HOLTVILLE': 'Owego', 'MELVILE': 'McLean', 'BRONX HILL ROAD': 'Brant Lake', 'WHTESTONE': 'Worcester', 'CENTER LINE': 'Caroga Lake', 'ROCK HILLS': 'Oak Hill', 'FIVE TOWNS': 'Fly Creek', 'NEW HIDE PARK': 'New Hyde Park', 'AMITTYVILLE': 'Antwerp', 'HIGHLAND MILLS': 'Highland Mills', 'WEST HAVESTRAW': 'West Henrietta', 'NEW WORK': 'New City', 'PANAMA CITY': 'New City', 'NEW YORK CITY [?]': 'New York Mills', '00000000000': 'Worcester', 'EAGAN': 'Elma', 'NEW CITY': 'New City', 'VALEY STREAM': 'Le Roy', 'VILLA PARK': 'Rego Park', 'EL DORADO HILLS': 'Lake Hill', 'TARRYTOWN': 'Antwerp', 'PORTSMOUTH': 'Owego', 'JAMAICA ESTATES': 'Mount Sinai', 'HIGHLAND PARK': 'Island Park', 'A': 'Ava', 'STATE ISLAND': 'Sand Lake', 'SOUTH OZONE': 'Shrub Oak', 'VIRGINIA BCH': 'Oyster Bay', 'ADDISON': 'Antwerp', 'OZONE  PARK': 'Ozone Park', 'UNION CITY': 'New City', 'CINCINNATI': 'Corona', 'SOUTH OZONE PK': 'South Otselic', 'OORT WASHINGTON': 'Oak Hill', 'YORKTOWN': 'Owego', 'BOTHELL': 'Owego', 'NORTH FORK': 'New City', 'CHULA VISTA': 'Cold Brook', 'FECAUSUS': 'Fredonia', 'FAIRFAX': 'Auburn', '/': 'Rye', 'OH': 'Rye', 'POWDER SPRINGS': 'West Point', 'CHICAGO': 'Corona', 'UNIONDALE': 'Owego', 'RENTON': 'Elma', 'BRIDGEWATER': 'Round Top', 'ST. LOUIS': 'Sand Lake', 'GREENWITCH': 'Glen Wild', 'BRIDGE  WATER': 'Round Top', 'SOUND BEACH': 'Sound Beach', 'NEWHIDE PARK': 'New Hyde Park', 'SYLAVANIA': 'Auburn', 'PLAINVIEW': 'Antwerp', 'REGAL PARK': 'Rego Park', 'STONEY BROOK': 'Sound Beach', 'WEST ISLIP': 'West Islip', 'ALEXANDRIA': 'Le Roy', 'QUEENS/BROOKLYN': 'East Berne', 'FRANLIN SQUARE': 'Fort Ann', 'LODI': 'Lima', 'WAVERLY': 'Auburn', 'L.I.': 'Lima', 'NEW ROCHELE': 'New City', 'GEENVILLE': 'Glenham', 'EAST RUTHEFORD': 'East Rockaway', 'ISLANDA': 'Lima', 'CLIMONT': 'Corona', 'NEWBRUGH': 'Willet', 'LINDEN HURSH': 'Lake Hill', 'WESTERLEIGH': 'White Lake', 'IRVING': 'Rye', 'WAYLAND': 'Auburn', 'PHEONIX': 'Phoenix', 'COSTA MESSA': 'Chase Mills', 'MIDDLE VILLAGE,': 'Middle Village', 'FAR ROCKAWY': 'Fly Creek', 'AMNETYVILLE': 'Antwerp', 'HOFFMAN ESTATES': 'Fort Edward', 'BETLHEM': 'Batavia', 'COLOADO SPRINGS': 'Cold Spring', 'MASTECH': 'Auburn', 'WHYOMING': 'Owego', 'UNION DALE': 'New City', 'WYOMISSING': 'Worcester', 'PEACHTREE CORNERS': 'Red Creek', 'WEST CARDWELL': 'West Chazy', 'NN': 'Rye', 'JACKSONVILL': 'Antwerp', 'ANDERSON': 'Antwerp', 'NATICK': 'Avoca', 'COMMACK': 'Owego', 'PERTH AMBOY': 'Eagle Bay', 'FORT': 'Fine', 'LAKEWOOD RANCH': 'Le Roy', 'SANDSTON': 'Antwerp', 'IRVINE': 'Rye', 'N': 'Rye', 'HOUSON': 'Owego', 'CARROLTOWN': 'Antwerp', 'EAST AMHERST': 'East Marion', 'MESCONSET': 'Mill Neck', 'SECASCUS': 'Corona', 'NEWIRK': 'Elma', 'NUTLEY': 'Nunda', 'HILLSBORO BEACH': 'Hampton Bays', 'PORT WASHINGTON,': 'Oak Hill', 'BALDWIN, NASSAU': 'Little Neck', 'FREE PORT': 'Rego Park', 'EVERETT': 'Elma', 'BINGHAMTON': 'Batavia', 'LOS ANGELS': 'Le Roy', 'X': 'Rye', 'ELMSORD': 'Elma', 'CHATHAM': 'Corona', 'ATLANTIC HIGHLANDS': 'Tribes Hill', 'BOWLING BROOK': 'Oyster Bay', 'DENVER COLORADO': 'New Lisbon', 'SC0TTSDALE': 'Corona', 'PHILLADELPHIA': 'Island Park', 'BRONX': 'Rye', 'TAMPA': 'Acra', 'LEVITTOWN': 'Levittown', 'NEW JERSEY CITY': 'New City', 'CARLSTADT': 'Antwerp', 'LONGBEACH': 'Long Eddy', 'BELLROSE': 'Batavia', 'ST ALBIN': 'Taberg', 'OLD GREENWHICH': 'Oak Hill', 'MISSOULA': 'Monroe', 'MARANTE': 'Auburn', 'FRANKLYN PARK': 'Rego Park', 'PLEASANTANTON': 'Little Neck', 'CHELSEA': 'Corona', 'ST CLOUD': 'Sea Cliff', 'RICHMOND  HILL': 'Oak Hill', 'OLD BRIDGE': 'Le Roy', 'WOODLAND HILLS': 'Lake Hill', 'SOUTH DAYTONA': 'Saint Albans', 'SANBORN': 'Auburn', 'CARLSBAD': 'Antwerp', 'EATON TOWN': 'Eagle Bay', 'WILLIAMSBURG  MI 49690': 'West Sand Lake', 'BRIELLE': 'Batavia', 'WEST HEMPSTEAD,': 'West Henrietta', 'LEVIT TOWN': 'Lake Hill', 'MAHOPOC': 'Auburn', 'FARMINGDALE': 'McGraw', 'FRISCO': 'Fonda', 'WOODCLIFF LAKE': 'West Sand Lake', 'LONG ISLAND CIT': 'Long Island City', 'BROOKYN': 'Owego', 'BRISTOL': 'Batavia', 'JUANA DIAZ': 'Lily Dale', 'LINWOOD': 'Lima', 'DRYDEN': 'Rye', 'ORNAGE': 'Owego', 'SD': 'Rye', 'CAPE GIARDEAU': 'Cold Spring', 'PHILLIPSBURG': 'Pine Island', 'MCALLES': 'McLean', 'NEWBURGH': 'Willet', 'MIDLOTHIAN': 'McDonough', 'LOCKPORT': 'Owego', 'ROANOKE': 'Owego', '0000 0000': 'Rego Park', 'WILLAIMSVILLE': 'Lake View', 'FORESTHILL': 'Oak Hill', 'UNKONWB': 'Nunda', 'EASTE ELMHURST': 'East Elmhurst', 'RICHMOND': 'Corona', 'WAVERLY FL': 'Worcester', 'QUEENS VILLIAGE': 'East Islip', 'RIDEWOOD': 'Elma', 'BRONX NY': 'Owego', 'ROCHLLE PARK': 'Rego Park', 'WILLIFTON PARK': 'Island Park', 'ISLANDIA,': 'Auburn', 'WILLAMSVILLE': 'Lake View', 'TERRY TOWN': 'East Otto', 'CONYMANS HOLLOW': 'Oak Hill', 'OAKAHOMA': 'Oak Hill', 'COLUMBUS': 'Owego', 'NORCROSS': 'Owego', 'MANALAPAN': 'McLean', 'GETTSVILLE': 'Georgetown', 'BALDWIN PLACE': 'Brant Lake', 'IRVIE': 'Rye', 'CITY ISLAND': 'Bay Shore', 'MEDFORD': 'Monroe', 'HAZELWOOD': 'Antwerp', 'LAWRENCE': 'Le Roy', 'ROCKCHEASTER': 'Red Creek', 'ARMONK': 'Auburn', 'PLOVER': 'Lima', 'NEWPORT BEACH': 'Eagle Bay', 'MORDANDILLE': 'McDonough', 'MURRIETA': 'Monroe', 'VALLEY STREET': 'Le Roy', 'WILTON': 'Willet', 'SPRINGFIELD GNDS': 'Spring Glen', 'SEWELL': 'Elma', 'NEW HYDE PRK': 'New Hyde Park', 'EDGEWATER': 'Glenham', 'LAKESTONE': 'Antwerp', 'MOREELL': 'Owego', 'CANTON': 'Corona', 'LONG ISLANE': 'Long Lake', 'TUCWILA': 'Cairo', 'SUNRISE': 'Shushan', 'NANUET': 'Avoca', 'THOUSAND OAKS': 'Oyster Bay', 'WESTCESTER': 'West Eaton', 'RED BANK': 'Ray Brook', 'TINLEY PARK': 'Tuxedo Park', 'HERIETTA': 'Harrison', 'EAST WINDSOR': 'East Islip', 'STATN ISLAND': 'Sand Lake', 'ELISABETH': 'Elma', 'ELIZABETH,': 'East Berne', 'ROCKY MOUNT': 'Rego Park', 'SEACUCUS': 'Cairo', 'MIAMI BEACH': 'Feura Bush', 'MAHWAH': 'Monroe', 'BELPORT': 'Batavia', 'LEHIGH': 'Elma', 'BLUEPOINT': 'Batavia', 'SANDIAGO': 'Antwerp', 'HIGHLND PARK': 'Island Park', 'LYNBROOK?': 'Le Roy', 'PELHSM': 'Elma', 'CARSON': 'Corona', 'LIVERPOOL': 'Le Roy', 'EVANSTON': 'Auburn', 'SONOMA': 'Owego', 'EAST NORTHPORT': 'East Otto', 'DIX HILLS': 'Oak Hill', 'LINDHURST': 'Le Roy', 'FREEPORT': 'Fredonia', 'NEW HYDE PARK, NY': 'New Hyde Park', 'NASSAU COUNTY': 'New City', 'TERRYTOWN': 'Taberg', 'POUND BRIDGE': 'Port Byron', 'SATEN ISLAND': 'Sand Lake', 'MONTPELIER': 'McLean', 'RYE CITY': 'New City', 'FRANKIN SQUARE': 'Fort Ann', 'TROY': 'Rye', 'NORTH LAKE': 'Brant Lake', 'WINTER PARK': 'West Park', 'WEST  BUREY': 'East Berne', 'ST. JOSEPHS VILLAGE': 'West Sand Lake', 'COVINA': 'Owego', 'ROCKHILL': 'Red Hook', 'HOLLISWOOD': 'Owego', 'EASTCHESTER': 'Antwerp', 'GLENN COVE': 'Glen Cove', 'GEPZVILLE': 'Phoenix', 'BAYSTATTION': 'Antwerp', 'SEARINGTOWN': 'Shrub Oak', 'CEDERHURST': 'Corona', 'CHESTERFIELD': 'Copake Falls', 'PHIL': 'Peru', 'SANTA ANNA': 'New City', 'BRANDON': 'Batavia', 'SOUTH RICHMOND HILL': 'South Richmond Hill', 'FRESH MEADOWS': 'Felts Mills', 'SYOSET': 'Sidney', 'LOS ANGELES': 'La Fayette', 'PORTHCHESTER': 'Oak Hill', 'AMURST': 'Auburn', 'CAROL STREAM': 'Cold Spring', 'MINNIAPOLIS': 'New Paltz', 'WEST CALDWELL': 'West Chazy', 'HALLANDALE': 'Antwerp', 'MODESTO': 'Owego', 'POST FALLS': 'Old Forge', 'ST. PAULS': 'Salt Point', 'SAN ANTOINO': 'Sag Harbor', 'NEW HYDE PARK': 'New Hyde Park', 'NY': 'Rye', 'PHILADELPHIA': 'Pond Eddy', 'BAKERS FIELD': 'Big Flats', 'CARLTON': 'Corona', 'LEVINGTON': 'Levittown', 'CAMBRIA HEIGHS': 'Red Hook', 'MCCARRAN': 'Corona', 'LAFAYETTE': 'Long Eddy', 'LIVONIA': 'Lima', 'WALNUT CREEK': 'New City', 'GREEN ALLEN': 'Brant Lake', 'SAINT': 'Swain', 'N/A': 'Rye', 'SEATTLE': 'Elma', 'ARMANK': 'Auburn', 'ISLANDER': 'Avoca', 'NEWARD': 'Elma', 'PALISADES': 'Antwerp', 'HINELLA': 'Elma', 'NEW ROSCHELLE': 'New City', 'MT.VERNON': 'Taberg', 'SOUTH EASTERN': 'Saint Albans', 'MARGATE ROAD': 'Rego Park', 'WALTHAM': 'Auburn', 'GREENWOOD LAKE': 'Round Lake', 'LOCKAWANNA': 'Owego', 'CENTRAL VALLEY': 'Cherry Valley', 'IRVERING BLVD': 'Eagle Bay', 'HUDSON': 'Himrod', 'TONAWANDA': 'Owego', 'BUFFALO': 'Batavia', 'CHESAPEAKE': 'Corona', 'LEDGEWOOD': 'Levittown', 'FORT WORTH': 'Fly Creek', 'VALLEY STEAM': 'Bay Shore', 'SIUX CITY': 'New City', 'EAST ELM HURST': 'East Elmhurst', 'NORTH WOODMERE': 'New Windsor', 'FLORAL PARK VILLAGE': 'West Sand Lake', 'N BERGEN': 'Elma', 'WEST BABALYON': 'West Babylon', 'ROCKLAND COUNTY': 'Red Creek', 'WEST ORANGE': 'West Oneonta', 'GREENVALLE': 'Rhinebeck', 'WEST HARRINGTON': 'West Henrietta', 'ROSELYN': 'Owego', 'JFK AIRPORT': 'Le Roy', 'CRANBERRY': 'Antwerp', 'EDJEWATER': 'Elma', 'HERSHEY': 'Elma', 'NA/': 'Rye', 'WILLOW': 'Willet', 'ROHWAY': 'Owego', 'AVERNE NEW YORK': 'East Nassau', 'INDIONAPOLIS': 'Island Park', 'HUNTINGTON': 'Harrison', 'WILKES-BARRES': 'Wells Bridge', 'FARMINGDEALE': 'Fishs Eddy', 'EDGEWOOD': 'Elma', 'CLEAR WATER': 'Cold Brook', 'PURCHASE': 'Cairo', 'SAN HOSE': 'Oak Hill', 'FARMERSBRANCHE': 'Feura Bush', 'ALLENVILLE': 'Antwerp', 'SCHAUMBURGIL': 'Cold Brook', 'ASTORIA': 'Antwerp', 'SAN DIEGO': 'Sea Cliff', 'HOLBROOK': 'Owego', 'PARSITTANY': 'Antwerp', 'NEWARK AIRPORT,': 'North River', 'GARDEN CITY PARK': 'Rego Park', 'BAYYON': 'Avoca', 'ST LOUIS': 'Taberg', 'NIEGRA FALLS': 'Newton Falls', 'GRANTSPASS': 'Rego Park', 'BOCA RATON': 'Bay Shore', 'OAK HARBOR': 'Oak Hill', 'RAMSEY': 'Avoca', 'SOUTH FALLSBURGH': 'Sound Beach', 'ALBION': 'Auburn', 'GRAND CENTRAL STATION': 'Rock City Falls', 'brooklyn': 'Brooklyn', 'Happauge': 'Hauppauge', 'HAMILTON TOWNSHIP': 'Mount Tremper', 'ARCADE': 'Auburn', 'BELTSVILLE': 'Bay Shore', 'EAST ELMHURTS': 'East Elmhurst', 'OLD FORGE': 'Le Roy', 'WESCHESTER': 'West Eaton', 'WESTLACO': 'Willet', 'STONEY BROOKE': 'Sound Beach', 'MADSION': 'Auburn', 'MARRIETTA': 'Antwerp', 'CARTHAGE': 'Antwerp', 'BROOKYN NY': 'Rhinebeck', 'SPRIGFIELD GARDEN': 'Port Gibson', 'HARRISBERG': 'Antwerp', 'CONCORD': 'Owego', 'LINDERHURST': 'Lake Hill', 'HASTINGS- ON HUDISON': 'Ardsley On Hudson', 'EDEN PRARIE': 'Elka Park', 'LINHURST': 'Le Roy', 'INGELWOOD CLIFFS': 'New City', 'CENTRAL STREAM MORICHES': 'New York Mills', 'ANDREWS': 'Antwerp', 'ROHNERT': 'Owego', 'ELLEN': 'Elma', 'RODCHESTER': 'Red Hook', 'NEWFANE': 'Elma', 'SPRINGFIELD': 'Rhinebeck', 'NEWTOWN': 'Elma', 'IRVERNE': 'Elma', 'VIRGINIA BEACH': 'Ray Brook', 'BRENTWOOD': 'Batavia', 'RENEON': 'Elma', 'BOGART': 'Owego', 'RIO GRANDE': 'Red Creek', 'CASPER': 'Corona', 'EASTON': 'Elma', 'SONAMA': 'Owego', 'SHERWOOD': 'Savannah', 'NEW HYDE  PARK': 'New Hyde Park', 'AMELIA': 'Auburn', 'JAMIAICA': 'Antwerp', 'HICKSVILLE': 'Corona', 'ST. PAUL': 'Taberg', 'CARMEL': 'Corona', 'ROOSEVELT': 'Rhinebeck', 'CHATSWORTH': 'Antwerp', 'HEMSTEAD': 'Harrison', 'ST PAUL': 'Taberg', 'ROSELYN HEIGHT': 'Sag Harbor', 'LITTLE FERRY': 'Long Eddy', 'NEW ROCHELL': 'New City', 'HALBROOK': 'Antwerp', 'GIBSONTON': 'Owego', 'GLEN CLOVE': 'Glen Cove', 'CHEEPOWAA': 'Corona', 'JACKSONVILLE FL': 'Kenoza Lake', 'CHERRYHILL': 'Corona', 'EAST TURHERFORD': 'East Rockaway', 'BEDSTUY': 'Batavia', 'ICE ILISP': 'Corona', 'LA GUARDIA': 'Le Roy', 'ROSLAND': 'Owego', 'LINDWOOD': 'Lynbrook', 'CARLE  PLACE': 'Rego Park', 'QUEEN': 'Owego', 'NEARK': 'Elma', 'CLEARWATER': 'Le Roy', 'ALVERNE': 'Le Roy', 'MEMPIS': 'Monroe', 'COLOMBUS': 'Owego', 'COIAGUE': 'Owego', 'OLDBRIDGE': 'Le Roy', 'LAKE WORTH': 'Le Roy', 'EAST SANBORN': 'East Aurora', 'MORNINGSIDE STATION': 'Maple Springs', 'VILLAPARK': 'Avoca', 'HEWLETT BAY PARK': 'Wells Bridge', 'CEDARHURST': 'Antwerp', 'MAMARONECK': 'Mill Neck', 'ENGLEWOOD CLIFFS': 'New City', 'TEREBORO': 'Taberg', 'WAUWATOSA': 'Worcester', 'GUTTENBURG': 'Great Bend', 'CARLSPRINGS': 'Le Roy', 'SPRINGFIELD GARDENS': 'North River', 'HAUPPAUGE': 'Antwerp', 'SAINT LOUIS': 'Sand Lake', 'TRUMBULL': 'Taberg', 'DOBBS FERRY': 'Big Flats', 'LEBANON': 'Elma', 'VINELAND': 'Elma', 'CAMBELL HALL': 'Tribes Hill', 'KINGS POINT,': 'New Paltz', '1': 'Rye', 'WALLINGTON': 'West Nyack', 'TUSCAN': 'Taberg', 'EUCLID': 'Elma', '#200 BREA': 'Le Roy', 'BISON': 'Basom', 'BRIAR CLIFF': 'Brant Lake', 'WOODSBURY': 'Worcester', 'LAKE MARY': 'Lake Hill', 'HEMPSTEAD': 'Harrison', 'LAKE SUCCESS': 'Lake Clear', 'BOHEMIA': 'Owego', 'BIRMINGHAM,': 'Rock Hill', 'WILMINGTON': 'West Nyack', 'CORNWELL': 'Owego', 'MIDDLETON': 'McDonough', 'EDEN PRAIRIE': 'De Peyster', 'W HEMPSTEAD': 'West Point', 'WARRENTON': 'Worcester', 'PERTHAMDOY': 'Peterboro', 'PULSA': 'Peru', 'FARMERS BRANCH': 'Feura Bush', 'INDIAN VILLAGE': 'Indian Lake', 'SUMMERS': 'Shushan', 'CHERRY HILL': 'Red Hook', 'BROOKLN': 'Owego', 'TANAFLY': 'Auburn', 'BERGUN': 'Elma', 'DELTONA': 'Elma', 'WINNIPEG': 'Willet', 'PHILEDEPHIA': 'Pond Eddy', 'ST PUL': 'Sidney', 'EDWARD CLIFTON': 'East Islip', 'HI NELLA': 'Harrison', 'EAST BRUNSWICK': 'East Rockaway', 'GARFIELD': 'Antwerp', 'ARLINGTON HEIGHTS': 'Lake Hill', 'NASSU': 'Nunda', 'WAPPINGERS FALL': 'West Sand Lake', 'EAST HAMPTON': 'East Hampton', 'PITSBURGH': 'Peterboro', 'TOTOWA': 'Owego', 'KEW GARDEN': 'Le Roy', 'LAPORT': 'Avoca', 'PORTLAND MANOR': 'Oyster Bay', 'LINBROOK': 'Le Roy', 'HAMILTON SQUARE': 'Mount Sinai', 'NIAGARA FALLS': 'Newton Falls', 'WEHAWKEEN': 'West Kill', 'SEACAUCUS': 'Antwerp', 'MT KISCO': 'Taberg', 'INGLEWOOD': 'Glenham', 'NEWWARD': 'Elma', 'LONG VALLEY': 'Lake View', 'ELMSFRD': 'Elma', 'ST PETERBURG': 'Le Roy', 'VERMONT': 'Elma', 'PELHAM': 'Elma', 'KATONAH': 'Auburn', 'WEST HEMPSTEAD': 'West Henrietta', 'KANSAS CITY': 'New City', 'MENEAPOLIS': 'East Otto', 'UNION HILLSIDE': 'New Lisbon', 'SAINT JAMES': 'Saint James', 'SECAUCUS JUNCTION': 'East Jewett', 'HEMPHSTEAD': 'Harrison', 'BROJTON': 'Owego', 'WHEATRIDGE': 'Worcester', 'NORTH PORT': 'Rego Park', 'LOMBARD': 'Owego', 'LYNDENHURST': 'Lake Hill', 'MONTICELLO': 'Owego', 'DUMONT': 'Dayton', 'DOYLES TOWN': 'Oak Hill', 'NORTH PLAIN FIELD': 'North Lawrence', 'DIXHILL': 'Deposit', 'N/': 'Rye', 'WHY': 'Rye', 'EAST HANNOVER TWP': 'East Otto', 'PHOROFARA': 'Owego', 'ELMONT': 'Elma', 'JERSEY CITY': 'Rego Park', 'JACKSONSVILLE': 'Cold Spring', 'MASSAPEQUA': 'Antwerp', 'BONITA SPRINGS': 'Bay Shore', 'BURLINGTON': 'Big Indian', 'LAGUARDIA AIRPORT': 'Rego Park', 'DSW AIRPORT': 'Le Roy', 'DEER PARK,': 'Deer Park', 'MASSAPEQUA PARK': 'Averill Park', 'ANON': 'Acra', 'ATLANTIC CITY': 'New City', 'ST HARBORS': 'Sag Harbor', 'ALPINE': 'Auburn', 'PONOMA': 'Owego', 'ALTHARETT': 'Le Roy', 'WOOD LAND HILLS': 'West Sand Lake', 'CASTLEBURY': 'Antwerp', 'ADDISION': 'Antwerp', 'MINNIAPPOLIS': 'Miller Place', 'CYPRESS': 'Corona', 'ROCKAWAY': 'Owego', 'FLORA PARK': 'Fort Ann', 'POUND RIDGE': 'Pound Ridge', 'MARONECK': 'Antwerp', 'HOWELL': 'Owego', 'MELVERN': 'McLean', 'BALDWIN': 'Auburn', 'PISCATAWAY': 'Corona', 'EAST ATLANTIC BEACH': 'Three Mile Bay', 'HASTINGS': 'Antwerp', 'WOODBRIDGE': 'Worcester', 'PHILADEPHIA': 'Pond Eddy', 'NEW PORT RICHY': 'North River', 'EAST  RUTHERFORD NJ': 'East Rockaway', 'SYOSETT': 'Owego', 'WILMININGTON': 'West Nyack', 'NEWSRK': 'Elma', 'ALTAVENA': 'Antwerp', 'CORRAM': 'Owego', 'ARVERNE': 'Antwerp', 'WEEHAWKEN': 'Worcester', 'BERGEN': 'Elma', 'AMHERST': 'Antwerp', 'HASBROUCK HEIGHTS': 'Sackets Harbor', 'UTICA': 'Upton', 'FLUSHING MEADOWS': 'Felts Mills', 'FORT MEYERS': 'Fly Creek', 'KINGS PORT': 'Kings Park', 'WHARTON': 'Willet', 'LAKE ARIEL': 'Le Roy', 'POBOX 64886': 'Bay Shore', 'CROWNPOINT': 'Rhinebeck', 'WEST BOROUGH': 'West Babylon', 'MONTGOMERY': 'McGraw', 'HILLSIDE': 'Harrison', 'WILKES BARRES': 'Wells Bridge', 'PLAINSBORO': 'Pine Bush', 'HALESITE': 'Antwerp', 'GLENRIDGE': 'Le Roy', 'HOLEBROOK': 'Le Roy', 'PHONIEX': 'Owego', 'INDIANA WELCH': 'North River', 'NEWPORT NEWS': 'New City', 'SYRACUSE': 'Savannah', 'HUTCHINSON': 'Corona', 'WAPPINGERS FALLS': 'Au Sable Forks', 'TUSTIN': 'Taberg', 'P.O. BOX 3615': 'Port Byron', 'OYSTER BAY': 'Oyster Bay', 'WESTCHESTER COUNTY': 'West Sand Lake', 'JERSEY CIY': 'Eagle Bay', 'Minneapolis': 'Mineola', 'MARETTA': 'Auburn', 'BEACON': 'Elma', 'LAKEWORTH': 'Le Roy', 'BURBANK': 'Batavia', 'ANAHIEM': 'Antwerp', 'FLORAL PAK': 'Le Roy', 'JHACKSONVILLE': 'West Sand Lake', 'BROOKSVILLE': 'Bay Shore', 'HICKVILLE': 'Corona', 'N. MERRICK': 'North Rose', 'ORADELL': 'Owego', 'SI': 'Rye', 'WARNER ROBINS': 'Wading River', 'OCEAN': 'Owego', 'DES MOINS': 'Fly Creek', 'MARGATE': 'McGraw', 'FORT ST LUCIE': 'Round Lake', 'CRANSORD': 'Corona', 'LAKEGROVE': 'Le Roy', 'MIDDLE VILLAGE, QUEENS': 'Middle Granville', 'JACKSONVILLE FLORIDA': 'Au Sable Forks', 'REDDING': 'Elma', 'MENIFEE': 'Monroe', 'SOMMERSVILLE': 'South Salem', 'THE BRONX': 'Ray Brook', 'BIRMANGHAM': 'McGraw', 'RIVER EDGE': 'Rego Park', 'NEW MEXICO': 'New Lisbon', 'MILL NECK': 'Mill Neck', 'COLUMBIA': 'Owego', 'TETERBORO': 'Taberg', 'PATCHHOGUE': 'Port Henry', 'ST.  PAUL': 'Rego Park', 'MIDDLEBORO': 'McDonough', 'SCHAMBURG': 'Corona', 'VALLET STREAM': 'Le Roy', 'NIAGRA FALLS': 'Newton Falls', 'OAK BROOK': 'Oak Hill', 'NEW YORK': 'New York', 'HOWARD BEACH': 'Howard Beach', 'SOUTH HUNINGTON': 'Sag Harbor', 'MINESOTA': 'Monroe', 'LAS VEGAS': 'Long Eddy', 'KNOXVILLE': 'Owego', 'LOCUST': 'Owego', 'GIG HARBOUR': 'Sag Harbor', 'LAWERENCE': 'Long Eddy', 'WHITEPLAN': 'West Park', 'CLINTON': 'Corona', 'WEST SAYEVILLE': 'West Sand Lake', 'SKOKYE': 'Sidney', 'CHANDLER': 'Corona', 'OWENSBORO': 'Owego', 'PLYMOUTH': 'Phoenix', 'BELMORE, LONG ISLAND': 'West Sand Lake', 'WEST MORELAND': 'West Oneonta', 'DIXHILLS': 'Deposit', 'TENAFLY': 'Taberg', 'GREAT BARRINGTON': 'Ray Brook', 'ROCKILLE CENTER': 'Red Creek', 'FORTLEE': 'Owego', 'GARDEN HILLS': 'Rock Hill', 'NOT KNOWN': 'New City', 'WESTHEMPSTEAD': 'White Plains', 'NORTH BERGEN': 'Ray Brook', 'LOS VEGAS': 'Long Eddy', 'FLINT': 'Lima', 'BROOKHAVEN': 'Red Hook', 'BRIGHTON BEACH': 'Ray Brook', 'CLEVELAND': 'Corona', 'MORRISTON': 'Owego', 'FORT LAUDERALE': 'Fort Ann', 'CARROLTON': 'Antwerp', 'FAWNWOOD': 'Antwerp', 'SUNNYSIDE': 'Savannah', 'LYNBROOK': 'Le Roy', 'CHESTNUT RIDGE': 'Stone Ridge', 'MULLICA HILL': 'Lake Hill', 'CALIFORNIA': 'Le Roy', 'STOCKTON': 'Owego', 'BURMINGHAM': 'Big Indian', 'AVENTURA': 'Antwerp', 'AGUSTA': 'Auburn', 'STATEN ISLAD': 'Seneca Falls', 'LIVINGHURST': 'Lake Hill', 'LONGISLAND': 'Long Lake', 'NORFORK': 'Owego', 'AMITYVILLE': 'Antwerp', 'BRICKTOWN': 'Corona', 'RIVERSIDE': 'Rhinebeck', 'TEMPE': 'Elma', 'MECHANICSBURG': 'Eagle Bay', 'WESTFIELD': 'Worcester', 'CLIFTON': 'Corona', 'GUTTENBERG': 'Great Bend', 'SIEGEL ST': 'Sand Lake', 'VALLEY COTTAGE': 'Adams Center', 'MENTOR': 'Monroe', 'PALM BAY': 'Le Roy', 'CARMACK': 'Corona', 'KINSTON': 'Kanona', 'GRANTS PASS': 'Rego Park', 'LYNNWOOOD': 'Levittown', 'PANAMA': 'Avoca', 'SAINT ALBANS': 'Saint Albans', 'BOHIEMA': 'Owego', 'COON RAPIDS': 'Rego Park', 'MANHASSETT': 'Antwerp', '0000': 'Elma', 'LINCOLN': 'Lima', 'ROCKVILLE ENTER': 'Round Top', 'JAMAICA, NY': 'Java Center', 'EAST ELMURST': 'New Lisbon', 'MARTINSBURG': 'Mount Sinai', 'CANOGA': 'Corona', 'SAN DIAGO': 'Sea Cliff', 'ELMSFORD': 'Monroe', 'BEDFORD': 'Batavia', 'KANSAS': 'Kanona', 'LIC': 'Lima', 'PEARL RIVER': 'Pound Ridge', 'UPPERSADDLE RIVER': 'Pound Ridge', 'WILIMINGTON': 'West Nyack', 'TUIPEA BUFFALO GROVE': 'Three Mile Bay', 'FITZGERALD': 'Fort Ann', 'FT LAUDERDALE': 'Le Roy', 'WEST SAYVILLE': 'West Sand Lake', 'LAGRANGEVILLE': 'Long Eddy', 'NONE': 'Elma', 'HARSHAM': 'Auburn', 'MENANDS': 'Monroe', 'ST ALBANS': 'Auburn', 'FRANKLIN LAKE': 'Round Lake', 'WOODNERE': 'Owego', 'RIVERDALE': 'Rhinebeck', 'WEEHOKEN': 'Willet', 'RICHARDFIELD PARK': 'Rego Park', 'SCOTCH PLAINS': 'Salt Point', 'DES-PLAINES': 'De Peyster', 'ARIZONA': 'Antwerp', 'ONEONTA': 'Owego', 'BOLTON LANDING': 'Brant Lake', 'FISHKILL': 'Fredonia', 'ST. CLOUD': 'Sea Cliff', 'ORANGE': 'Owego', 'TOMS RIVER': 'Oak Hill', 'MANY': 'Ava', 'BELLEOSE': 'Batavia', 'WANTAUGH': 'Antwerp', 'WEST BERRY': 'Cold Brook', 'NORTH BELLMORE': 'New Lisbon', 'FRANKLIN': 'Fredonia', 'JERSEY CTY': 'Eagle Bay', 'NORTH FOLK': 'New City', 'SUFFOLK': 'Shushan', 'THIELLS': 'Taberg', 'THREE RIVERS': 'North River', 'MATHEWS': 'Auburn', 'WHITE STONE': 'Bay Shore', 'ROACKWAY BEACH': 'Oyster Bay', 'FORT JEFFERSON CITY': 'Fort Johnson', 'JAMAICA': 'Auburn', 'MINEOLA': 'Monroe', 'BAYVILLE': 'Antwerp', 'EAS AMHERST': 'Oak Hill', 'LAKE PEAKSKILL': 'Long Eddy', 'FORAL PARK': 'Fort Ann', 'JERSRY CITY': 'Rego Park', 'ARETTA': 'Auburn', 'SANTIAGO': 'Antwerp', 'COLMBUS': 'Owego', 'VALLEY STREAMS': 'Long Eddy', 'OOO': 'Rye', 'LA MESA': 'Le Roy', 'MTKA': 'Elma', 'FOREST HILLS': 'Oak Hill', 'PORT WASHINGTON': 'Oak Hill', 'LAKE SUCESSS': 'Long Eddy', 'WEEHAUKEN': 'Worcester', 'JACKSONILLE': 'Antwerp', '000': 'Rye', 'DANA POINT CALIFORNIA': 'Au Sable Forks', 'SAINT CHARLES': 'Sag Harbor', 'BEVERTON': 'Batavia', 'SAN JUAN CAPISTRANO': 'New City', 'COPPELL': 'Owego', 'MARIEPTA': 'Antwerp', 'KEYPORT': 'Kanona', 'FARMINGDAE': 'McGraw', 'MATAWAN': 'Auburn', 'ROSEDALE': 'Owego', 'MELBOURNE': 'McLean', 'MERINO VALLEY': 'Mount Vernon', 'SALT LAKE CITY': 'Sand Lake', 'SALTLAKE CITY NY': 'Adams Center', 'NEW YOK': 'New York', 'EDGE WATER': 'East Berne', 'GROE CITY': 'Glen Cove', 'BOCAROPON': 'Owego', 'PERRINEVILLE': 'Pond Eddy', 'OAK BROOKE': 'Oak Hill', 'SEA CLIFF': 'Sea Cliff', 'BROX': 'Rye', 'LONGBEACH RD': 'New City', 'HORSEHAM': 'Owego', 'STATEN  ISALND': 'Staten Island', 'NEWPORT': 'Elma', 'FARROCKAWAY': 'Fly Creek', 'FARMDALE': 'Fort Ann', 'COLORADO SPRINGS': 'Rego Park', 'RICHMOND HILL': 'Oak Hill', 'BUTLER': 'Upton', 'TRIANGLE': 'Taberg', 'YONKER': 'Owego', 'RIVERHEAD': 'Rock Hill', 'YORK TOWN HEIGHT': 'Oak Hill', 'NEW MILFORD': 'New Lisbon', 'FT LEE': 'Fonda', 'LYNBROOK , NASSUA COUNTY': 'Long Island City', 'NEW JERSY': 'New City', 'WAYNE': 'Acra', 'BLOOMBRID': 'Le Roy', 'HUNTINGTON BEACH': 'Hampton Bays', 'AUSTIN TOWN': 'Upper Jay', 'BROOLKYN': 'Owego', 'PORT JERVIS': 'Pond Eddy', 'ADENA': 'Avoca', 'BUFFALLO': 'Batavia', 'TROY HILLS': 'Red Hook', 'ROCHELLE': 'Owego', 'GREENSVILLE': 'Glen Spey', 'LAUREL PARK': 'Rego Park', 'CAROL STREME': 'Cold Spring', 'HAUPPOUGH': 'Antwerp', 'WARRINGTON': 'West Nyack', 'BAYTOWN': 'Auburn', 'BYN': 'Rye', 'ISELING': 'Elma', 'PORT MONMOUTH': 'Pine Valley', 'RIDGEWOOD': 'Rhinebeck', 'RINGOEF': 'Nunda', 'SUMMERVILLE': 'Scottsville', 'POUGHKEEPSIE': 'Pond Eddy', 'EL  DORADO': 'Le Roy', 'FARMINGVILLE': 'McGraw', 'LOS GATOS': 'Le Roy', 'BELMONT': 'Batavia', 'FAR ROACKAWAY': 'Fly Creek', 'MCARTHUR': 'Corona', 'FELDEN': 'Elma', 'ALLEN': 'Avoca', 'NORTH BERGAN': 'Ray Brook', 'SPENCER': 'Elma', 'DOBS FERRY': 'Old Forge', 'HARRISON': 'Antwerp', 'DEDHAM': 'Elma', 'EDISON RT9 EXIT': 'East Rockaway', 'LARCHMONT': 'Antwerp', 'SAN DEIGO': 'Sea Cliff', 'GATES': 'Acra', 'BALDWIN HARBOUR': 'Black River', 'DURHAM': 'Rye', 'MT. SINAI': 'Bay Shore', 'DEPEW': 'Elma', 'TEME': 'Troy', 'SMITH TOWN': 'Shrub Oak', 'HARTSDALE': 'Antwerp', 'PATTERSON': 'Antwerp', 'MOUNT SINAI': 'Mount Sinai', 'NO NAME': 'Owego', 'IRVINGTON': 'Richland', 'ST. TAUL': 'Taberg', 'ALEXANDERIA': 'Long Eddy', 'MINEAPOLIS': 'Auburn', 'DELLMORE': 'Elma', 'KOMACK': 'Owego', 'PRATTVILLE': 'Rhinebeck', 'JAMACA': 'Avoca', 'OSSING': 'Owego', 'PITTSBURG': 'Pine Bush', 'HARRISBUG': 'Antwerp', 'CANCUN 2R': 'Antwerp', 'SCHOMBURG': 'Owego', 'STANFORD': 'Auburn', 'HIGH POINT': 'Hyde Park', 'WALDWICK': 'Antwerp', 'CALDWELL': 'Antwerp', 'TAYLOR': 'Taberg', 'HAMPTON BAYS': 'Hampton Bays', 'ASRETTA': 'Antwerp', 'MONTOURSVILLE': 'Mount Sinai', 'DAVIS': 'Acra', 'CLINTONDALE': 'Lily Dale', 'MANHATTAN': 'Antwerp', 'RIVSERSIDE': 'Rhinebeck', 'DELMORE': 'Elma', 'OLD BETH PAGE': 'Oak Hill', 'ENGLEWOOD': 'Glenham', 'JOURNAL SQUARE': 'Rock Stream', 'SEAFORD': 'Elma', 'NORCOSS': 'Owego', 'TAPE LIBERTY': 'New Lisbon', 'BLOOMINTON': 'Owego', 'CHAMPAIGN': 'Antwerp', 'LOS ANGELOUS': 'La Fayette', 'GREEN NECK': 'Great Neck', 'MANHANTTAN': 'Mill Neck', 'ROCKVILLE CENRE': 'Red Creek', 'BRAIRWOOD': 'Antwerp', 'SIOUX FALL': 'Oak Hill', 'HARRISBURG': 'Antwerp', 'HARTFORD': 'Antwerp', 'GREENVILLA': 'Rhinebeck', 'WHIPPANY': 'Willet', 'JAMESTOWN': 'Antwerp', 'MIFLORD': 'McLean', 'DAYTONA BEACH': 'Feura Bush', 'FLUSHNG': 'Lima', 'FARMNGDALE': 'McGraw', 'EAST HARTFORD': 'East Hampton', 'CROTON HUDSON': 'Oak Hill', 'PIEDMONT': 'Phoenix', 'EAST MIDDLE': 'East Islip', 'COLLEGEPOINT': 'Cherry Plain', 'WEST HMPSTEAD': 'West Hurley', 'HASBROOK': 'Antwerp', 'QUEENS VILLAGE': 'East Islip', 'CARDISS': 'Corona', 'JACKSON': 'Cairo', 'FORT COLLINS': 'Fly Creek', 'MIDDLETOWN': 'McDonough', 'NORWALK': 'Owego', 'BAY RIDGE': 'Bay Shore', 'AMHURST': 'Antwerp', 'N.A': 'Rye', 'PAUL': 'Ava', 'WILKES BARRY': 'Le Roy', 'STATEN ISLAND': 'Silver Lake', 'YONKERS': 'Owego', 'CARLEY PLACE': 'Rego Park', 'TWINSBURG': 'Willet', 'CAMBRIDGE': 'Antwerp', 'RYE BROOK': 'Ray Brook', 'PALATINE': 'Antwerp', 'THOROSARE': 'Owego', 'SHERMAN': 'Elma', 'CENTER MORICHES': 'New City', 'ISELIN': 'Elma', 'ESELIN': 'Elma', 'COLONIAN': 'Owego', 'SAINT LOUIS PARK': 'South Ozone Park', 'GREAT  NECK': 'Great Neck', 'TEANECK': 'Taberg', 'GRAY NECK': 'Glen Oaks', 'COONRATIDS': 'Owego', 'EAST RUTHERFORD': 'East Rockaway', 'FAIRFIELD': 'Antwerp', 'CARROL STREEM': 'Cold Spring', 'DID NOT DISCLOSE': 'New City', 'RALEIGH DURHAM': 'Le Roy', 'WINSTON-SALEM': 'West Oneonta', 'CARLETON': 'Antwerp', 'SIOUX FALLS': 'Old Forge', 'EAST AURORA': 'East Aurora', 'LAURENCE': 'Le Roy', 'BERGENFIELD': 'Big Flats', 'LAUREL': 'Le Roy', 'CLEVLAND': 'Corona', 'FRESNO': 'Elma', 'CONNECTICUT': 'Owego', 'SKOKIE': 'Sidney', 'BUSHKILL': 'Batavia', 'CLAYMONT': 'Corona', 'YORKTOWN HEIGHTS': 'Oak Hill', 'SEAFOR': 'Elma', 'BRANCHBURG': 'Red Hook', 'NEW YOR': 'New York', 'CLARK': 'Cairo', 'NEW WARK': 'New City', 'THEEKTOWAGA': 'Owego', 'DOBER': 'Dale', 'XXXXXXXXXXXXXXX': 'West Sand Lake', 'PEONIX': 'Elma', 'MOONACHIE': 'Owego', 'COOPER STATION': 'Cold Spring', 'TARZANA': 'Auburn', 'ROCKVILLE CENTER': 'Red Creek', 'LANGHORNE': 'Le Roy', 'STANDFORD': 'Shrub Oak', 'NEWWARK': 'Elma', 'HALIFAX': 'Auburn', 'FOLSOM': 'Owego', 'LONG SLAND': 'Long Lake', 'ORCHARDPARK NY': 'Rego Park', 'ELIZIBETH': 'Elma', 'WINDSOR': 'Willet', 'HOLLIS': 'Owego', 'NORFOLK': 'Owego', 'PLANO': 'Lima', 'INDIAN WELLS': 'North River', 'COSTA MESA': 'Oak Hill', 'SAINT PAUL': 'Rego Park', 'MAPLE WOOD': 'McLean', 'RUTHERFORD': 'Rhinebeck', 'BETHEL': 'Elma', 'CLIFFSIDE': 'Corona', 'GARLAND': 'Auburn', 'GARNERVILLE': 'Rhinebeck', 'GLEN OAKS': 'Glen Oaks', 'WOODSIDE': 'Owego', 'NORTHRIDGE': 'Owego', 'OKLAHOMA CITY': 'Oyster Bay', 'Manhattan': 'Canaan', 'EDENTON': 'Elma', 'WLLINGTON': 'Worcester', 'CANOOGA PARK': 'Clifton Park', 'LINDENHURST': 'Lake Hill', 'EAST SETUAKET': 'East Syracuse', 'SECUACUS': 'Corona', 'DICKISON CITY': 'New City', 'FREDERICK': 'Fredonia', 'ELIZBETH': 'Elma', 'LYMBROOK': 'Le Roy', 'MANHATTANVILLE': 'Mount Tremper', 'HIDE PARK': 'Hyde Park', 'SANDIEGO': 'Antwerp', 'WAPPINGER FALLS': 'Au Sable Forks', 'HASBROUCK': 'Antwerp', 'SAN FRANCISCO': 'Sea Cliff', 'POMPANO BEACH': 'Oyster Bay', 'CARLE   PL': 'Le Roy', 'HATBORO': 'Auburn', 'BRIARCLIFF': 'Brant Lake', 'FT WASHINGTON': 'West Nyack', 'PARKCHESTER': 'Port Henry', 'ORANGETOWN': 'Rhinebeck', 'CARLE PLACE': 'Crown Point', 'CARSON CITY': 'Rego Park', 'JFK': 'Jay', 'HORSEHEADS': 'Oak Hill', 'CHESTERSPRING': 'Cold Spring', 'HAMILTON': 'McLean', 'BERKELEY LAKE': 'Brant Lake', 'PUTNAM VALLEY': 'Pine Valley', 'PORT WASHINTON': 'Oak Hill', 'MELVILLE': 'McLean', 'SAINT ALBANY': 'Saint Albans', 'CLAVERTON': 'Le Roy', 'WILKES BARRE': 'Le Roy', 'STATEN  ISLAND': 'Tupper Lake', 'SUMMIT': 'Sidney', 'FARMINGDALE NY': 'McDonough', 'FRAKLIN SQUARE': 'Fort Ann', 'PALOS VERDES PENINSULA': 'Pine Valley', 'PATCHOHUE': 'Antwerp', 'WEST HEMSTEAD': 'West Hurley', 'ELMUNT': 'Elma', 'GREENBOXO': 'Glenham', 'WILLINGBORO': 'West Nyack', 'PALM HARBOR': 'Le Roy', 'MANATTAN': 'Antwerp', 'ROSLIN HEIGHTS': 'Sag Harbor', 'WADING RIVER': 'Wading River', 'OLD BECHPAGE': 'Oak Hill', 'LOS ANGLES': 'Le Roy', 'NEW TOWN': 'New City', 'WILLINGTON': 'West Nyack', 'JAMAICA ESTATE': 'Mount Sinai', 'COLLEGE POINT': 'Cherry Plain', 'BELMOUNT': 'Batavia', 'ROSYLN': 'Owego', 'WEST HARRISON': 'West Hurley', 'JOHNSON CITY': 'New City', 'RIVERVALE': 'Rhinebeck', 'WEST HAMPSTEAD': 'West Henrietta', 'MEDFORD NEW YORK, SUFFOLK COUNTY': 'West Sand Lake', 'RUTHERFORD?': 'Rhinebeck', 'NEW YORK CITY': 'New York Mills', 'HACKENSACK': 'Antwerp', 'BKLYN': 'Basom', 'VESTAL': 'Elma', 'MANHATTIN': 'Antwerp', 'DEERFIELD BEACH': 'Feura Bush', 'FRANKLIN SQ': 'Rhinebeck', 'ST GEORGE': 'Le Roy', 'MELVILL': 'McLean', 'MOUNT CLAIRE': 'Fly Creek', 'EAST RUTHFORD': 'East Rockaway', 'TARRY TOWN': 'Shrub Oak', 'SAKURAISHI': 'Antwerp', 'CHESTER FIELD': 'Hudson Falls', 'ARLINGTON': 'Antwerp', 'OVERLAND PARK': 'Rego Park', 'HAWTHORNE': 'Antwerp', 'CARL PLACE': 'Rego Park', 'NORCROSS GA': 'New Russia', 'BALDWIN HARBOR': 'Lake Hill', 'WHITE PLAINS ROAD': 'West Sand Lake', 'NORMAL': 'Owego', 'WILLISTON PARK': 'West Sand Lake', 'WESTWOOD': 'Willet', 'SURF CITY': 'New City', 'JERCITY': 'Elma', 'ROSEVILLE': 'Rhinebeck', 'JERSEY  CITY': 'Johnson City', 'NYC': 'Rye', 'HAVERHILL': 'Antwerp', 'DELUTH': 'Elma', 'WILLMINGTON': 'West Nyack', 'CRESSAILL': 'Corona', 'ST. CHARLES': 'Sag Harbor', 'MINNEAPPOLOUS': 'Miller Place', 'SAITN JOSEPHS': 'Shrub Oak', 'RIDGEWOD': 'Elma', 'EMHURST': 'Monroe', 'EDISON': 'Elma', 'BOSTON': 'Owego', 'ALBANY': 'Auburn', 'HASBROUK HEIGHTS': 'Sag Harbor', 'CRANTON': 'Corona', 'GOLDENS BRIDGE': 'Oyster Bay', 'OMAHA': 'Owego', 'CLERMONT': 'Corona'}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351062128_2138783345",
+      "id": "paragraph_1639351062128_2138783345",
+      "dateCreated": "2021-12-12T18:17:42-0500",
+      "dateStarted": "2021-12-12T18:23:01-0500",
+      "dateFinished": "2021-12-12T18:23:01-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:501"
+    },
+    {
+      "text": "%pyspark\n\nkeys = list(list_of_new_values.keys())\nvalues = list(list_of_new_values.values())\ndf = df.replace(keys,values,\"City\")",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:50:13-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351224184_1286434179",
+      "id": "paragraph_1639351224184_1286434179",
+      "dateCreated": "2021-12-12T18:20:24-0500",
+      "dateStarted": "2021-12-12T18:50:13-0500",
+      "dateFinished": "2021-12-12T18:50:13-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:502"
+    },
+    {
+      "text": "%pyspark\n\n# Run to remove cache\ndf.unpersist()",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:50:15-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[Unique Key: int, Created Date: timestamp, Closed Date: timestamp, Agency: string, Agency Name: string, Complaint Type: string, Descriptor: string, Location Type: string, Incident Zip: int, Incident Address: string, Street Name: string, Cross Street 1: string, Cross Street 2: string, Intersection Street 1: string, Intersection Street 2: string, Address Type: string, City: string, Landmark: string, Facility Type: string, Status: string, Due Date: timestamp, Resolution Description: string, Resolution Action Updated Date: timestamp, Community Board: string, BBL: int, Borough: string, X Coordinate (State Plane): int, Y Coordinate (State Plane): int, Open Data Channel Type: string, Park Facility Name: string, Park Borough: string, Vehicle Type: string, Taxi Company Borough: string, Taxi Pick Up Location: string, Bridge Highway Name: string, Bridge Highway Direction: string, Road Ramp: string, Bridge Highway Segment: string, Latitude: double, Longitude: double, Location: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351453071_39792726",
+      "id": "paragraph_1639351453071_39792726",
+      "dateCreated": "2021-12-12T18:24:13-0500",
+      "dateStarted": "2021-12-12T18:50:15-0500",
+      "dateFinished": "2021-12-12T18:50:15-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:503"
+    },
+    {
+      "text": "%pyspark\n\n# So that memory does not get overloaded\nlist_of_new_values.clear()\nlist_of_correct_cities.clear()\nkeys.clear()\nvalues.clear()\n\ndel list_of_new_values\ndel list_of_correct_cities\ndel keys\ndel values",
+      "user": "anonymous",
+      "dateUpdated": "2021-12-12T18:50:20-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639351432583_344960729",
+      "id": "paragraph_1639351432583_344960729",
+      "dateCreated": "2021-12-12T18:23:52-0500",
+      "dateStarted": "2021-12-12T18:50:20-0500",
+      "dateFinished": "2021-12-12T18:50:20-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:504"
+    }
+  ],
+  "name": "Cleaning_Dataset_peel_Accuracy",
+  "id": "2GQEFM3SR",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Cleaning_Dataset_peel_Accuracy"
+}
