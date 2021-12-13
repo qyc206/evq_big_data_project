@@ -101,6 +101,7 @@ The notebooks for Part II are available via [notebooks/part2](https://github.com
 
 ## Final Paper
 
+The final paper is available on this repository via the file: [bigdata_finalpaper.pdf](https://github.com/qyc206/evq_big_data_project/blob/main/bigdata_finalpaper.pdf)
 
 # Contact Information
 
