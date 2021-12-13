@@ -1,0 +1,723 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n## Upload the dataset to Peel cluster & Define dataset path\n\nBefore continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:\n\n```\n# Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] <net_id>@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path \"/user/[netid]/[FILENAME]\")\nhfs -put [FILENAME]\n```\n\nMake sure you can locate your dataset before continuing onwards.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:06:25-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Upload the dataset to Peel cluster &amp; Define dataset path</h2>\n<p>Before continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:</p>\n<pre><code># Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] &lt;net_id&gt;@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path &quot;/user/[netid]/[FILENAME]&quot;)\nhfs -put [FILENAME]\n</code></pre>\n<p>Make sure you can locate your dataset before continuing onwards.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505582_1435093318",
+      "id": "paragraph_1639349434149_1497305356",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "dateStarted": "2021-12-12T20:06:25-0500",
+      "dateFinished": "2021-12-12T20:06:25-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:5761"
+    },
+    {
+      "text": "%pyspark\n# Define path to dataset on Peel HDFS (NOTE: replace file name with your own if different)\ndataset_path = \"/user/CS-GY-6513/project_data/data-cityofnewyork-us.erm2-nwe9.csv\"",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505582_956046942",
+      "id": "paragraph_1639349451855_1649935793",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5762"
+    },
+    {
+      "text": "%pyspark\n\n# Set up pyspark session\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession \\\n            .builder \\\n            .appName(\"Python Spark SQL basic example\") \\\n            .config(\"spark.some.config.option\", \"some-value\") \\\n            .config(\"spark.executor.memory\", \"50g\") \\\n            .config(\"spark.driver.memory\", \"50g\") \\\n            .getOrCreate()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1359980048",
+      "id": "paragraph_1639349473376_244010853",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5763"
+    },
+    {
+      "text": "%md\n\n## Load dataset using spark\n\nRun the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:06:51-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Load dataset using spark</h2>\n<p>Run the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1236852100",
+      "id": "paragraph_1639349517631_1667410048",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "dateStarted": "2021-12-12T20:06:51-0500",
+      "dateFinished": "2021-12-12T20:06:51-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:5764"
+    },
+    {
+      "text": "%pyspark\n\n# Load dataset\ndf = spark.read.format('csv').options(header='true',inferschema='true').load(dataset_path)\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\") ",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1448822042",
+      "id": "paragraph_1639349485019_1670256347",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5765"
+    },
+    {
+      "text": "%md\n\nNotice in the result of running the above cell that most items in the schema is of type string, even if it is not the expected type. To modify the dataset such that the types of each column is what we would expect, we perform type casting for each column that should not be type string.\n\n**NOTE: the following cell is specific for the 311 service report dataset; make sure to modify the following cell to include type casting that is necessary to your dataset, if different",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:07:07-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Notice in the result of running the above cell that most items in the schema is of type string, even if it is not the expected type. To modify the dataset such that the types of each column is what we would expect, we perform type casting for each column that should not be type string.</p>\n<p>**NOTE: the following cell is specific for the 311 service report dataset; make sure to modify the following cell to include type casting that is necessary to your dataset, if different</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1645460253",
+      "id": "paragraph_1639349499040_210763611",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "dateStarted": "2021-12-12T20:07:07-0500",
+      "dateFinished": "2021-12-12T20:07:07-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:5766"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\nfrom pyspark.sql.functions import to_timestamp\n\n# Type casting to expected types\ndf = df.withColumn(\"Unique Key\",df[\"Unique Key\"].cast(IntegerType()))\ndf = df.withColumn(\"Due Date\",to_timestamp(df[\"Due Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Created Date\", to_timestamp(df[\"Created Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Closed Date\",to_timestamp(df[\"Closed Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Incident Zip\",df[\"Incident Zip\"].cast(IntegerType()))\ndf = df.withColumn(\"BBL\",df[\"BBL\"].cast(IntegerType()))\ndf = df.withColumn(\"X Coordinate (State Plane)\",df[\"X Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Y Coordinate (State Plane)\",df[\"Y Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Resolution Action Updated Date\",to_timestamp(df[\"Resolution Action Updated Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\n\n\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\")",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1879693698",
+      "id": "paragraph_1639349554158_110288510",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5767"
+    },
+    {
+      "text": "%md\n## I. Uniformity\n\nAs observed during profiling, there are several non-uniform casing problems in the values of columns of type string. The problem is narrowed to the following five columns: \"Complaint Type\", \"Descriptor\", \"Location Type\", \"Street Name\", and \"City\". To solve this problem, we write a function called **oneColUniformCasing** that takes in a column name (type string) and updates the values of the items in the column to the format where the first character in every word is uppercased. \n\nRun the following cell with the function definition.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:07:39-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>I. Uniformity</h2>\n<p>As observed during profiling, there are several non-uniform casing problems in the values of columns of type string. The problem is narrowed to the following five columns: &ldquo;Complaint Type&rdquo;, &ldquo;Descriptor&rdquo;, &ldquo;Location Type&rdquo;, &ldquo;Street Name&rdquo;, and &ldquo;City&rdquo;. To solve this problem, we write a function called <strong>oneColUniformCasing</strong> that takes in a column name (type string) and updates the values of the items in the column to the format where the first character in every word is uppercased.</p>\n<p>Run the following cell with the function definition.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_492079682",
+      "id": "paragraph_1639349578349_1407883194",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "dateStarted": "2021-12-12T20:07:39-0500",
+      "dateFinished": "2021-12-12T20:07:39-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:5768"
+    },
+    {
+      "text": "%pyspark\ndef calculate_distinct(col,dataoriginal,get_option=\"count\"):\n    distinct_vals = dataoriginal.select(col).distinct()\n    if get_option==\"count\":\n        return distinct_vals.count()\n    elif get_option == \"distinct\":\n        return distinct_vals",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1178470074",
+      "id": "paragraph_1639349600318_516250004",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5769"
+    },
+    {
+      "text": "%pyspark \nfrom pyspark.sql.functions import initcap, col, trim\ndef oneColUniformCasing(col_name,dataoriginal):\n    dataoriginal = dataoriginal.select(\"*\", trim(initcap(col(col_name))).alias('Temp name'))\n    dataoriginal  = dataoriginal.drop(col_name)\n    newdata  = dataoriginal.withColumnRenamed(\"Temp name\",col_name)\n    return newdata",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1489198605",
+      "id": "paragraph_1639349625281_746807937",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5770"
+    },
+    {
+      "text": "%md\nThe function is applied to the columns that are found to be non-uniform.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>The function is applied to the columns that are found to be non-uniform.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_10782180",
+      "id": "paragraph_1639349637058_18320948",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5771"
+    },
+    {
+      "text": "%pyspark\n# Apply oneColUniformCasing to \"Complaint Type\"\ndf = oneColUniformCasing(\"Complaint Type\", df)\n\n# Apply oneColUniformCasing to \"Descriptor\"\ndf = oneColUniformCasing(\"Descriptor\", df)\n\n# Apply oneColUniformCasing to \"Street Name\"\ndf = oneColUniformCasing(\"Street Name\", df)\n\n# Apply oneColUniformCasing to \"City\"\ndf = oneColUniformCasing(\"City\", df)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1297054109",
+      "id": "paragraph_1639349724011_342870046",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5772"
+    },
+    {
+      "text": "%md \nSince \"Location Type\" column only has one nonuniform value found, this value is directly corrected.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Since &ldquo;Location Type&rdquo; column only has one nonuniform value found, this value is directly corrected.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_356169926",
+      "id": "paragraph_1639350117736_791102029",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5773"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import regexp_replace\n\n# Only fix row with \"RESIDENTIAL BUILDING\" in \"Location Type\" column\ndf = df.withColumn('Location Type', regexp_replace('Location Type', \n                                              'RESIDENTIAL BUILDING', \n                                              'Residential Building'))",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_1802098909",
+      "id": "paragraph_1639350129927_2071609108",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5774"
+    },
+    {
+      "text": "%md\n### Try some columns to see the improvement!\n\nBelow are a few cells that show some of the columns that had uniformity problems. We can observe by running these cells that the items of each column now contain uniform casing (i.e. every value is in the format where the first letter of each word is uppercased).\n\n(The output is currently hidden, press the show output button if you want to see our results)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:08:44-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h3>Try some columns to see the improvement!</h3>\n<p>Below are a few cells that show some of the columns that had uniformity problems. We can observe by running these cells that the items of each column now contain uniform casing (i.e. every value is in the format where the first letter of each word is uppercased).</p>\n<p>(The output is currently hidden, press the show output button if you want to see our results)</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_606852797",
+      "id": "paragraph_1639350140436_856066118",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "dateStarted": "2021-12-12T20:08:44-0500",
+      "dateFinished": "2021-12-12T20:08:44-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:5775"
+    },
+    {
+      "text": "%pyspark\n# View column \"Complaint Type\" \ndf.select(\"Complaint Type\").distinct().collect()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[Row(Complaint Type='Traffic Signal Condition'), Row(Complaint Type='Vacant Apartment'), Row(Complaint Type='..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\...'), Row(Complaint Type=\"Misc. Comments' And 6049=60...\"), Row(Complaint Type='Street Sweeping Complaint'), Row(Complaint Type='Misc. Commentso0w3r%&gt;xb6...'), Row(Complaint Type=\"Misc. Comments' Waitfor Del...\"), Row(Complaint Type=\"A'a\\\\'b&quot;c&gt;?&gt;%}}%%...\"), Row(Complaint Type=\"Misc. Comments}}t2v95'/&quo...\"), Row(Complaint Type='&lt;odb Xmlns:xi=&quot;http...'), Row(Complaint Type='../web-inf/web.xml;x='), Row(Complaint Type='Tanning'), Row(Complaint Type='Dof Parking - Request Copy'), Row(Complaint Type='Comments'), Row(Complaint Type='@(9313*3464)'), Row(Complaint Type='%c0%ae/%c0%ae/web-inf/web.xml'), Row(Complaint Type='Noise - Helicopter'), Row(Complaint Type='.../....///.../....///.../....'), Row(Complaint Type='Flooring/stairs'), Row(Complaint Type='Oem Disabled Vehicle'), Row(Complaint Type='Dof Property - Update Account'), Row(Complaint Type='Vaccine Mandate Non-compliance'), Row(Complaint Type='File:///etc/passwd'), Row(Complaint Type='Covid-19 Non-essential Construction'), Row(Complaint Type='Harboring Bees/wasps'), Row(Complaint Type='Broken Parking Meter'), Row(Complaint Type='Fire Alarm - New System'), Row(Complaint Type='Window Guard'), Row(Complaint Type='Broken Muni Meter'), Row(Complaint Type='Misc. Comments&amp;ping -n ...'), Row(Complaint Type='Highway Condition'), Row(Complaint Type='Dsny Spillage'), Row(Complaint Type='E-scooter'), Row(Complaint Type='Street Condition'), Row(Complaint Type='Hazardous Materials'), Row(Complaint Type='Illegal Dumping'), Row(Complaint Type='Vending'), Row(Complaint Type='Advocate - Rpie'), Row(Complaint Type='Ferry Permit'), Row(Complaint Type='Taxi Report'), Row(Complaint Type='Quality Of Life'), Row(Complaint Type='Drie'), Row(Complaint Type='Dof Property - Payment Issue'), Row(Complaint Type='Misc. Comments|ping -n 21 1...'), Row(Complaint Type='Drinking Water'), Row(Complaint Type='Bus Stop Shelter Complaint'), Row(Complaint Type='Public Toilet'), Row(Complaint Type=\"Misc. Comments'+(function()...\"), Row(Complaint Type='../../../web-inf/web.xml'), Row(Complaint Type='Misc. Comments&quot;|ping -...'), Row(Complaint Type='Misc. Comments&gt;  Bcc:bl0...'), Row(Complaint Type='Paint/plaster'), Row(Complaint Type='Commercial Disposal Complaint'), Row(Complaint Type='%2e%2e%5c%2e%2e%5c%2e%2e%5c...'), Row(Complaint Type='Municipal Parking Facility'), Row(Complaint Type='Mosquitoes'), Row(Complaint Type='Misc. Comments;declare @q V...'), Row(Complaint Type='Fire Alarm - Replacement'), Row(Complaint Type='Advocate-ubt'), Row(Complaint Type='Animal Abuse'), Row(Complaint Type='Taxi Compliment'), Row(Complaint Type='Transfer Station Complaint'), Row(Complaint Type='Open Flame Permit'), Row(Complaint Type='Misc. Comments../../../../....'), Row(Complaint Type='Smoking'), Row(Complaint Type='Parking Card'), Row(Complaint Type='Misc. Comments]]&gt;&gt;&lt;'), Row(Complaint Type='Incorrect Data'), Row(Complaint Type='Injured Wildlife'), Row(Complaint Type='Sg-99'), Row(Complaint Type='Advocate - Levy'), Row(Complaint Type='Abandoned Bike'), Row(Complaint Type='Misc. Commentseowljujfh8'), Row(Complaint Type='Sanitation Condition'), Row(Complaint Type='Homeless Street Condition'), Row(Complaint Type='Advocate-scrie/drie'), Row(Complaint Type='Gas Station Discharge Lines'), Row(Complaint Type='Srgovg'), Row(Complaint Type='Rangehood'), Row(Complaint Type='Home Delivered Meal Complaint'), Row(Complaint Type='&lt;vlv Xmlns=&quot;http://...'), Row(Complaint Type='Uprooted Stump'), Row(Complaint Type='Noncompliance With Phased Reopening'), Row(Complaint Type='Illegal Parking'), Row(Complaint Type='Building Condition'), Row(Complaint Type='/./validate_form.php'), Row(Complaint Type='Taxi Licensee Complaint'), Row(Complaint Type='Noise - Residential'), Row(Complaint Type='Unsanitary Condition'), Row(Complaint Type='Obstruction'), Row(Complaint Type='../../../web-inf/web.xml;x='), Row(Complaint Type='Portable Toilet'), Row(Complaint Type='Teaching/learning/instruction'), Row(Complaint Type='Maintenance Or Facility'), Row(Complaint Type='Misc. Comments&amp;nslookup...'), Row(Complaint Type='Dep Highway Condition'), Row(Complaint Type='Sewer'), Row(Complaint Type='Drug Activity'), Row(Complaint Type='File:///c:/windows/win.ini'), Row(Complaint Type='Qfix4${695*589}lixaf'), Row(Complaint Type='Executive Inspections'), Row(Complaint Type='Snow Removal'), Row(Complaint Type='Noise Survey'), Row(Complaint Type='Advocate-prop Class Incorrect'), Row(Complaint Type='Dirty Condition'), Row(Complaint Type='Noise - Commercial'), Row(Complaint Type='Highway Sign - Dangling'), Row(Complaint Type='./validate_form.php'), Row(Complaint Type='Water System'), Row(Complaint Type='Root/sewer/sidewalk Condition'), Row(Complaint Type=\"Misc. Comments'(select*from...\"), Row(Complaint Type='Illegal Animal Kept As Pet'), Row(Complaint Type='Beach/pool/sauna Complaint'), Row(Complaint Type=\"Misc. Comments');declare @q...\"), Row(Complaint Type='Squeegee'), Row(Complaint Type='Internal Code'), Row(Complaint Type='%2fetc%2fpasswd'), Row(Complaint Type='Air Quality'), Row(Complaint Type='../../web-inf/web.xml'), Row(Complaint Type='Lead'), Row(Complaint Type='%c0%ae/web-inf/web.xml'), Row(Complaint Type='Street Sign - Missing'), Row(Complaint Type='Home Delivered Meal - Missed Delivery'), Row(Complaint Type='Dof Property - City Rebate'), Row(Complaint Type='Dof Property - Rpie Issue'), Row(Complaint Type='Single Occupancy Bathroom'), Row(Complaint Type='Dof Property - State Rebate'), Row(Complaint Type='/etc/passwd'), Row(Complaint Type='Lost Property'), Row(Complaint Type='Dsny Internal'), Row(Complaint Type='Dof Parking - Dmv Clearance'), Row(Complaint Type='Health'), Row(Complaint Type='General'), Row(Complaint Type=\"Misc. Comments'|echo Y9v6fc...\"), Row(Complaint Type='Dof Property - Request Copy'), Row(Complaint Type='Derelict Vehicle'), Row(Complaint Type='Heat/hot Water'), Row(Complaint Type='Dof Property - Property Value'), Row(Complaint Type='Fire Alarm - Reinspection'), Row(Complaint Type='../../../../../../../../../...'), Row(Complaint Type='General Construction/plumbing'), Row(Complaint Type='Special Projects Inspection Team (spit)'), Row(Complaint Type=\"Eval(compile('for X In Rang...\"), Row(Complaint Type='Outdoor Dining'), Row(Complaint Type='Misc. Comments&quot;|echo 2...'), Row(Complaint Type='%{(#dm=@ognl.ognlcontext@de...'), Row(Complaint Type='Senior Center Complaint'), Row(Complaint Type='Paint - Plaster'), Row(Complaint Type='Utility Program'), Row(Complaint Type='Water Maintenance'), Row(Complaint Type='Misc. Comments|nslookup -q=...'), Row(Complaint Type=\"Misc. Comments69075347' Or ...\"), Row(Complaint Type='Dhs Advantage - Third Party'), Row(Complaint Type='Blocked Driveway'), Row(Complaint Type='Lot Condition'), Row(Complaint Type='Homeless Encampment'), Row(Complaint Type='Housing - Low Income Senior'), Row(Complaint Type='Dpr Internal'), Row(Complaint Type='Taxi Complaint'), Row(Complaint Type='.../...//.../...//.../...//...'), Row(Complaint Type='Http://g7orz5h9iu2sh6z332rj...'), Row(Complaint Type='Sidewalk Condition'), Row(Complaint Type='Advocate-foreclosure'), Row(Complaint Type='Scrie'), Row(Complaint Type='Meals Home Delivery Required'), Row(Complaint Type='Green Taxi Complaint'), Row(Complaint Type='Lifeguard'), Row(Complaint Type='Litter Basket / Request'), Row(Complaint Type='Special Natural Area District (snad)'), Row(Complaint Type='Stalled Sites'), Row(Complaint Type='Water Conservation'), Row(Complaint Type='Consumer Complaint'), Row(Complaint Type='For Hire Vehicle Complaint'), Row(Complaint Type='X-ray Machine/equipment'), Row(Complaint Type='Research Questions'), Row(Complaint Type='*)(objectclass=*'), Row(Complaint Type='Misc. Comments&amp;echo Xjd...'), Row(Complaint Type='Illegal Tree Damage'), Row(Complaint Type='Advocate - Lien'), Row(Complaint Type='*)(!(objectclass=*)'), Row(Complaint Type='Dept Of Investigations'), Row(Complaint Type='Request Xmas Tree Collection'), Row(Complaint Type='Benefit Card Replacement'), Row(Complaint Type='Atf'), Row(Complaint Type='Advocate-commercial Exemptions'), Row(Complaint Type='Indoor Sewage'), Row(Complaint Type='Emergency Response Team (ert)'), Row(Complaint Type='Advocate-co-opcondo Abatement'), Row(Complaint Type='Weatherization'), Row(Complaint Type='Asbestos'), Row(Complaint Type='Unsanitary Animal Pvt Property'), Row(Complaint Type='Cranes And Derricks'), Row(Complaint Type='../web-inf/web.xml'), Row(Complaint Type=\"Misc. Comments'|ping -c 21 ...\"), Row(Complaint Type='Fhv Licensee Complaint'), Row(Complaint Type='Misc. Comments{${sleep(20)}}'), Row(Complaint Type=\"Misc. Comments' And '7835'=...\"), Row(Complaint Type='Asbestos/garbage Nuisance'), Row(Complaint Type='Misc. Comments);declare @q ...'), Row(Complaint Type='Advocate-business Tax'), Row(Complaint Type='Construction Lead Dust'), Row(Complaint Type='Water Quality'), Row(Complaint Type='Derelict Bicycle'), Row(Complaint Type='Eviction'), Row(Complaint Type='Advocate-property Value'), Row(Complaint Type='Standing Water'), Row(Complaint Type='Construction'), Row(Complaint Type='Noise - Park'), Row(Complaint Type='Dhs Advantage -landlord/broker'), Row(Complaint Type='Dof Parking - Request Status'), Row(Complaint Type='Violation Of Park Rules'), Row(Complaint Type='Cooling Tower'), Row(Complaint Type='Non-residential Heat'), Row(Complaint Type='Bus Stop Shelter Placement'), Row(Complaint Type='Hazmat Storage/use'), Row(Complaint Type='() { :;}; /bin/sleep 0'), Row(Complaint Type='Poison Ivy'), Row(Complaint Type='%c0%ae/%c0%ae/%c0%ae/%c0%ae...'), Row(Complaint Type='Mass Gathering Complaint'), Row(Complaint Type='Disorderly Youth'), Row(Complaint Type='Highway Sign - Damaged'), Row(Complaint Type='C:\\\\windows\\\\win.ini Misc. Co...'), Row(Complaint Type='() { :;}; /bin/sleep 11'), Row(Complaint Type='Electronics Waste Appointment'), Row(Complaint Type='Dof Property - Reduction Issue'), Row(Complaint Type='Special Operations'), Row(Complaint Type=\"Misc. Comments47876391' Or ...\"), Row(Complaint Type=\"Misc. Comments'.sleep(20).'\"), Row(Complaint Type='Dof Parking - Address Update'), Row(Complaint Type='Bike Rack Condition'), Row(Complaint Type='Urinating In Public'), Row(Complaint Type='Misc. Comments,(select*from...'), Row(Complaint Type='Dispatched Taxi Compliment'), Row(Complaint Type='Illegal Animal Sold'), Row(Complaint Type='Forensic Engineering'), Row(Complaint Type='...\\\\./...\\\\./...\\\\./...\\\\./......'), Row(Complaint Type='Home Care Provider Complaint'), Row(Complaint Type='Green Taxi Report'), Row(Complaint Type=\"Misc. Comments52038737' Or ...\"), Row(Complaint Type='Found Property'), Row(Complaint Type='Other Enforcement'), Row(Complaint Type='.../misc. Comments'), Row(Complaint Type='Litter Basket Complaint'), Row(Complaint Type='Homeless Person Assistance'), Row(Complaint Type='Posting Advertisement'), Row(Complaint Type='Legal Services Provider Complaint'), Row(Complaint Type='Dead Animal'), Row(Complaint Type='Recycling Basket Complaint'), Row(Complaint Type='Scaffold Safety'), Row(Complaint Type=\"Misc. Comments'+sleep(20.to...\"), Row(Complaint Type='Miscellaneous Categories'), Row(Complaint Type='%c0%ae/%c0%ae/%c0%ae/web-in...'), Row(Complaint Type='Recycling Enforcement'), Row(Complaint Type='Facades'), Row(Complaint Type='Residential Disposal Complaint'), Row(Complaint Type='Noise'), Row(Complaint Type='Home Repair'), Row(Complaint Type='Heap Assistance'), Row(Complaint Type='Dof Literature Request'), Row(Complaint Type='Misc. Comments|ping -c 21 1...'), Row(Complaint Type='.../.\\\\.../.\\\\.../.\\\\.../.\\\\......'), Row(Complaint Type='Misc. Comments  Bcc:a5glxzf...'), Row(Complaint Type='Elder Abuse'), Row(Complaint Type='Borough Office'), Row(Complaint Type='Animal In A Park'), Row(Complaint Type='Peeling Paint'), Row(Complaint Type='Sustainability Enforcement'), Row(Complaint Type='Employee Behavior'), Row(Complaint Type='Advocate - Other'), Row(Complaint Type='$(sleep 11)'), Row(Complaint Type='Abandoned Vehicle'), Row(Complaint Type='New Tree Request'), Row(Complaint Type='Boilers'), Row(Complaint Type='Industrial Waste'), Row(Complaint Type='Tattooing'), Row(Complaint Type='Construction Safety Enforcement'), Row(Complaint Type=\"Misc. Comments'+(select*fro...\"), Row(Complaint Type=\"Misc. Comments'+eval(compil...\"), Row(Complaint Type=\"Misc. Comments88909845' Or ...\"), Row(Complaint Type='Sprinkler - Mechanical'), Row(Complaint Type='Snw'), Row(Complaint Type='1430*4963'), Row(Complaint Type=\"Alzheimer's Care\"), Row(Complaint Type='Forms'), Row(Complaint Type='Animal-abuse'), Row(Complaint Type='Mold'), Row(Complaint Type='Bike/roller/skate Chronic'), Row(Complaint Type='Dep Street Condition'), Row(Complaint Type='Change Collection Schedule'), Row(Complaint Type='Non-emergency Police Matter'), Row(Complaint Type='Collection Truck Noise'), Row(Complaint Type='Bcd9&lt;!--esi--&gt;1ggp&lt...'), Row(Complaint Type='Sweeping/missed-inadequate'), Row(Complaint Type='%2e%2e%2f%2e%2e%2f%2e%2e%2f...'), Row(Complaint Type='Street Light Condition'), Row(Complaint Type='Plumbing'), Row(Complaint Type='Srde'), Row(Complaint Type='Storm'), Row(Complaint Type='Private Or Charter School Reopening'), Row(Complaint Type='`sleep 11`'), Row(Complaint Type='${3804*3137}'), Row(Complaint Type='Calorie Labeling'), Row(Complaint Type='Building Marshals Office'), Row(Complaint Type='Institution Disposal Complaint'), Row(Complaint Type='General Construction'), Row(Complaint Type='Ferry Complaint'), Row(Complaint Type='266dyrgvhg1egsyp2oq57axbm2s...'), Row(Complaint Type='Dhs Income Savings Requirement'), Row(Complaint Type='Elevator'), Row(Complaint Type='Day Care'), Row(Complaint Type='Dof Parking - Tax Exemption'), Row(Complaint Type='Litter Basket Request'), Row(Complaint Type=\"Misc. Comments' And '1618'=...\"), Row(Complaint Type='Dof Parking - Payment Issue'), Row(Complaint Type='Fcst'), Row(Complaint Type='Misc. Comments|echo 3p7wexz...'), Row(Complaint Type='Homebound Evacuation 4'), Row(Complaint Type='Trans Fat'), Row(Complaint Type='Hcvn1{{687*375}}gji51'), Row(Complaint Type='Noise - Street/sidewalk'), Row(Complaint Type='Drinking'), Row(Complaint Type='Bridge Condition'), Row(Complaint Type='Best/site Safety'), Row(Complaint Type='Agency'), Row(Complaint Type='Misc. Comments&quot;'), Row(Complaint Type='Noise - House Of Worship'), Row(Complaint Type='Public Payphone Complaint'), Row(Complaint Type='Housing Options'), Row(Complaint Type='Request Large Bulky Item Collection'), Row(Complaint Type='Transportation Provider Complaint'), Row(Complaint Type='Dead/dying Tree'), Row(Complaint Type='Special Enforcement'), Row(Complaint Type='Summer Camp'), Row(Complaint Type='Case Management Agency Complaint'), Row(Complaint Type='Taxpayer Advocate Inquiry'), Row(Complaint Type='Encampment'), Row(Complaint Type='Dumpster Complaint'), Row(Complaint Type='Sweeping/inadequate'), Row(Complaint Type='No Child Left Behind'), Row(Complaint Type='Structural'), Row(Complaint Type='Advocate-prop Refunds/credits'), Row(Complaint Type='Question'), Row(Complaint Type='C:\\\\windows\\\\win.ini'), Row(Complaint Type='Animal Facility - No Permit'), Row(Complaint Type='Dor Literature Request'), Row(Complaint Type='Electric'), Row(Complaint Type='Trapping Pigeon'), Row(Complaint Type='Standpipe - Mechanical'), Row(Complaint Type='City Vehicle Placard Complaint'), Row(Complaint Type='Dca / Doh New License Application Request'), Row(Complaint Type='Hpd Literature Request'), Row(Complaint Type='Mobile Food Vendor'), Row(Complaint Type='...\\\\.\\\\...\\\\.\\\\...\\\\.\\\\...\\\\.\\\\......'), Row(Complaint Type='Parent Leadership'), Row(Complaint Type='Overgrown Tree/branches'), Row(Complaint Type='Fatf'), Row(Complaint Type='Illegal Animal - Sold/kept'), Row(Complaint Type='Street Sign - Damaged'), Row(Complaint Type='Safety'), Row(Complaint Type='Yw97y0gi2s'), Row(Complaint Type='../../../../web-inf/web.xml'), Row(Complaint Type='Dispatched Taxi Complaint'), Row(Complaint Type='Food Poisoning'), Row(Complaint Type='Missed Collection (all Materials)'), Row(Complaint Type='Unlicensed Dog'), Row(Complaint Type=\"Misc. Comments')waitfor Del...\"), Row(Complaint Type=\"Misc. Comments'\"), Row(Complaint Type='Fire Alarm - Modification'), Row(Complaint Type='Panhandling'), Row(Complaint Type='Heating'), Row(Complaint Type='Dhs Advantage - Tenant'), Row(Complaint Type='Zsystest'), Row(Complaint Type='Snow Or Ice'), Row(Complaint Type=\"Misc. Comments' And (select...\"), Row(Complaint Type='Appliance'), Row(Complaint Type='\\\\windows\\\\win.ini'), Row(Complaint Type='Street Sign - Dangling'), Row(Complaint Type='Dead Tree'), Row(Complaint Type='Dof Property - Owner Issue'), Row(Complaint Type='Damaged Tree'), Row(Complaint Type='../../web-inf/web.xml;x='), Row(Complaint Type='Investigations And Discipline (iad)'), Row(Complaint Type='Select Message Type...'), Row(Complaint Type='Noise - Vehicle'), Row(Complaint Type='Interior Demo'), Row(Complaint Type='..././..././..././..././......'), Row(Complaint Type='Snow'), Row(Complaint Type='Overflowing Recycling Baskets'), Row(Complaint Type='Rodent'), Row(Complaint Type='Nonconst'), Row(Complaint Type='Radioactive Material'), Row(Complaint Type='Foam Ban Enforcement'), Row(Complaint Type='Unsanitary Animal Facility'), Row(Complaint Type='Highway Sign - Missing'), Row(Complaint Type='Bottled Water'), Row(Complaint Type='Overflowing Litter Baskets'), Row(Complaint Type='Wood Pile Remaining'), Row(Complaint Type='Hazardous Material'), Row(Complaint Type=\"Kawn''lcgv\"), Row(Complaint Type='Illegal Fireworks'), Row(Complaint Type='Nslookup -q=cname Nneyfcxgy...'), Row(Complaint Type='Oem Literature Request'), Row(Complaint Type='Sanitation Worker Or Vehicle Complaint'), Row(Complaint Type='Dep Bridge Condition'), Row(Complaint Type='Traffic'), Row(Complaint Type='Unleashed Dog'), Row(Complaint Type=\"{!xmlparser V='&lt;!doctype...\"), Row(Complaint Type='Food Establishment'), Row(Complaint Type='G0oii1s4s5)(objectclass=*'), Row(Complaint Type='Idexf3mrb7)(!(objectclass=*)'), Row(Complaint Type='Derelict Vehicles'), Row(Complaint Type='Outside Building'), Row(Complaint Type='Graffiti'), Row(Complaint Type='Sweeping/missed'), Row(Complaint Type=\"Misc. Comments',0)waitfor D...\"), Row(Complaint Type='Discipline And Suspension'), Row(Complaint Type='(select Extractvalue(xmltyp...'), Row(Complaint Type='Adopt-a-basket'), Row(Complaint Type='Dep Sidewalk Condition'), Row(Complaint Type='Public Assembly'), Row(Complaint Type=\"Misc. Comments%}dt2pq'/&quo...\"), Row(Complaint Type='Dirty Conditions'), Row(Complaint Type='Plant'), Row(Complaint Type='Retailer Complaint'), Row(Complaint Type='Electronics Waste'), Row(Complaint Type='Building/use'), Row(Complaint Type='Curb Condition'), Row(Complaint Type='Water Leak'), Row(Complaint Type=\"Misc. Comments'&quot;`0&amp...\"), Row(Complaint Type='Public Assembly - Temporary'), Row(Complaint Type='Tunnel Condition'), Row(Complaint Type='() { _; } &gt;_'), Row(Complaint Type='Norc Complaint'), Row(Complaint Type='Indoor Air Quality'), Row(Complaint Type='Bereavement Support Group'), Row(Complaint Type='Illegal Posting'), Row(Complaint Type='For Hire Vehicle Report'), Row(Complaint Type='Traffic/illegal Parking'), Row(Complaint Type='Ztestint'), Row(Complaint Type='Misc. Comments..\\\\..\\\\..\\\\..\\\\....'), Row(Complaint Type='Unsanitary Pigeon Condition'), Row(Complaint Type='Ferry Inquiry'), Row(Complaint Type='Missed Collection'), Row(Complaint Type='Registration And Transfers'), Row(Complaint Type=\"Misc. Comments';declare @q ...\"), Row(Complaint Type='Vacant Lot'), Row(Complaint Type='General Question'), Row(Complaint Type=\"&quot;--&gt;'--&gt;`--&gt;&...\"), Row(Complaint Type=\"Misc. Comments'||(select Ex...\"), Row(Complaint Type=\"Misc. Comments'+(select Loa...\"), Row(Complaint Type='%{4761*8506}'), Row(Complaint Type='Door/window'), Row(Complaint Type='School Maintenance'), Row(Complaint Type='Advocate-personal Exemptions'), Row(Complaint Type='%e5%98%8a%e5%98%8dx-injecti...'), Row(Complaint Type='Msother'), Row(Complaint Type=\"(select Load_file('\\\\\\\\\\\\\\\\615h...\"), Row(Complaint Type=\"Misc. Comments' And 7702=77...\"), Row(Complaint Type='Electrical'), Row(Complaint Type='Linknyc'), Row(Complaint Type='Pet Shop')]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505583_30527470",
+      "id": "paragraph_1639350152789_1246832428",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5776"
+    },
+    {
+      "text": "%pyspark\n# View column \"Location Type\"\ndf.select(\"Location Type\").distinct().collect()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[Row(Location Type='Apartment'), Row(Location Type='House and Store'), Row(Location Type='Ferry'), Row(Location Type='Private School'), Row(Location Type='Other (Explain Below)'), Row(Location Type='Roadway'), Row(Location Type='Public Park/Garden'), Row(Location Type='Loft Residence'), Row(Location Type='Condo Unit'), Row(Location Type='Cafeteria'), Row(Location Type='House of Worship'), Row(Location Type='Store/Commercial'), Row(Location Type='1-3 Family Mixed Use Building'), Row(Location Type='Building (Non-Residential)'), Row(Location Type='Public Area'), Row(Location Type='Golf'), Row(Location Type='Home'), Row(Location Type='Tanning Salon'), Row(Location Type='Cafeteria - Private School'), Row(Location Type='Street Vendor'), Row(Location Type='Grocery Store'), Row(Location Type='Abandoned Building'), Row(Location Type='Cemetery'), Row(Location Type='Street Fair Vendor'), Row(Location Type='Subway'), Row(Location Type='Co-Op Unit'), Row(Location Type='Parking Lot'), Row(Location Type='Roadway Tunnel'), Row(Location Type='Bar/Restaurant'), Row(Location Type='Construction Site'), Row(Location Type='Terminal'), Row(Location Type='Vacant Land'), Row(Location Type='Sauna'), Row(Location Type='Health Club or Gym'), Row(Location Type='Senior Address'), Row(Location Type='Residential'), Row(Location Type='Bike Lane'), Row(Location Type='Senior Center'), Row(Location Type='Public Garden'), Row(Location Type='Petting Zoo/Animal Exhibit'), Row(Location Type='Mixed Use'), Row(Location Type='School/Pre-School'), Row(Location Type=None), Row(Location Type='Laboratory'), Row(Location Type='Above Address'), Row(Location Type='Cafeteria - Public School'), Row(Location Type='Building-Wide'), Row(Location Type='Residential Building/House'), Row(Location Type='1-2Family Dwelling'), Row(Location Type='School'), Row(Location Type='Swamp or Pond'), Row(Location Type='Commercial Property'), Row(Location Type='Traffic Island or Median'), Row(Location Type='School - K-12 Private'), Row(Location Type='Community Organization'), Row(Location Type='Street Area'), Row(Location Type='Retail Store'), Row(Location Type='Street'), Row(Location Type=\"Dentist's Office\"), Row(Location Type='Catering Hall'), Row(Location Type='3+ Family Apartment Building'), Row(Location Type='Horse Stable'), Row(Location Type='Intersection'), Row(Location Type='Soup Kitchen'), Row(Location Type='Day Care/Nursery'), Row(Location Type='Government/Not-for Profit'), Row(Location Type='3+ Family Apt'), Row(Location Type='Residential Building'), Row(Location Type='Non-Profit'), Row(Location Type='Beach'), Row(Location Type='Common Area'), Row(Location Type='Permanent Food Stand'), Row(Location Type='Club/Bar/Restaurant'), Row(Location Type='Lot'), Row(Location Type='Street/Curbside'), Row(Location Type='Airport or Train/Bus Station'), Row(Location Type='3+Family Apt.'), Row(Location Type='Street/Sidewalk'), Row(Location Type='Sidewalk'), Row(Location Type='Property Address'), Row(Location Type='Roof'), Row(Location Type='3+ Family Mixed Use Building'), Row(Location Type='Other'), Row(Location Type='Office Building'), Row(Location Type='Wooded Area'), Row(Location Type='Speed Reducer'), Row(Location Type='Medical Facility'), Row(Location Type='Homeless Shelter'), Row(Location Type='Taxi'), Row(Location Type='P.O. Box'), Row(Location Type='Bridge'), Row(Location Type='1-2 FamilyDwelling'), Row(Location Type='Public Stairs'), Row(Location Type='Store'), Row(Location Type='Pool'), Row(Location Type='Hallway'), Row(Location Type='Vacant Lot/Property'), Row(Location Type='Garage'), Row(Location Type=\"DRIE Tenant's Address\"), Row(Location Type='Building Entrance'), Row(Location Type='Government Building - Foreign'), Row(Location Type='Parking Lot/Garage'), Row(Location Type='Residential Property'), Row(Location Type='Health Club'), Row(Location Type='Overpass'), Row(Location Type='Public/Unfenced Area'), Row(Location Type='Utility'), Row(Location Type=\"Doctor's Office\"), Row(Location Type='1-, 2- and 3- Family Home'), Row(Location Type='Correctional Facility - City'), Row(Location Type='Address Unknown'), Row(Location Type='Public Plaza'), Row(Location Type='Private House'), Row(Location Type='Private Residence'), Row(Location Type='1/2 Family Dwelling'), Row(Location Type='Subway Station'), Row(Location Type='Restaurant/Bar/Deli/Bakery'), Row(Location Type=\"Veterinarian's Office\"), Row(Location Type='Vehicle Lane'), Row(Location Type='Single Room Occupancy (SRO)'), Row(Location Type='Service Provider'), Row(Location Type='Sports Arena'), Row(Location Type='Bridge/Underpass'), Row(Location Type='Private Property'), Row(Location Type='Bus Stop Shelter'), Row(Location Type='Alley'), Row(Location Type='3+ Family Apt. Building'), Row(Location Type='Pvt Residnt Proprty'), Row(Location Type='Caller Address'), Row(Location Type='Stairwell'), Row(Location Type='Recreation Center'), Row(Location Type='Crosswalk'), Row(Location Type='N/A'), Row(Location Type='Hospital'), Row(Location Type='School Safety Zone'), Row(Location Type='Restaurant'), Row(Location Type='Apartment Building'), Row(Location Type='Park/Playground'), Row(Location Type='Summer Camp'), Row(Location Type='Gutter'), Row(Location Type='Street Address'), Row(Location Type='Kennel/Animal Shelter'), Row(Location Type='Nursing Home'), Row(Location Type='Business'), Row(Location Type='Pier'), Row(Location Type='Cafeteria - Private'), Row(Location Type='Public School'), Row(Location Type='Mobile Food Vendor'), Row(Location Type='Comercial'), Row(Location Type='3+ Family Mixed'), Row(Location Type='School - College/University'), Row(Location Type='3+ Family ApT'), Row(Location Type='3+ Family'), Row(Location Type='1-2 Family Mixed Use Building'), Row(Location Type='Address Outside of NYC'), Row(Location Type='Steam Room'), Row(Location Type='Food Cart Vendor'), Row(Location Type='Tattoo Parlor'), Row(Location Type='Park'), Row(Location Type='NYC Street Address'), Row(Location Type='Ground'), Row(Location Type='1-2 Family Dwelling'), Row(Location Type='3+ Family Apt.'), Row(Location Type='School - K-12 Public'), Row(Location Type='Correctional Facility - State'), Row(Location Type='Commercial Building'), Row(Location Type='Nail Salon'), Row(Location Type='Lobby'), Row(Location Type='Loft Building - Common Areas'), Row(Location Type='Curb'), Row(Location Type='Theater'), Row(Location Type='Yard'), Row(Location Type='Tire Shop'), Row(Location Type='1-3 Family Dwelling'), Row(Location Type='Catering Service'), Row(Location Type='Commercial'), Row(Location Type='Highway'), Row(Location Type='Cafeteria - College/University'), Row(Location Type='3+ Family Apart'), Row(Location Type='Vacant Building'), Row(Location Type='Street and Sidewalk'), Row(Location Type='Catch Basin/Sewer'), Row(Location Type='Other (explain in Complaint Details)'), Row(Location Type='Address'), Row(Location Type='Residence'), Row(Location Type='Public Garden/Park'), Row(Location Type='Groomer'), Row(Location Type='Spa Pool'), Row(Location Type='Vacant Lot'), Row(Location Type='Tenant Address'), Row(Location Type='Building'), Row(Location Type='Government Building'), Row(Location Type='Green Cart Vendor'), Row(Location Type='Pet Shop')]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505584_814658616",
+      "id": "paragraph_1639350165752_176872893",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5777"
+    },
+    {
+      "text": "%pyspark\n# View column \"City\"\ndf.select(\"City\").distinct().collect()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:05:05-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[Row(City='Whyoming'), Row(City='Mariepta'), Row(City='Onpario'), Row(City='Laurence'), Row(City='Prattville'), Row(City='Corona'), Row(City='Harrisburg'), Row(City='Tempe'), Row(City='Springfield'), Row(City='East Elm Hurst'), Row(City='Staten Isand'), Row(City='Couberstort'), Row(City='Bowling Green'), Row(City='The Bronx'), Row(City='Oak Dale'), Row(City='Secaucus New Jersey'), Row(City='Haworth'), Row(City='Heoenix'), Row(City='Marrita'), Row(City='Carol Place'), Row(City='Melvern'), Row(City='South Fallsburgh'), Row(City='N.a'), Row(City='Harrison'), Row(City='Hemphstead'), Row(City='Kings Point'), Row(City='Befdord'), Row(City='Palatine'), Row(City='Ste'), Row(City='Pobox 3517'), Row(City='Long Sland'), Row(City='Nv'), Row(City='Wellington'), Row(City='Lawrenceville'), Row(City='Baldwin Ny'), Row(City='Phoenix'), Row(City='Burmingham'), Row(City='Cherry Hill'), Row(City='Winnipeg'), Row(City='Westerleigh'), Row(City='Beth Page'), Row(City='Old Greenwich'), Row(City='Bethlehem'), Row(City='Hamilton Square'), Row(City='Cranford'), Row(City='Plainfield'), Row(City='L.i.'), Row(City='Hauppauge, Suffolk'), Row(City='Bayport'), Row(City='Norcross Ga'), Row(City='Pleasantville'), Row(City='Baldwin'), Row(City='Hollywood'), Row(City='Levittown'), Row(City='East Rutherford'), Row(City='Oyster Bay'), Row(City='East Rockaway'), Row(City='Saddle Brook'), Row(City='Ornage'), Row(City='Bohenia'), Row(City='Pittsburg'), Row(City='Cliffside'), Row(City='St Luis'), Row(City='Rockhill'), Row(City='Philedephia'), Row(City='Bacoi'), Row(City='Shelter Island Hight'), Row(City='Green Allen'), Row(City='Monroe'), Row(City='Douglaston'), Row(City='Brookly'), Row(City='Great Neck Ny'), Row(City='Newark Airport'), Row(City='Chathem'), Row(City='Ana Heim'), Row(City='Waltham'), Row(City='North Plain Field'), Row(City='Ny Jamaica'), Row(City='Perthamdoy'), Row(City='Newbrugh'), Row(City='Emhurst'), Row(City='Oneonta'), Row(City='Queens'), Row(City='Pembroke Pines'), Row(City='Greenwood Village'), Row(City='Rockville Center'), Row(City='Toms River'), Row(City='Maywood'), Row(City='Newyok'), Row(City='Savannah'), Row(City='Brookhaven'), Row(City='Elmunt'), Row(City='Stoney Brook'), Row(City='Lindenhurst'), Row(City='Lynbrook'), Row(City='Freshmedows'), Row(City='N?a'), Row(City='Huntington Stration'), Row(City='Purchase'), Row(City='Five Towns'), Row(City='Mew Rochelle'), Row(City='Ca'), Row(City='Bergun'), Row(City='Plover'), Row(City='Staten Isnalnd'), Row(City='Adena'), Row(City='Coral Springs'), Row(City='Bloomingfield'), Row(City='Rego Park'), Row(City='Bx'), Row(City='Munster'), Row(City='Armank'), Row(City='Bay Shore'), Row(City='Pound Bridge'), Row(City='Long Iland'), Row(City='Cederhurst'), Row(City='Not Avail'), Row(City='Omaha'), Row(City='Troy Hills'), Row(City='Syoset'), Row(City='Warrenton'), Row(City='Oleans'), Row(City='Fair Lawn'), Row(City='Kenilworth'), Row(City='Cold Spring'), Row(City='Bothell'), Row(City='Peck Slip'), Row(City='Bear'), Row(City='Sceaucus'), Row(City='Blue Bell'), Row(City='Mccarran'), Row(City='Glenclove'), Row(City='Beaver Town'), Row(City='Fresh Medows Rd'), Row(City='Allentown'), Row(City='Central Islip'), Row(City='Hampton Bays'), Row(City='Woodbridge'), Row(City='Fort Collins'), Row(City='Bowling Brook'), Row(City='Denmore'), Row(City='Anaheim'), Row(City='Sonama'), Row(City='Sonoma'), Row(City='Huntington Station'), Row(City='Buffola'), Row(City='Hatboro'), Row(City='Lynbrook?'), Row(City='Folsom'), Row(City='Minniapilis'), Row(City='Hewlett Town'), Row(City='Willaimsville'), Row(City='Newhide Park'), Row(City='Saint Charles'), Row(City='Antiono'), Row(City='Valley Veiw'), Row(City='Wattingers Falls'), Row(City='Rosyln'), Row(City='Everett'), Row(City='Mount Claire'), Row(City='New Work'), Row(City='Port Monmouth'), Row(City='Harrisberg'), Row(City='Quuens'), Row(City='Jackson Heights'), Row(City='Bayside'), Row(City='Williamsdille'), Row(City='Jersey'), Row(City='Cinnamon'), Row(City='Maroneck'), Row(City='Ottawa'), Row(City='Greensboro'), Row(City='Far Rockawy'), Row(City='St. Cloud'), Row(City='Patchouge'), Row(City='Queens/brooklyn'), Row(City='White Plains'), Row(City='Commack'), Row(City='Franklin'), Row(City='Woodberry'), Row(City='Grants Pass'), Row(City='Woodland Park'), Row(City='Redbank'), Row(City='Bakers Field'), Row(City='Wantagh Li'), Row(City='Eselin'), Row(City='Whitefulthur T Strinny'), Row(City='Dallas'), Row(City='New Milford'), Row(City='Jackson Ville'), Row(City='Flush Meadows'), Row(City='Singapore'), Row(City='Roslin Heights'), Row(City='East Garden City'), Row(City='Whiteplan'), Row(City='Farrockaway'), Row(City='Aretta'), Row(City='Springdale'), Row(City='Lindwood'), Row(City='Mount Laurel'), Row(City='Middle Village,'), Row(City='Solon'), Row(City='Rye'), Row(City='Binghampton'), Row(City='Rutherford?'), Row(City='Green Neck'), Row(City='Center Reach'), Row(City='New Mlford'), Row(City='Chesterfield'), Row(City='Levington'), Row(City='Great Falls'), Row(City='Log Beach'), Row(City='Brewster'), Row(City='Red Bank'), Row(City='Oceanside'), Row(City='New City'), Row(City='Islandia,'), Row(City='Pulsa'), Row(City='Farmers Branch'), Row(City='Manchester'), Row(City='Irvie'), Row(City='Oakland'), Row(City='Big Flats'), Row(City='Newhyde Park'), Row(City='Holbrook'), Row(City='Amittyville'), Row(City='Standford'), Row(City='Neark'), Row(City='Secaucaus'), Row(City='Scottsdale'), Row(City='Alverne'), Row(City='Trenton'), Row(City='Jefferson City'), Row(City='Mendota Heights'), Row(City='Vauxhall'), Row(City='Davis'), Row(City='North Provo'), Row(City='Clearmont'), Row(City='Claverton'), Row(City='Norfork'), Row(City='Southgate'), Row(City='Wilkes-bearre'), Row(City='Hasbrock Heights'), Row(City='National Tennessee'), Row(City='Surf City'), Row(City='Islanda'), Row(City='Staten Isad'), Row(City='Smithtown'), Row(City='Jericho'), Row(City='Weehawken'), Row(City='Edison'), Row(City='Island Park'), Row(City='Manhatan'), Row(City='Wilton'), Row(City='Largo'), Row(City='Ponoma'), Row(City='None'), Row(City='West Linwood'), Row(City='Antonio'), Row(City='Franklin Sq'), Row(City='Lowell'), Row(City='North Babylon'), Row(City='Sag Harbor'), Row(City='Midlothian'), Row(City='White Plans'), Row(City='Columbus Ohio'), Row(City='Holtville'), Row(City='Dedham'), Row(City='Skaneateless Falls'), Row(City='Cold Spring Harbor'), Row(City='Foral Park'), Row(City='Jupiter'), Row(City='Massepequa'), Row(City='City Of Interesion'), Row(City='Garden City Park'), Row(City='Denver Colorado'), Row(City='Horseham'), Row(City='Riverdale'), Row(City='Bluepoint'), Row(City='Wixon'), Row(City='Collegepoint'), Row(City='Ft. Worth'), Row(City='Mesconset'), Row(City='Rockvill Centre'), Row(City='New Hide'), Row(City='San Antonio'), Row(City='Palos Verdes Peninsula'), Row(City='Holtsville'), Row(City='Fort'), Row(City='Westborough'), Row(City='Peekskill'), Row(City='Katanah'), Row(City='Colombus Ohio'), Row(City='Woodcliff Lake'), Row(City='Fanwood'), Row(City='Cambell Hall'), Row(City='Bakersfield'), Row(City='Pleasanton'), Row(City='Lynnwood'), Row(City='Mastech'), Row(City='Manchestire'), Row(City='Alexandria'), Row(City='Weehauken'), Row(City='St Pete'), Row(City='Belport'), Row(City='Bellerose Village'), Row(City='Nn'), Row(City='Lakewood Ranch'), Row(City='Farmersbranche'), Row(City='Chula Vista'), Row(City='Farrockway'), Row(City='Laport'), Row(City='Greenvale'), Row(City='East Rutterford'), Row(City='Queens Villiage'), Row(City='Philadelphia'), Row(City='Sherwood'), Row(City='Dear Park'), Row(City='Amnetyville'), Row(City='Washington Heights'), Row(City='Des Plains'), Row(City='Louisville'), Row(City='Miniopolis'), Row(City='Minesota'), Row(City='Oxford'), Row(City='Brielle'), Row(City='Woodbridge Township'), Row(City='Spencer'), Row(City='Halesite'), Row(City='Malt Boner'), Row(City='Wheatridge'), Row(City='Beltszille'), Row(City='Bronx Hill Road'), Row(City='Orange'), Row(City='Tuxedo Park'), Row(City='New Yok'), Row(City='Melvill'), Row(City='Oklahoma City, Ok'), Row(City='Ne W Hyde Park'), Row(City='East Islip'), Row(City=\"Farmer's Branch\"), Row(City='Navada'), Row(City='Brooksville'), Row(City='Williamsburg  Mi 49690'), Row(City='Monroe Townsip'), Row(City='Peachtree Corners'), Row(City='Longbeach'), Row(City='West Sayeville'), Row(City='Hoffman'), Row(City='National Park'), Row(City='Flora Park'), Row(City='Great Necks'), Row(City='Norwell'), Row(City='Alpharatta'), Row(City='Staten  Isalnd'), Row(City='Garden Hills'), Row(City='Gates'), Row(City='Hampton'), Row(City='Thorn Wood'), Row(City='Jamestown'), Row(City='Anahiem'), Row(City='Warwck'), Row(City='Juana Diaz'), Row(City='Horsam'), Row(City='Ox'), Row(City='Oakland Gardens'), Row(City='Los Angeles'), Row(City='Los Angels'), Row(City='Mahwah'), Row(City='Vallet Stream'), Row(City='Keyport'), Row(City='East Setuaket'), Row(City='San Antionio'), Row(City='Villapark'), Row(City='Escondido'), Row(City='Palm Beach'), Row(City='Longwood'), Row(City='Babylon'), Row(City='Lakestone'), Row(City='Nassau County'), Row(City='Cambridge'), Row(City='Islander'), Row(City='Rutherford'), Row(City='Briarwood'), Row(City='West Hemstead'), Row(City='Leonia'), Row(City='Fort Jefferson Stati'), Row(City='Wilkes Barry'), Row(City='Elizbeth'), Row(City='Hopkinton'), Row(City='Little Neck'), Row(City='Montvale'), Row(City='Carley Place'), Row(City='Minnetonja'), Row(City='Fairfield'), Row(City='Hobokin'), Row(City='East Medow'), Row(City='Rd'), Row(City='Roslyn Height'), Row(City='Dobs Ferry'), Row(City='Somona'), Row(City='Schaumburg'), Row(City='Bohehiam'), Row(City='Westville'), Row(City='Elisabeth'), Row(City='Livingtons'), Row(City='Trujillo Alto'), Row(City='Williamsville'), Row(City='Norsolk'), Row(City='Linwood'), Row(City='Not In The Country'), Row(City='Mellville'), Row(City='Utica'), Row(City='Newtonville'), Row(City='Winterville'), Row(City='Fort Lauderale'), Row(City='Bayyon'), Row(City='Carlsdad'), Row(City='Hoboeken'), Row(City='Clear Water'), Row(City='Beverton'), Row(City='Flushing'), Row(City='Horsham'), Row(City='Cedarhurst'), Row(City='Grand Rapids'), Row(City='Ardsley'), Row(City='Norwood'), Row(City='Holboken'), Row(City='Walkill'), Row(City='Huntigton Station'), Row(City='Frmngdale'), Row(City='Suffix'), Row(City='Hoffman Estates'), Row(City='Lake Hiawatha'), Row(City='Halbocken'), Row(City='Ridgewod'), Row(City='Leynnwood'), Row(City='Bk'), Row(City='*'), Row(City='Summerset'), Row(City='Shorthills'), Row(City='Wall'), Row(City='Gepzville'), Row(City='Chandler'), Row(City='New Port Richy'), Row(City='Vlla Park'), Row(City='Berkeley Lake'), Row(City='Rockille Center'), Row(City='La Guardia'), Row(City='Englwood'), Row(City='N.y'), Row(City='Arcade'), Row(City='Jerico'), Row(City='Unk'), Row(City='Broolkyn'), Row(City='Cedahurst'), Row(City='0'), Row(City='Elizabeth,'), Row(City='Sacramento'), Row(City='Bensalem'), Row(City='Sauk Rapids'), Row(City='Wilminington'), Row(City='Texas'), Row(City='Nowell'), Row(City='Cheekpowa'), Row(City='Palisades'), Row(City='Allen'), Row(City='Westbury -massapequa'), Row(City='Kings Point,'), Row(City='Sewell'), Row(City='Eaglewood Cliff'), Row(City='Philidelphia'), Row(City='East Elmhurst'), Row(City='Brentwood'), Row(City='Bethpage'), Row(City='St George'), Row(City='Palisades Park'), Row(City='Camden'), Row(City='St James'), Row(City='Parlin'), Row(City='Atlantic City'), Row(City='Armonk'), Row(City='Atlantic Highlands'), Row(City='Unkwn'), Row(City='P.o. Box 643'), Row(City='Bronx Ny'), Row(City='Middle Village, Queens'), Row(City='Commac'), Row(City='South Daytona'), Row(City='Carle   Pl'), Row(City='Chattanoota'), Row(City='Elmsordd'), Row(City='Jacksonvile'), Row(City='Elmont'), Row(City='Mt.vernon'), Row(City='Park Ridge'), Row(City='Tamara'), Row(City='West Windsor'), Row(City='Putnam Valley'), Row(City='North Fork'), Row(City='Brain Tree'), Row(City='Miller Place'), Row(City='Indianapolis'), Row(City='Clarksville'), Row(City='Voorhees'), Row(City='William Ville'), Row(City='Louisgille'), Row(City='Scotrun'), Row(City='Free Port'), Row(City='Carlasbad'), Row(City='Greenwich'), Row(City='Brookille'), Row(City='Bridgewater'), Row(City='Wantaugh'), Row(City='Farmiongdale'), Row(City='Rockdale Center'), Row(City='Capital Heights'), Row(City='New Roshell'), Row(City='Whitestone'), Row(City='Lake Success'), Row(City='Industry'), Row(City='Roosevelt'), Row(City='Pomona'), Row(City='Bayonne'), Row(City='Dublin'), Row(City='Maplewood'), Row(City='South Orange'), Row(City='Nassua County'), Row(City='Parsitpany'), Row(City='Westchestor'), Row(City='Dellmore'), Row(City='Huntington New York'), Row(City='Cleveland'), Row(City='Port Richey'), Row(City='Morningside Station'), Row(City=None), Row(City='San Diego'), Row(City='Nashville'), Row(City='Oklahoma City'), Row(City='Plato'), Row(City='San Francisco'), Row(City='Livettown'), Row(City='Conewango Valley'), Row(City='Flint'), Row(City='South Field'), Row(City='Nesconset'), Row(City='Bellemore'), Row(City='South Ozone Pk'), Row(City='Halbrook'), Row(City='Syiffet'), Row(City='Broxton'), Row(City='Costa Messa'), Row(City='Westbury'), Row(City='Hamiliton'), Row(City='Fairport'), Row(City='Montgomery'), Row(City='Alanta'), Row(City='Tuckahoe'), Row(City='Syosett'), Row(City='E'), Row(City='Lake Ronkonkoma'), Row(City='Carry Town'), Row(City='Elmsfrd'), Row(City='Bloomingdale'), Row(City='Statn Island'), Row(City='Roslyn'), Row(City='Houson'), Row(City='Mareno Valley'), Row(City='Chesapeake'), Row(City='Coiague'), Row(City='Hewlett'), Row(City='Claymont'), Row(City='Union'), Row(City='Guttenberg'), Row(City='New Yersey'), Row(City='Manhassett'), Row(City='West Nyack'), Row(City='Wading River'), Row(City='Phil'), Row(City='Edina'), Row(City='Sioux Fall'), Row(City='Olando'), Row(City='Medford'), Row(City='Glencove'), Row(City='Bonita Springs'), Row(City='Hauppauge'), Row(City='East Brunswick'), Row(City='East Ruthford'), Row(City='St.albans'), Row(City='Phionex'), Row(City='Moonachie'), Row(City='Flusing'), Row(City='Montpelier'), Row(City='Harsham'), Row(City='Hallandale Beach'), Row(City='Dc'), Row(City='Johnson City'), Row(City='Lyndenurst'), Row(City='Fort Mill'), Row(City='Carmack'), Row(City='Santa Rosa'), Row(City='Howell'), Row(City='Albany'), Row(City='Malverne'), Row(City='Kearny'), Row(City='Connecticut'), Row(City='Portland'), Row(City='West Hampton'), Row(City='Glen Oaks'), Row(City='Port Jefferson'), Row(City='Garden City'), Row(City='Thiells'), Row(City='Bridgeport'), Row(City='Lynwood'), Row(City='New York City [?]'), Row(City='Edward Clifton'), Row(City='Coppell'), Row(City='Westbery'), Row(City='Caroll Stream'), Row(City='Paramus'), Row(City='Valley Stream, Long Island'), Row(City='Horfham'), Row(City='Altharett'), Row(City='Florence'), Row(City='Mt Kisco'), Row(City='South Ozone'), Row(City='Woodnere'), Row(City='Carol Streme'), Row(City='Wilminton'), Row(City='Barnegat'), Row(City='Princeton'), Row(City='Roselle'), Row(City='London'), Row(City='Elizibeth'), Row(City='Allenville'), Row(City='Harrisbug'), Row(City='New Rochelle'), Row(City='Aurora'), Row(City='Carol Springs'), Row(City='Parkridge'), Row(City='Northwest'), Row(City='South Hunington'), Row(City='Bllomington'), Row(City='Ozone  Park'), Row(City='Hasbrook'), Row(City='Dolgeville'), Row(City='Pound Ridge'), Row(City='Scotch Plains'), Row(City='Vermont'), Row(City='Carlfead'), Row(City='Coral Gables'), Row(City='Roackway Beach'), Row(City='Altavena'), Row(City='Tucwila'), Row(City='Southington'), Row(City='Mcalles'), Row(City='Mcallen'), Row(City='Thorofare'), Row(City='Montclair'), Row(City='Oaks'), Row(City='St. Louis'), Row(City='Redding'), Row(City='Matawan'), Row(City='Richmond  Hill'), Row(City='Wesbury'), Row(City='Atlantica'), Row(City='Thousand Oaks'), Row(City='Al'), Row(City='Phoniex'), Row(City='Linhope'), Row(City='Long Islane'), Row(City='Lakegrove'), Row(City='Richmond Hill'), Row(City='Lombard'), Row(City='Des Plaines'), Row(City='New Jersy'), Row(City='Andover'), Row(City='Scottsplain'), Row(City='Bayville'), Row(City='Comack'), Row(City='Phoennix'), Row(City='Frankin Square'), Row(City='El  Dorado'), Row(City='New Roschelle'), Row(City='Holliswood'), Row(City='Rockville Ct.'), Row(City='Teaneck'), Row(City='Green Bay'), Row(City='Baldwin Place'), Row(City='Mendham'), Row(City='Oort Washington'), Row(City='Baldwin Harbour'), Row(City='Lawarence'), Row(City='St. Charles'), Row(City='Coconut'), Row(City='St Peterburg'), Row(City='Birmingham'), Row(City='Garden Grove'), Row(City='Bedford Hills'), Row(City='Canarsie'), Row(City='Hungington'), Row(City='Wilkes Barres'), Row(City='Ramsey'), Row(City='Santa Clara'), Row(City='Kearney'), Row(City='La Guardia Airports'), Row(City='Minola'), Row(City='Cape Giardeau'), Row(City='Climont'), Row(City='Boorhees'), Row(City='Dober'), Row(City='Monticello'), Row(City='.'), Row(City='East  Rutherford Nj'), Row(City='Greenwood Lake'), Row(City='Plano'), Row(City='Hempstead'), Row(City='Englewood'), Row(City='Richmond County'), Row(City='Stony Point'), Row(City='Morgan Hill'), Row(City='Buckeye'), Row(City='Islip'), Row(City='Burbank'), Row(City='Carroltown'), Row(City='Forest Hill'), Row(City='Hudson'), Row(City='Westlake Oh'), Row(City='West Hempstead'), Row(City='Lindehurstn'), Row(City='St.paul'), Row(City='Denber'), Row(City='Charlottes'), Row(City='Scaraton'), Row(City='Agusta'), Row(City='Hoffman Estate'), Row(City='Bannockburn'), Row(City='Noreross'), Row(City='Pompano Beach'), Row(City='Piscutaway'), Row(City='Elmsford'), Row(City='Richfield'), Row(City='Monsey'), Row(City='Goshen'), Row(City='Bogart'), Row(City='Chesterspring'), Row(City='Somers'), Row(City='Lic'), Row(City='East Rutheford'), Row(City='Hudson County'), Row(City='Bahamas'), Row(City='N Bergen'), Row(City='Montvalle'), Row(City='999'), Row(City='Wauwatosa'), Row(City='Mullica Hill'), Row(City='Heckvelle'), Row(City='Weston'), Row(City='Canooga Park'), Row(City='Jacksonville Florida'), Row(City='Jackonville'), Row(City='Burlington'), Row(City='Schamburg'), Row(City='Irvine'), Row(City='Sd'), Row(City='Hasbrock'), Row(City='Leicester'), Row(City='Sublette'), Row(City='Fortlee'), Row(City='Albertson,'), Row(City='Farming Dale'), Row(City='00'), Row(City='Jamaica Queens'), Row(City='Porthchester'), Row(City='Amhurst'), Row(City='Sunrise'), Row(City='Carleton'), Row(City='Rosalyn'), Row(City='Orchard Park'), Row(City='Clementon'), Row(City='Rich Field Park'), Row(City='Bay Side'), Row(City='Harriman'), Row(City='New Hyde  Park'), Row(City='Westfield'), Row(City='Syoosset'), Row(City='Dsw Airport'), Row(City='Knox Valley'), Row(City='Garnerville'), Row(City='Willamsville'), Row(City='Brookilyn'), Row(City='Conymans Hollow'), Row(City='Amurst'), Row(City='Bradenton'), Row(City='St Pauls'), Row(City='Columbus'), Row(City='Copiague'), Row(City='Greenvilla'), Row(City='Tucker'), Row(City='Mason'), Row(City='Mt Vernon'), Row(City='Peeskill'), Row(City='Santa Anna'), Row(City='Carson City'), Row(City='Tarzana'), Row(City='Lower Eastside'), Row(City='Breyer Wood'), Row(City='Port Washington,'), Row(City='Cranberry'), Row(City='Fort Jefferson City'), Row(City='Valley Steam'), Row(City='Valley Streams'), Row(City='Newarkk'), Row(City='N/.a'), Row(City='Newburnswick'), Row(City='Williamsvillie'), Row(City='East Hampton'), Row(City='Phildelphia'), Row(City='Elk Grove Village'), Row(City='Great Neck'), Row(City='Kingston'), Row(City='Farmingdeale'), Row(City='Weehaken'), Row(City='Memphis'), Row(City='West Berry'), Row(City='Wayland'), Row(City='Fitzgerald'), Row(City='Wharton'), Row(City='Hayward'), Row(City='Jamaica Estates'), Row(City='Plainvieuw (new York'), Row(City='Fallbrook'), Row(City='Sound Beach'), Row(City='Antioch'), Row(City='Sylvania'), Row(City='Fluhng'), Row(City='Newton'), Row(City='Nyack'), Row(City='Basking Ridge'), Row(City='Mamaroneck'), Row(City='Clarkville'), Row(City='West Borough'), Row(City='Huntington Beach'), Row(City='Glenn Oaks'), Row(City='Melville'), Row(City='Jackville'), Row(City='Los Angelous'), Row(City='Indianpolis'), Row(City='Hoboken'), Row(City='Helmstead'), Row(City='Manattan'), Row(City='Seekonk'), Row(City='Parkchester'), Row(City='St Charles'), Row(City='Grantspass'), Row(City='Wilkins'), Row(City='Terminal 8'), Row(City='Freehold'), Row(City='Astoria'), Row(City='Floral Park'), Row(City='Austin'), Row(City='East Turherford'), Row(City='Arlington Heights'), Row(City='Hauppage'), Row(City='Sommerset'), Row(City='City Island'), Row(City='Los Angles'), Row(City='Indian Wells'), Row(City='Fraklin Square'), Row(City='Suffern'), Row(City='Valley View'), Row(City='Washington'), Row(City='Santa'), Row(City='Palm Harbor'), Row(City='Madison'), Row(City='Bklyn'), Row(City='Roselyn'), Row(City='Cold Springs Harbor'), Row(City='Hamilton Township'), Row(City='Manhassett Hills'), Row(City='Ft Washington'), Row(City='Madsion'), Row(City='South Richmond Hill'), Row(City='Laurelson'), Row(City='Belmore'), Row(City='Schomburg'), Row(City='Birmangham'), Row(City='Carlstadt'), Row(City='West Lynnwood'), Row(City='Carlsprings'), Row(City='North Tonawanda'), Row(City='Millstone'), Row(City='Byn'), Row(City='Rocky Mount'), Row(City='Atlata'), Row(City='Willow'), Row(City='N/a'), Row(City='Ice Ilisp'), Row(City='Princeton Junction'), Row(City='El Paso'), Row(City='Hawthorne'), Row(City='Lake Peakskill'), Row(City='Longisland'), Row(City='Skokye'), Row(City='Fawnwood'), Row(City='Piedmont'), Row(City='Belleville'), Row(City='Winter Park'), Row(City='Ryebrooke'), Row(City='Tinley'), Row(City='Des Moins'), Row(City='Carson'), Row(City='Milwaukee'), Row(City='Did Not Disclose'), Row(City='Success Drive'), Row(City='Oklahoma'), Row(City='Newport News'), Row(City='Pittsburgh'), Row(City='Ft. Washington'), Row(City='Mount Kisco'), Row(City='Hasbrouck'), Row(City='Virginia Bch'), Row(City='Highland'), Row(City='Fair Field'), Row(City='Eastchester'), Row(City='Saten Island'), Row(City='Mexicali'), Row(City='New Rochele'), Row(City='Thorofair'), Row(City='South Port'), Row(City='Cheektowaga'), Row(City='Shaker Hights'), Row(City='Eden Prarie'), Row(City='East Norwich'), Row(City='Rock Hill'), Row(City='Mastic Beach'), Row(City='Pelham Manor'), Row(City='Old Bechpage'), Row(City='Anywhere'), Row(City='Hauppague'), Row(City='Old Bethpage'), Row(City='Edanston Ill'), Row(City='Loral Park'), Row(City='311 Test Service Req'), Row(City='Fort Washington'), Row(City='Mathews'), Row(City='Englewood Cliff'), Row(City='Garland'), Row(City='Rock Hills'), Row(City='Bloomigton'), Row(City='Spring'), Row(City='Harrington Park'), Row(City='Greenlawn'), Row(City='Anderson'), Row(City='Shaker Heights'), Row(City='Levit Town'), Row(City='State Charles'), Row(City='Trevose'), Row(City='Saint Cloud'), Row(City='Selden'), Row(City='Long Branch'), Row(City='Secacus'), Row(City='Parsippiny'), Row(City='Terry Town'), Row(City='Philadelpia'), Row(City='Woodsbury'), Row(City='East Owall'), Row(City='Narcross'), Row(City='Wilkes-barres'), Row(City='Mentor'), Row(City='New Hyde Park'), Row(City='Middle Village'), Row(City='Mount Burnin'), Row(City='Unknown'), Row(City='South Hampton'), Row(City='Colmbus'), Row(City='Oakahoma'), Row(City='North Port'), Row(City='Hewlett Harbor'), Row(City='Li'), Row(City='New Jerseyq'), Row(City='Raspberry'), Row(City='Belmoore'), Row(City='Ringoef'), Row(City='North Bellmore'), Row(City='Poughkeepsie'), Row(City='Roseland'), Row(City='Sommersville'), Row(City='Dryden'), Row(City='Bethel'), Row(City='Caldwell'), Row(City='Easte Elmhurst'), Row(City='Cardiss'), Row(City='Warren'), Row(City='Woodmere'), Row(City='Mahopac'), Row(City='Grandview'), Row(City='Staten Island Ny'), Row(City='Glenridge'), Row(City='Sayville'), Row(City='Plymouth'), Row(City='Copague'), Row(City='Bedstuy'), Row(City='Lynbrook , Nassua County'), Row(City='Elmford'), Row(City='Chicago'), Row(City='Valley Stream'), Row(City='Amherst'), Row(City='Arlington  Heights'), Row(City='Wayne'), Row(City='North Fort'), Row(City='Dumont'), Row(City='Hamburg'), Row(City='Ann'), Row(City='Ridewood'), Row(City='Scranton'), Row(City='San Deigo'), Row(City='Langhorne'), Row(City='West Islip'), Row(City='New Brunswick'), Row(City='Dixhill'), Row(City='Cliffhill Park,'), Row(City='Bronxvile'), Row(City='Fairlawn'), Row(City='Roosevet Isalnd'), Row(City='Miami Beach'), Row(City='Plainview'), Row(City='South Eastern'), Row(City='Tampa'), Row(City='Newyork'), Row(City='Montclear'), Row(City='Farmindale'), Row(City='Woodbury'), Row(City='Glendale'), Row(City='New  York'), Row(City='Germantown'), Row(City='Clarkston'), Row(City='Medford New York, Suffolk County'), Row(City='Great  Neck'), Row(City='Grand Junction'), Row(City='Hastings'), Row(City='Rocville'), Row(City='All That Is Known Maspeth Queens'), Row(City='Sunnyside'), Row(City='Queen'), Row(City='South Floral Park'), Row(City='Dig Harbor'), Row(City='St Pul'), Row(City='Jackson Height'), Row(City='East Rockway'), Row(City='Yonker'), Row(City='Livermore'), Row(City='Parsittany'), Row(City='Weschester'), Row(City='New Berlin'), Row(City='Addision'), Row(City='East Meadown'), Row(City='Allen Town'), Row(City='Saint Albans'), Row(City='Newark'), Row(City='Whiteplains'), Row(City='Sheldon'), Row(City='Vriginia Beach'), Row(City='Pacoima'), Row(City='Raynham'), Row(City='North Plainfield'), Row(City='College Point'), Row(City='Rye Brook'), Row(City='Tustin'), Row(City='Malvern'), Row(City='Middletown'), Row(City='Fort Lauderdale'), Row(City='Willmington'), Row(City='Yorktown Heights'), Row(City='Nutley'), Row(City='Tarytown'), Row(City='Secacuse'), Row(City='Monmouth County'), Row(City='Patchhogue'), Row(City='Philadelhia'), Row(City='Long Island City'), Row(City='East Amherst'), Row(City='Glenhead Ny'), Row(City='Westchester County'), Row(City='Saltlake City Ny'), Row(City='Closter'), Row(City='Farmingdale Ny'), Row(City='Belmore, Long Island'), Row(City='Margate Road'), Row(City='N Massapequa'), Row(City='Statan Island'), Row(City='Hopewell Junction'), Row(City='Horseheads'), Row(City='Queens Village'), Row(City='Staten  Island'), Row(City='New Hide Park'), Row(City='Roosevelt Avenue'), Row(City='Levitttown'), Row(City='Inglewood'), Row(City='North Bergan'), Row(City='Tobyhanna'), Row(City='Cooper Station'), Row(City='Long  Beach'), Row(City='Birmingham,'), Row(City='Lakewood'), Row(City='New Hyde Park Rd'), Row(City='Sentereach'), Row(City='Secaucus Junction'), Row(City='Iflandia'), Row(City='Philadephia'), Row(City='Linden Hursh'), Row(City='Pine Lake'), Row(City='Toronto'), Row(City='Clifford'), Row(City='Greenbox'), Row(City='Nanuet'), Row(City='Eden Prairie'), Row(City='Wantagh'), Row(City='Greatneck'), Row(City='Airmont'), Row(City='Manalapan'), Row(City='Gillette,'), Row(City='Saint Louis Park'), Row(City='Ridgewood'), Row(City='Rockville'), Row(City='Catonah'), Row(City='Bridge  Water'), Row(City='Saint Albany'), Row(City='Fleetwood'), Row(City='Richardfield Park'), Row(City='Franlin Square'), Row(City='Na/'), Row(City='Bedford'), Row(City='Blain'), Row(City='Greenvalle'), Row(City='Rockaway'), Row(City='Tarry Town'), Row(City='Somerset'), Row(City='Holebrook'), Row(City='Middle Villiage'), Row(City='Bablylon'), Row(City='Jersity City'), Row(City='Smith Town'), Row(City='Rislanda'), Row(City='Ooo'), Row(City='Pella'), Row(City='Theektowaga'), Row(City='Toledo'), Row(City='Lancaster'), Row(City='Irving'), Row(City='Rockville Centre'), Row(City='Mcarthur'), Row(City='Larchmont'), Row(City='Deer Park,'), Row(City='Conklin'), Row(City='Rybrook'), Row(City='Ocean Side'), Row(City='Powder Springs'), Row(City='Boltimore'), Row(City='220'), Row(City='Belleview'), Row(City='Mt. Clemens'), Row(City='St. Johns'), Row(City='Cypress'), Row(City='Flushing Queens'), Row(City='Pompano'), Row(City='Worth'), Row(City='North Massapequa'), Row(City='Laurens'), Row(City='Newarrk'), Row(City='Evenprairie'), Row(City='Ithica'), Row(City='San Juan Capistrano'), Row(City='W. Lynnwood'), Row(City='Norwak'), Row(City='Englewood Cliffs'), Row(City='Seacacus'), Row(City='Burlington Orlando'), Row(City='Houton'), Row(City='Aventura'), Row(City='Northwest Provo'), Row(City='West Palm Beach'), Row(City='Bohemia'), Row(City='Colleyville'), Row(City='P.o. Box 3615'), Row(City='Newport'), Row(City='New Jercy'), Row(City='Maumee'), Row(City='Los Angelas'), Row(City='Sicklerville'), Row(City='Export'), Row(City='Hicksville'), Row(City='Nassau'), Row(City='Wilmington'), Row(City='Mount Sinai'), Row(City='Brookln'), Row(City='Rockaway Bech'), Row(City='Cliff Side'), Row(City='Haverhill'), Row(City='Dickison City'), Row(City='Pueblo'), Row(City='Petaluma'), Row(City='Hautpauge'), Row(City='Maple Wood'), Row(City='Kew Garden'), Row(City='Green'), Row(City='Morriston'), Row(City='Round Rock'), Row(City='Parsippany'), Row(City='East Orange'), Row(City='Spring Valley'), Row(City='Binghmaton'), Row(City='Greeley'), Row(City='Mineapolis'), Row(City='Wappingers Fall'), Row(City='Hempstead Village'), Row(City='Hempstead Bay'), Row(City='Hempsted'), Row(City='Hasbrouck Heights'), Row(City='Norcoss'), Row(City='Glenn Cove'), Row(City='St Harbors'), Row(City='East Hannover Twp'), Row(City='Chaska'), Row(City='Wheaton'), Row(City='Rockvilla Center'), Row(City='Fortjefferson'), Row(City='Meneapolis'), Row(City='Farmingdale'), Row(City='Kennshaw'), Row(City='/a'), Row(City='Carmel'), Row(City='Union Dale'), Row(City='Stampford'), Row(City='Bronxsville'), Row(City='Stanford'), Row(City='West Babalyon'), Row(City='New Hempstead'), Row(City='Port Jefferson Stati'), Row(City='Brookyn'), Row(City='Portchester'), Row(City='Scardale'), Row(City='West New York'), Row(City='Inglewood Cliff'), Row(City='Ithaca'), Row(City='Panama'), Row(City='New Camaan'), Row(City='Rosylyn Hights'), Row(City='Plains'), Row(City='Plainville New York'), Row(City='Rockyhill'), Row(City='Balitmore'), Row(City='Franklyn Sq'), Row(City='Bloomington'), Row(City='El Dorado Hills'), Row(City='Carrollton'), Row(City='Jericho, Li'), Row(City='West Hemptstead'), Row(City='Highland Mills'), Row(City='Irverne'), Row(City='Wilkes'), Row(City='Bergen Field'), Row(City='Bergen'), Row(City='North Charleston'), Row(City='Lincoln'), Row(City='North Hills'), Row(City='Myersville'), Row(City='Thornwood'), Row(City='Golden'), Row(City='Lynbrooki'), Row(City='Mohegan'), Row(City='Buffalo Grove'), Row(City='San Anotnio'), Row(City='Guttenburg'), Row(City='Woodstock'), Row(City='Anonymous'), Row(City='Roselyn Height'), Row(City='Lake Grove'), Row(City='Summit'), Row(City='North Lake'), Row(City='Wallington'), Row(City='Pequannock'), Row(City='Jearsey City'), Row(City='Atlantic Beach'), Row(City='Carol Stream'), Row(City='Pelham'), Row(City='Clifton'), Row(City='Cressaill'), Row(City='Court Jefferson'), Row(City='Sleepy Hollow'), Row(City='Hicksvile'), Row(City='Alatha'), Row(City='Tuipea Buffalo Grove'), Row(City='Sarport'), Row(City='Vancouver'), Row(City='Eaton Town'), Row(City='Richmon Hill'), Row(City='Centereach'), Row(City='Aberdeen'), Row(City='Salem'), Row(City='English Town'), Row(City='Lyndhurst'), Row(City='Ryebrook'), Row(City='Vallystream'), Row(City='Great River'), Row(City='Brojton'), Row(City='Pleasentville'), Row(City='St. Taul'), Row(City='Glen Allen'), Row(City='00000000000'), Row(City='Lockawanna'), Row(City='Wyomissing'), Row(City='Ft. Lauderdale'), Row(City='Flushng'), Row(City='Manhasette'), Row(City='Carlisle'), Row(City='Sandiego'), Row(City='A'), Row(City='Colubmus'), Row(City='Santa Ana'), Row(City='Wurtsboro'), Row(City='N. Canton'), Row(City='New Mexico'), Row(City='Journal Square'), Row(City='Springfield Gnds'), Row(City='Norford'), Row(City='Goldens Bridge'), Row(City='Atlanta'), Row(City='Uniondale'), Row(City='Margate'), Row(City='Titusville'), Row(City='Reno'), Row(City='Asretta'), Row(City='/'), Row(City='Jamaica Estate'), Row(City='Adina'), Row(City='Bacdwin'), Row(City='Lafayette'), Row(City='Averne'), Row(City='Peonix'), Row(City='Chester Heights'), Row(City='Schaumburgil'), Row(City='College Station'), Row(City='Clifside Park'), Row(City='Amityville'), Row(City='New Orleans'), Row(City='Glen Cover'), Row(City='Newar'), Row(City='Huston'), Row(City='Briar Cliff'), Row(City='Wilimington'), Row(City='Lagrangeville'), Row(City='Metairie'), Row(City='Hempstead Avenue'), Row(City='Franklyn Park'), Row(City='Arlington'), Row(City='Croton Hudson'), Row(City='Rockaway  Park'), Row(City='Far Raockaway'), Row(City='Westport'), Row(City='Lymbrook'), Row(City='Brookyln'), Row(City='Carrolton'), Row(City='West Hempstead,'), Row(City='Cumanck'), Row(City='Long City'), Row(City='Long Island'), Row(City='Jackson'), Row(City='Fresno'), Row(City='East Windsor'), Row(City='St. Josephs Village'), Row(City='New Yor'), Row(City='Famingdale'), Row(City='Vally Stream'), Row(City='Dickshills'), Row(City='Mamhasset'), Row(City='Gibsonton'), Row(City='Gracie Station'), Row(City='Highlnd Park'), Row(City='Ns'), Row(City='Arverne'), Row(City='Cambria Heights'), Row(City='Lindenurst, Long Island'), Row(City='Las Vegas'), Row(City='Willifton Park'), Row(City='Carroliton Tx'), Row(City='Lexington'), Row(City='Northvale'), Row(City='Eastpoint'), Row(City='Staten Islande'), Row(City='Scardales'), Row(City='Washinton, D.c.'), Row(City='Raeford'), Row(City='Ny'), Row(City='East Northport'), Row(City='Dobbs Ferry'), Row(City='Roosevelt Island'), Row(City='Perth Amboy'), Row(City='Raritan'), Row(City='N'), Row(City='Delmore'), Row(City='Reat Neck'), Row(City='Melvile'), Row(City='Fort St Lucie'), Row(City='Richmond Ny'), Row(City='Clara Barton'), Row(City='Garden City Pak'), Row(City='Brooklyn'), Row(City='Greenville'), Row(City='Mount Vernon'), Row(City='Patchogue'), Row(City='Los Gatos'), Row(City='Cliffwood'), Row(City='Daytona Beach'), Row(City='N. Merrick'), Row(City='Eden Priary'), Row(City='X'), Row(City='Mendota  Heights'), Row(City='Kennesaw'), Row(City='Owensboro'), Row(City='Andrews'), Row(City='Wyckoff'), Row(City='Newward'), Row(City='North Hempstead'), Row(City='Deluth'), Row(City='Nesa'), Row(City='Jackso Ville'), Row(City='Orange Burgs'), Row(City='Minniapolis'), Row(City='Sleepy Hiollow'), Row(City='Terrytown'), Row(City='Fort Lee'), Row(City='San Mateo'), Row(City='Sunset'), Row(City='Travis'), Row(City='Little Rock'), Row(City='Montoursville'), Row(City='Lake Mary'), Row(City='Poukepsie'), Row(City='Pt Lookout'), Row(City='Wood Land Hills'), Row(City='Rapid'), Row(City='Jersey Ciy'), Row(City='Anglewood'), Row(City='Castleton'), Row(City='Rochlle Park'), Row(City='Ridgefield Park'), Row(City='Wappinger Falls'), Row(City='Gig Habour'), Row(City='Vernon'), Row(City='Colonia'), Row(City='Manaroneck'), Row(City='Brrroklyn'), Row(City='Sprigfield Garden'), Row(City='Bricktown'), Row(City='Nypd'), Row(City='Hungtington'), Row(City='Daimond Scar'), Row(City='Upper Darby'), Row(City='Rochester'), Row(City='Huntngton Station'), Row(City='Radio City Station'), Row(City='Conneticut'), Row(City='Garfield'), Row(City='Eimhurst'), Row(City='Lehigh Valley'), Row(City='Sacremento'), Row(City='Grove City'), Row(City='Colts Neck'), Row(City='Forrest Hills'), Row(City='Harstdale'), Row(City='Rockaway Beach'), Row(City='Jamaca'), Row(City='0000 0000'), Row(City='San Antoino'), Row(City='Jhacksonville'), Row(City='Minniappolis'), Row(City='Binghamton'), Row(City='Queeens'), Row(City='Belleose'), Row(City='Bloombrid'), Row(City='Jacksonvill'), Row(City='Beacon'), Row(City='West Moreland'), Row(City='Luisville'), Row(City='Bronxs'), Row(City='Edgewood'), Row(City='Hershey'), Row(City='Deer Park,long Island'), Row(City='Bellrose'), Row(City='Seattle'), Row(City='Greenboxo'), Row(City='Kennasan'), Row(City='Quens'), Row(City='Triboro Station'), Row(City='Linderhurst'), Row(City='Union Hillside'), Row(City='West  Burey'), Row(City='Marrietta'), Row(City='New Town'), Row(City='Yonkers'), Row(City='Stamford'), Row(City='Irvington'), Row(City='Batesburge'), Row(City='Whippany'), Row(City='Sun City'), Row(City='Bristol'), Row(City='Lindbrook'), Row(City='Chappaqua'), Row(City='Parkville Station'), Row(City='Thronwood'), Row(City='Harishaw'), Row(City='Crownpoint'), Row(City='Syossett'), Row(City='Englewood Clifton'), Row(City='Jersey City'), Row(City='Bergen County'), Row(City='West Babylon'), Row(City='City Of Industry'), Row(City='Kent'), Row(City='St. Paul'), Row(City='Yonkkers'), Row(City='Fridley'), Row(City='Floral Oark'), Row(City='Branchburg'), Row(City='Livinghurst'), Row(City='Why'), Row(City='Lynnwoood'), Row(City='Livermoore'), Row(City='Natick'), Row(City='Long Beach'), Row(City='Lodi'), Row(City='Carl Place'), Row(City='Jamica'), Row(City='Searingtown'), Row(City='Edge Wood'), Row(City='Dickson'), Row(City='Unkown'), Row(City='Tinley Park'), Row(City='Edenton'), Row(City='Rockchester'), Row(City='Sa'), Row(City='Unn'), Row(City='Woodhaven'), Row(City='Na'), Row(City='Ossining'), Row(City='Broklyn'), Row(City='Secaucas'), Row(City='East Elmurst'), Row(City='Lenoia'), Row(City='Perry Town'), Row(City='Longbeach Rd'), Row(City='Greenview'), Row(City='Niles'), Row(City='Staten Island'), Row(City='Woodside'), Row(City='Bolton Landing'), Row(City='Waterloo'), Row(City='Manhanttan'), Row(City='Bloomfield'), Row(City='Randalls Island'), Row(City='Newark Nj'), Row(City='East Fetauket'), Row(City='Bocaropon'), Row(City='Moreell'), Row(City='Astoia'), Row(City='Elmsord'), Row(City='Perrineville'), Row(City='Orange Park, Florida'), Row(City='Columus'), Row(City='West Sayville'), Row(City='Lynette'), Row(City='Brox'), Row(City='Nbloomington'), Row(City='Scarsdale'), Row(City='Cincinatti'), Row(City='Milford'), Row(City='Herkimer'), Row(City='Belmont'), Row(City='Gray'), Row(City='West Harrington'), Row(City='Marlton'), Row(City='Delray Beach'), Row(City='Cambria Heighs'), Row(City='Woodlane Hill'), Row(City='Fresh Meadows'), Row(City='Robinsville'), Row(City='North Bellemore'), Row(City='No Name'), Row(City='Danbury'), Row(City='Ewing'), Row(City='Plainsboro'), Row(City='Port Washinton'), Row(City='Miflord'), Row(City='Daring'), Row(City='Sataten Islan'), Row(City='Hamden'), Row(City='Port Chester'), Row(City='Farmngdale'), Row(City='Suisun City'), Row(City='Northridge'), Row(City='Bellmore'), Row(City='Benton Harbor'), Row(City='Newsrk'), Row(City='South Paul'), Row(City='Clinton'), Row(City='Beaverton'), Row(City='Fredericksburg'), Row(City='Mtka'), Row(City='Frederick'), Row(City='Taylor'), Row(City='Villa Park'), Row(City='Peakskill'), Row(City='Costa Mesa'), Row(City='Neward'), Row(City='San Diago'), Row(City='East Branch'), Row(City='Summers'), Row(City='Hewlette'), Row(City='Jfk'), Row(City='Union City, Nj'), Row(City='Ronter Center'), Row(City='Court Jeff Sta'), Row(City='Hauppeuge'), Row(City='Happague'), Row(City='Missiffauga'), Row(City='Po Box 11590 Rock Hill'), Row(City='Two'), Row(City='Masteth'), Row(City='Tusla'), Row(City='Frisco'), Row(City='Orchardpark Ny'), Row(City='Lido Beach'), Row(City='Pitsburg'), Row(City='Post Falls'), Row(City='Tarlin'), Row(City='Patterson'), Row(City='New Canaan'), Row(City='North Salem'), Row(City='Engelwood Cliffs'), Row(City='Passaic'), Row(City='Noth Woodmere'), Row(City='Old Greenwhich'), Row(City='Newburg'), Row(City='Unknwn'), Row(City='Sandston'), Row(City='Center Line'), Row(City='East Hartford'), Row(City='Cancun 2r'), Row(City='Norfolk'), Row(City='Woburn'), Row(City='Riverhead'), Row(City='Trumbull'), Row(City='Seacaucus'), Row(City='Walnut Creek'), Row(City='Montrose'), Row(City='Lynnwood,'), Row(City='Jersey Ave'), Row(City='Breat Neck'), Row(City='Wyoming'), Row(City='Lauderdale'), Row(City='Manhattin'), Row(City='Alexanderia'), Row(City='Westhempstead'), Row(City='Kansas'), Row(City='Tappan'), Row(City='Westchester'), Row(City='Qns'), Row(City='Carrol'), Row(City='Local'), Row(City='Sparks'), Row(City='Oak Brook'), Row(City='Hammond'), Row(City='Stone Mountain'), Row(City='Twins Burg'), Row(City='Peterborough'), Row(City='Central Park'), Row(City='Bay Ridge'), Row(City='Oak Brooke'), Row(City='Uunknown'), Row(City='N. Bellmore'), Row(City='Augusta'), Row(City='New Jersey'), Row(City='Newirk'), Row(City='Levitown'), Row(City='Horshan'), Row(City='Regal Park'), Row(City='West Hampstead'), Row(City='Harlem'), Row(City='Nyc'), Row(City='Winterbine'), Row(City='Komack'), Row(City='St. Albans'), Row(City='La Mesa'), Row(City='Locust'), Row(City='West Burry'), Row(City='Slyvania'), Row(City='Lindenhrst'), Row(City='Easton'), Row(City='Maybrook'), Row(City='Huntsville'), Row(City='New Hyde Park, Ny'), Row(City='Bealview'), Row(City='Long Valley'), Row(City='Ronkonkama'), Row(City='Mahopoc'), Row(City='Maspeth'), Row(City='Springfield Gardens'), Row(City='Valhalla'), Row(City='Chino'), Row(City='Sewaren'), Row(City='New Haven'), Row(City='East Greenwich'), Row(City='Happauge'), Row(City='Anon'), Row(City='Wood-ridge'), Row(City='Kansas City'), Row(City='Laurel'), Row(City='Clermont'), Row(City='Lyme'), Row(City='Indian Village'), Row(City='Brookyn Ny'), Row(City='Glenn Allen'), Row(City='Fort Jefferson'), Row(City='North Ridge'), Row(City='Menifee'), Row(City='Hillside'), Row(City='Mastic'), Row(City='Around New Hyde Park Exit'), Row(City='Uknown'), Row(City='North Arlington'), Row(City='Braintree'), Row(City='Warrenville'), Row(City='Norcross'), Row(City='Brick'), Row(City='Port Chesetr'), Row(City='Merino Valley'), Row(City='West Cardwell'), Row(City='Weehoken'), Row(City='Irvering Blvd'), Row(City='Westlake'), Row(City='Arizona'), Row(City='Corram'), Row(City='Deer Park'), Row(City='Lake Worth'), Row(City='Elmhusrt'), Row(City='North Baldwin'), Row(City='North Andover'), Row(City='River Edge'), Row(City='Newwark'), Row(City='Yoknkers'), Row(City='Clark'), Row(City='Bohiema'), Row(City='Overland Park'), Row(City='Old Bridge'), Row(City='Menands'), Row(City='Los Vegas'), Row(City='Valley Street'), Row(City='Staten Islad'), Row(City='White Stone'), Row(City='Florham Park'), Row(City='Islin'), Row(City='Reneon'), Row(City='Rockland County'), Row(City='Manalaban'), Row(City='Ronkomkoma'), Row(City='Inwood'), Row(City='Hewlett Bay Park'), Row(City='Rocklyn Center'), Row(City='Copiaue'), Row(City='Massauri'), Row(City='Si'), Row(City='Carle  Place'), Row(City='Mempis'), Row(City='Durham'), Row(City='Woodbourne'), Row(City='St Louis'), Row(City='Rockville Enter'), Row(City='Waverly'), Row(City='Huntigton'), Row(City='Euclid'), Row(City='Cliffside Park'), Row(City='Troy'), Row(City='Henderson'), Row(City='Secascus'), Row(City='Syosse'), Row(City='Levvitown'), Row(City='San Hose'), Row(City='Sherman'), Row(City='Bison'), Row(City='Cherry Hills'), Row(City='Jamaica'), Row(City='Bellerose'), Row(City='Roslyn Heights'), Row(City='Franklin Square'), Row(City='Clevland'), Row(City='Lehigh'), Row(City='Belmount'), Row(City='St Albin'), Row(City='Secuacus'), Row(City='Stateb Island'), Row(City='River Vale'), Row(City='Palm Bay'), Row(City='Hide Park'), Row(City='Nassu'), Row(City='Gettsville'), Row(City='Elizabeth'), Row(City='Saint Louis'), Row(City='West Harrison'), Row(City='High Point'), Row(City='Rooservelt'), Row(City='1'), Row(City='Rye City'), Row(City='Minneappolous'), Row(City='Indianapollis'), Row(City='Hemsted Village'), Row(City='Cornwell'), Row(City='Northbrook'), Row(City='Ke Gardens Hills'), Row(City='Missoula'), Row(City='Oldbridge'), Row(City='Little Ferry'), Row(City='Suffolk'), Row(City='Short Hills'), Row(City='Williston Park'), Row(City='Windsor'), Row(City='Westburry'), Row(City='Floral Pak'), Row(City='Menomonee Falls'), Row(City='Depew'), Row(City='West Caldwell'), Row(City='Ciero'), Row(City='South Hackensack'), Row(City='Willingboro'), Row(City='Islandia'), Row(City='Port Jefferson Station'), Row(City='San Antoinio'), Row(City='Melbourne'), Row(City='Paterson'), Row(City='Old Beth Page'), Row(City='Island'), Row(City='Woodridge'), Row(City='North Folk'), Row(City='Phila.'), Row(City='Mineappolis'), Row(City='Rockaway  Blvd'), Row(City='Hamilton'), Row(City='Great Neck, New York'), Row(City='Pleasantanton'), Row(City='Mineola'), Row(City='Batazia'), Row(City='North Bergen'), Row(City='Farmindele'), Row(City='Wooside'), Row(City='Brookliyn'), Row(City='St Petersburg'), Row(City='Rotkbille Centre'), Row(City='Colorado Springs'), Row(City='Raleigh Durham'), Row(City='Saint'), Row(City='South Ozone Park'), Row(City='South Amboy'), Row(City='Croton'), Row(City='Morristown'), Row(City='Richardson'), Row(City='Whitplains'), Row(City='Kings Park'), Row(City='Pelhsm'), Row(City='Highland Park'), Row(City='Saint Paul'), Row(City='Franklin  Square'), Row(City='Rockcheaster'), Row(City='New Windsor'), Row(City='Port Jervis'), Row(City='Hasbrouk Heights'), Row(City='Ocean'), Row(City='Jercity'), Row(City='Cransord'), Row(City='Tampon Springs'), Row(City='Stockton'), Row(City='Buffaly'), Row(City='St. Pauls'), Row(City='St. Petersburg'), Row(City='Newtown'), Row(City='Triangle'), Row(City='Old Westbury'), Row(City='Rockleigh'), Row(City='Tape Liberty'), Row(City='Elmsdorf'), Row(City='Phillipsburg'), Row(City='Carlton'), Row(City='Valey Stream'), Row(City='Kisco'), Row(City='Rodchester'), Row(City='Far Roackaway'), Row(City='Seaford'), Row(City='Roanoke'), Row(City='Teterboro'), Row(City='N/'), Row(City='Lindhurst'), Row(City='Essex County'), Row(City='Masepth'), Row(City='Woodbery Po Box 9004'), Row(City='Butler'), Row(City='Briarcliff Manor'), Row(City='Peoria'), Row(City='Sarasota'), Row(City='Liverpool'), Row(City='Tucson'), Row(City='Ft Lauderdale'), Row(City='Alpine'), Row(City='Metaire'), Row(City='Manhattanville'), Row(City='Wood Dale'), Row(City='Dover'), Row(City='Davey'), Row(City='Wilkes-barre'), Row(City='New Wark'), Row(City='Kings Port'), Row(City='South Plainfield'), Row(City='Marmaroneck'), Row(City='Moore'), Row(City='Hartford'), Row(City='Quenns'), Row(City='Five Town'), Row(City='Raretan'), Row(City='Bloominton'), Row(City='Cumberland'), Row(City='Mariapa'), Row(City='Mill Neck'), Row(City='Newark Airport Term.'), Row(City='Vineland'), Row(City='Yorktown'), Row(City='Mout Vernon'), Row(City='Port Washington'), Row(City='Wappingers Falls'), Row(City='Linbrook'), Row(City='Beltsville'), Row(City='Riverside'), Row(City='Elmwood Park'), Row(City='East North Port'), Row(City='Vestal'), Row(City='Tennafly'), Row(City='Jerseycity'), Row(City='Salls'), Row(City='Carteret'), Row(City='Saitn Josephs'), Row(City='Clintondale'), Row(City='York Town Height'), Row(City='Little N4eck'), Row(City='Okspa'), Row(City='White Plains Road'), Row(City='Oak Ridge'), Row(City='Needham'), Row(City='Saddlebrook'), Row(City='Ewr'), Row(City='Shrewsbury'), Row(City='Hallandale'), Row(City='Foresthill'), Row(City='Coloado Springs'), Row(City='Hoffman Interstate'), Row(City='Merrick'), Row(City='Lake Sucesss'), Row(City='Chatsworth'), Row(City='Minneapolis'), Row(City='New York City'), Row(City='Yonkers New York'), Row(City='New Rochell'), Row(City='Duluth'), Row(City='Williamstown'), Row(City='Col.anvures'), Row(City='Guttemberg'), Row(City='Hastings On Hudson'), Row(City='St.  Paul'), Row(City='Willimington'), Row(City='Canton'), Row(City='Howard Beach'), Row(City='Breezy Point'), Row(City='Houston'), Row(City='Boca Racon'), Row(City='Albertson'), Row(City='Philladelphia'), Row(City='Hi-nella'), Row(City='Perris'), Row(City='Svoro'), Row(City='Livonia'), Row(City='Manhatten'), Row(City='Floral Park Village'), Row(City='Mobile'), Row(City='Grape Vine'), Row(City='Plantation'), Row(City='Boca Raton'), Row(City='East Meadow'), Row(City='Piscataway'), Row(City='Porrington'), Row(City='Addison'), Row(City='South Salem'), Row(City='Uppersaddle River'), Row(City='Buffalo Groove'), Row(City='Amelia'), Row(City='Desplaines'), Row(City='Schentady'), Row(City='Ft Lee'), Row(City='Mt. Vernon'), Row(City='Carle Place'), Row(City='Lockport'), Row(City='South Hempstead'), Row(City='Bellevue'), Row(City='Clevand'), Row(City='Marion Rd'), Row(City='Linhurst'), Row(City='Naug.'), Row(City='Rivserside'), Row(City='Madison Heights'), Row(City='Lebanon'), Row(City='Ozone Park'), Row(City='Somerville'), Row(City='Cherryhill'), Row(City='Fecausus'), Row(City='Canoga'), Row(City='St Cloud'), Row(City='Alton'), Row(City='Massapaqua'), Row(City='Carlsbad'), Row(City='Dix Hills'), Row(City='Sakuraishi'), Row(City='Niegra Falls'), Row(City='Rosedale'), Row(City='Montbille'), Row(City='Jacksonville'), Row(City='Gig Harbor'), Row(City='Miliptas'), Row(City='Calabasas'), Row(City='Jaimca'), Row(City='Farmingville'), Row(City='Buffaloo Grove'), Row(City='Sadlebrook'), Row(City='Mt. Sinai'), Row(City='New Hyde Prk'), Row(City='West Hmpstead'), Row(City='Greenvile'), Row(City='Elmira'), Row(City='Wilkes Barre'), Row(City='Not Known'), Row(City='Yaphank'), Row(City='Des Moines'), Row(City='Whtestone'), Row(City='Sandiago'), Row(City='Baldwin Harbor'), Row(City='Forest Hills'), Row(City='Cranton'), Row(City='Utuado'), Row(City='Manhasset'), Row(City='Bayshore'), Row(City='Meadville'), Row(City='Tarrytown'), Row(City='Lawerence'), Row(City='Westwood'), Row(City='Rivervale'), Row(City='Holyoke'), Row(City='Beachwood'), Row(City='Levitt Town'), Row(City='Felden'), Row(City='Geenville'), Row(City='Groe City'), Row(City='0000'), Row(City='Virginia Beach'), Row(City='Waldorf'), Row(City='Manorville'), Row(City='Old Forge'), Row(City='Hastings- On Hudison'), Row(City='Ridgefield'), Row(City='New Albany'), Row(City='New'), Row(City='Xxxxxxxxxxxxxxx'), Row(City='Nazareth'), Row(City='Central Valley'), Row(City='East Point'), Row(City='Woodland Hill'), Row(City='Libermore'), Row(City='West Des Moines'), Row(City='Harthorne'), Row(City='Baystattion'), Row(City='Dana Point California'), Row(City='Lorfork'), Row(City='Hoobken'), Row(City='Tulsa'), Row(City='Syosset'), Row(City='Hartsdale'), Row(City='Schenectady'), Row(City='Oradell'), Row(City='Tonawanda'), Row(City='Portsmouth'), Row(City='Lyndenhurst'), Row(City='Sairport'), Row(City='Tanafly'), Row(City='Mahattan'), Row(City='Bordentown'), Row(City='Prinston'), Row(City='Bayside And 25th Avenues,'), Row(City='Las Vagas'), Row(City='Cordova'), Row(City='Des Mones'), Row(City='New York New York'), Row(City='Whiting'), Row(City='East Middle'), Row(City='Alpharetta'), Row(City='Waterville'), Row(City='Bethapage'), Row(City='Los Angoles'), Row(City='New Hope'), Row(City='Jacksonville Fl'), Row(City='Dfd'), Row(City='Huntingtion'), Row(City='Austin Town'), Row(City='Westport/fairfield'), Row(City='Hawthorn'), Row(City='Evanston'), Row(City='Monterey'), Row(City='Murrieta'), Row(City='Champaign'), Row(City='Bergenfield'), Row(City='Albion'), Row(City='Amytville'), Row(City='Niagara Falls'), Row(City='Hauppough'), Row(City='Harthworne'), Row(City='Kalispell'), Row(City='Deltona'), Row(City='New London'), Row(City='North Woodnere'), Row(City='Marante'), Row(City='Glen Cove'), Row(City='Robbinsville'), Row(City='Laurel Park'), Row(City='West Havestraw'), Row(City='Newfane'), Row(City='Twinsburg'), Row(City='North  Bergen'), Row(City='Flushing Meadows'), Row(City='Westlaco'), Row(City='Atlantic'), Row(City='Buffalo'), Row(City='Chelsea'), Row(City='Chester'), Row(City='Knoxville'), Row(City='Millburn'), Row(City='Shirley'), Row(City='Newark Airport,'), Row(City='Port Elizabeth'), Row(City='Bushkill'), Row(City='Woodland Hills'), Row(City='000'), Row(City='Westcester'), Row(City='Florida'), Row(City='Jamaica, Ny'), Row(City='Fairfax'), Row(City='Landover'), Row(City='Getzville'), Row(City='Des-plaines'), Row(City='Baldwin, Nassau'), Row(City='Fort Meyers'), Row(City='Cortlandt Manor'), Row(City='Freeport'), Row(City='Newport Beach'), Row(City='East Elmhurts'), Row(City='Seafor'), Row(City='Maretta'), Row(City='Two Harbors'), Row(City='Hillsboro Beach'), Row(City='Monmouth'), Row(City='Wllington'), Row(City='Glen Clove'), Row(City='Teme'), Row(City='Brandon'), Row(City='Union City'), Row(City='Farmington Hills'), Row(City='W New York'), Row(City='Brighton Beach'), Row(City='Baytown'), Row(City='Flatbush'), Row(City='Ansonia'), Row(City='Liberty'), Row(City='Stoney Brooke'), Row(City='Hawphorne'), Row(City='Far Rockaway'), Row(City='Skokie'), Row(City='Newardk'), Row(City='Jacksonsville'), Row(City='Briarcliff'), Row(City='Dayonne'), Row(City='North Belmore'), Row(City='Martinsburg'), Row(City='Jersry City'), Row(City='Cincinnati'), Row(City='Oakbrook'), Row(City='Naugatuck'), Row(City='Valley Stream Blvd.'), Row(City='Brookville'), Row(City='Rochelle'), Row(City='Kew Gardens'), Row(City='Portland Manor'), Row(City='Norwalk'), Row(City='Avon'), Row(City='Greenich'), Row(City='Selina'), Row(City='Jersey  City'), Row(City='Hawtorne'), Row(City='Llng Island'), Row(City='Gig Harbour'), Row(City='North Woodmerd New York'), Row(City='Garwood'), Row(City='Jamiaica'), Row(City='Charleston, Nevis'), Row(City='Monterey Park'), Row(City='Ronkonkoma'), Row(City='Coonratids'), Row(City='Rensselaer'), Row(City='Pitsburgh'), Row(City='Hicksville Ny'), Row(City='Clearwater'), Row(City='Camarillo'), Row(City='Casper'), Row(City='Wantgah'), Row(City='Farmdale'), Row(City='Phorofara'), Row(City='Rio Grande'), Row(City='New Port Richey'), Row(City='Warwick'), Row(City='Omestead'), Row(City='Hi Nella'), Row(City='Nj'), Row(City='Ft. Pierce'), Row(City='Macomb'), Row(City='Elmherst'), Row(City='Ingelwood Cliffs'), Row(City='Providence'), Row(City='Plain View'), Row(City='Livingston'), Row(City='Newburh'), Row(City='Watertown'), Row(City='Jersy City'), Row(City='Staten'), Row(City='Hemstead'), Row(City='Jfk Airport'), Row(City='Franklin Lake'), Row(City='Totowa'), Row(City='Jamesburg'), Row(City='Cheepowaa'), Row(City='Coram'), Row(City='Green Village'), Row(City='North Branchburg'), Row(City='Chatham'), Row(City='Indiana Welch'), Row(City='Syracuse'), Row(City='St Paul'), Row(City='Mechanicsburg'), Row(City='Long Island Cit'), Row(City='Ellen'), Row(City='Carthage'), Row(City='Brea'), Row(City='Carrol Streem'), Row(City='Colonian'), Row(City='Panama City'), Row(City='Bellmoore'), Row(City='Katonah'), Row(City='Betlhem'), Row(City='Willington'), Row(City='Edison Rt9 Exit'), Row(City='Littele Neck'), Row(City='Miami'), Row(City='Valley Spring'), Row(City='Ville'), Row(City='Long Islands'), Row(City='Patchohue'), Row(City='Rosland'), Row(City='Croton-on-hudson'), Row(City='Saint Pauls'), Row(City='Eagan'), Row(City='Williamsport'), Row(City='Covina'), Row(City='Salt Lake City'), Row(City='Linden'), Row(City='Glen Ridge'), Row(City='Dickson City'), Row(City='Miramar'), Row(City='Datona'), Row(City='Weehawkin'), Row(City='New York Jfk Airport'), Row(City='Greens Borough'), Row(City='Keansburg'), Row(City='Middlevillage'), Row(City='Sylavania'), Row(City='Oak Harbor'), Row(City='Rockaway Park'), Row(City='Northfolk'), Row(City='Baltimore'), Row(City='Morwalk'), Row(City='Valleystream'), Row(City='Paul'), Row(City='Metuchen'), Row(City='Siegel St'), Row(City='Eden Praire'), Row(City='Hioboken'), Row(City='W Hempstead'), Row(City='Fishkill'), Row(City='West Babylon Ave'), Row(City='Bladwin'), Row(City='Wixom'), Row(City='Rohway'), Row(City='Mt Sinai'), Row(City='Famindale'), Row(City='Pheonix'), Row(City='Rohnert'), Row(City='Weschester County'), Row(City='Avenel'), Row(City='Orangetown'), Row(City='Long Island  City'), Row(City='Richmond'), Row(City='Floral Pk'), Row(City='Harrisburgh'), Row(City='Three Rivers'), Row(City='Englishtown'), Row(City='Qwynn Oaks'), Row(City='Jersey Cty'), Row(City='Co-op City Section 5'), Row(City='Hickville'), Row(City='Burke'), Row(City='Wehawkeen'), Row(City='Columbia'), Row(City='California'), Row(City='Port Washington Avenue'), Row(City='Lake Ariel'), Row(City='Summerville'), Row(City='Santiago'), Row(City='Central Stream Moriches'), Row(City='Mesa'), Row(City='Secaucus'), Row(City='Jacksonille'), Row(City='Buffallo'), Row(City='Oh'), Row(City='Penfield'), Row(City='Sysset'), Row(City='Crotona Park'), Row(City='Nawell'), Row(City='Orlando'), Row(City='Lga'), Row(City='Valleysteam'), Row(City='Sc0ttsdale'), Row(City='Chestnut Ridge'), Row(City='La Crosse'), Row(City='North Woodmere'), Row(City='Woodale'), Row(City='Niagra Falls'), Row(City='Laurel Hollow'), Row(City='Lakeworth'), Row(City='Port Jefferson Sta'), Row(City='Concord'), Row(City='Coon Rapids'), Row(City='Fort Lauderdal'), Row(City='Tenafly'), Row(City='Tereboro'), Row(City='Hillsdale'), Row(City='Thorosare'), Row(City='Unkonwb'), Row(City='New Jer'), Row(City='Esdondido'), Row(City='New York'), Row(City='Decatur'), Row(City='Renton'), Row(City='Huntington'), Row(City='Frankiln Square'), Row(City='New Jersey City'), Row(City='Clifton Nj'), Row(City='Broolyn'), Row(City='Massapequa Park'), Row(City='Roselie'), Row(City='Franklin Lakes'), Row(City='East Aurora'), Row(City='Sandersville'), Row(City='Asbury Park'), Row(City='Stewart Manor'), Row(City='Jefferson'), Row(City='Great Barrington'), Row(City='Farmingdae'), Row(City='West Orange'), Row(City='South Gate'), Row(City='Newburgh'), Row(City='Massapequa'), Row(City='Northport'), Row(City='Colombus'), Row(City='Peach Tree Corners Georgia'), Row(City='Doyles Town'), Row(City='East Atlantic Beach'), Row(City='Laguardia Airport'), Row(City='East Norwalk'), Row(City='New Providence'), Row(City='Talahassee'), Row(City='Greensville'), Row(City='East Setauket'), Row(City='Manhattan'), Row(City='Rocky Point'), Row(City='Fort Myers'), Row(City='Halifax'), Row(City='Valley Cottage'), Row(City='Averne New York'), Row(City='Hutchinson'), Row(City='Bocaraton'), Row(City='Lawrence'), Row(City='Gardiner'), Row(City='Woodmear'), Row(City='Charlotte'), Row(City='Olathe'), Row(City='Watchung'), Row(City='Magnolia'), Row(City='Warner Robins'), Row(City='Waldwick'), Row(City='Saint James'), Row(City='Ossing'), Row(City='Burnside'), Row(City='Bronx'), Row(City='#200 Brea'), Row(City='Edge Water'), Row(City='Patch Ofe'), Row(City='Marietta'), Row(City='Roseville'), Row(City='Pobox 64886'), Row(City='East Sanborn'), Row(City='Far Rockwa'), Row(City='Mount Pleasent'), Row(City='Dixhills'), Row(City='Middleboro'), Row(City='Indionapolis'), Row(City='Seagirt'), Row(City='Glen Head'), Row(City='Edgewater'), Row(City='Orangeburg'), Row(City='Gray Neck'), Row(City='Cedar Falls'), Row(City='Las  Vegas'), Row(City='Rockville Cenre'), Row(City='Hazelwood'), Row(City='Siux City'), Row(City='Westberry'), Row(City='Bonx'), Row(City='Valley  Stream'), Row(City='Bronxville'), Row(City='Hauppaugd'), Row(City='Fort Jefferson Station'), Row(City='Edjewater'), Row(City='Xx'), Row(City='Oangeburg'), Row(City='Cockeysville'), Row(City='Hunt Bally'), Row(City='Ft. Jefferson Station'), Row(City='St Albans'), Row(City='North Brunswick'), Row(City='Hobken'), Row(City='Stony Brook'), Row(City='Chester Field'), Row(City='Herietta'), Row(City='Mount Pocano'), Row(City='Downey'), Row(City='Levits Town'), Row(City='Seacucus'), Row(City='Ledgewood'), Row(City='Center Moriches'), Row(City='Grand Central Station'), Row(City='Sparta'), Row(City='Fort Worth'), Row(City='Denver'), Row(City='Middleton'), Row(City='Pallisades'), Row(City='Mordandille'), Row(City='Porchester'), Row(City='P.o. Box 1233'), Row(City='Rapid City'), Row(City='Boston'), Row(City='Port St Lucie'), Row(City='State Island'), Row(City='Many'), Row(City='Manhasset Hills'), Row(City='Cedar Hurst'), Row(City='Castlebury'), Row(City='Canoga Park'), Row(City='Tuscan'), Row(City='Winston-salem'), Row(City='Cranbury'), Row(City='Hollis'), Row(City='Normal'), Row(City='Co Op City'), Row(City='Iselin'), Row(City='Pearl River'), Row(City='Waverly Fl'), Row(City='Little Falls'), Row(City='Eas Amherst'), Row(City='Fort Wayne'), Row(City='Greenwitch'), Row(City='Howard'), Row(City='Sanborn'), Row(City='Hackensack'), Row(City='Hinella'), Row(City='Modesto'), Row(City='Prescott'), Row(City='Brairwood'), Row(City='St.louis'), Row(City='Provo'), Row(City='Nashua'), Row(City='River Forest'), Row(City='Elmhurst'), Row(City='Sioux Falls'), Row(City='Miraloma'), Row(City='Sea Cliff'), Row(City='Warrington'), Row(City='Iseling'), Row(City='Mount Veron'), Row(City='Deerfield Beach'), Row(City='Los Angelos'), Row(City='Kinston'), Row(City='Douglasville'), Row(City='Islancia')]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357505584_295863406",
+      "id": "paragraph_1639350211544_937307907",
+      "dateCreated": "2021-12-12T20:05:05-0500",
+      "status": "READY",
+      "$$hashKey": "object:5778"
+    }
+  ],
+  "name": "Cleaning_Dataset_peel_Uniformity",
+  "id": "2GRZ76ZJ7",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Cleaning_Dataset_peel_Uniformity"
+}

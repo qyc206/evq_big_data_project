@@ -1,0 +1,1066 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n## Upload the dataset to Peel cluster & Define dataset path\n\nBefore continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:\n\n```\n# Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] <net_id>@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path \"/user/[netid]/[FILENAME]\")\nhfs -put [FILENAME]\n```\n\nMake sure you can locate your dataset before continuing onwards.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:04-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357965863_191126793",
+      "id": "paragraph_1639357965863_191126793",
+      "dateCreated": "2021-12-12T20:12:45-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9165",
+      "dateFinished": "2021-12-12T20:14:04-0500",
+      "dateStarted": "2021-12-12T20:14:04-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Upload the dataset to Peel cluster &amp; Define dataset path</h2>\n<p>Before continuing, make sure your dataset is available on Peel HDFS. If your dataset is on your local machine, you can copy them to the login node of the cluster and move them to your user directory in the HDFS using the following commands:</p>\n<pre><code># Copy file from local machine to login node of the cluster\nmylaptop$ scp -r [FILENAME] &lt;net_id&gt;@peel.hpc.nyu.edu:~/\n\n# Move file from cluster login node to your user directory in HDFS \n# (your file will be in the path &quot;/user/[netid]/[FILENAME]&quot;)\nhfs -put [FILENAME]\n</code></pre>\n<p>Make sure you can locate your dataset before continuing onwards.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%pyspark\n# Define path to dataset on Peel HDFS (NOTE: replace file name with your own if different)\ndataset_path = \"/user/CS-GY-6513/project_data/data-cityofnewyork-us.erm2-nwe9.csv\"",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:31-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357978796_1626011861",
+      "id": "paragraph_1639357978796_1626011861",
+      "dateCreated": "2021-12-12T20:12:58-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9253",
+      "dateFinished": "2021-12-12T20:14:31-0500",
+      "dateStarted": "2021-12-12T20:14:31-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      }
+    },
+    {
+      "text": "%md\n\n## Set up Spark Session\n\nNow that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset. \n\nIf this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:\n\n```\n# Run this command if pyspark is not already installed\n%pip install pyspark\n```",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:23-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Set up Spark Session</h2>\n<p>Now that the dataset is uploaded and the path is defined, we need to set up pyspark to begin profiling and exploring our dataset.</p>\n<p>If this notebook is run in an environment where pyspark is not yet installed, please add a new cell BEFORE the next cell and run the following command:</p>\n<pre><code># Run this command if pyspark is not already installed\n%pip install pyspark\n</code></pre>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_795274522",
+      "id": "paragraph_1639350469377_1147721874",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:7504",
+      "dateFinished": "2021-12-12T20:14:23-0500",
+      "dateStarted": "2021-12-12T20:14:23-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Set up pyspark session\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession \\\n            .builder \\\n            .appName(\"Python Spark SQL basic example\") \\\n            .config(\"spark.some.config.option\", \"some-value\") \\\n            .config(\"spark.executor.memory\", \"50g\") \\\n            .config(\"spark.driver.memory\", \"50g\") \\\n            .getOrCreate()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:35-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_325340726",
+      "id": "paragraph_1639350492380_1651934754",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7505",
+      "dateFinished": "2021-12-12T20:14:35-0500",
+      "dateStarted": "2021-12-12T20:14:35-0500"
+    },
+    {
+      "text": "%md\n\n## Load dataset using spark\n\nRun the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:47-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Load dataset using spark</h2>\n<p>Run the following lines to load the dataset using spark and test to make sure that dataset is properly loaded.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_835781444",
+      "id": "paragraph_1639350512102_127083040",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7506",
+      "dateFinished": "2021-12-12T20:14:47-0500",
+      "dateStarted": "2021-12-12T20:14:47-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Load dataset\ndf = spark.read.format('csv').options(header='true',inferschema='true').load(dataset_path)\n# (Note: change \"311_service_report\" to a name that better suits your dataset, if different)\ndf.createOrReplaceTempView(\"311_service_report\") ",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:14:55-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=11",
+              "$$hashKey": "object:9498"
+            },
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=12",
+              "$$hashKey": "object:9499"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_85457125",
+      "id": "paragraph_1639350527675_647459614",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7507",
+      "dateFinished": "2021-12-12T20:17:32-0500",
+      "dateStarted": "2021-12-12T20:14:55-0500"
+    },
+    {
+      "text": "%pyspark\n\nfrom pyspark.sql.types import IntegerType, DoubleType\nfrom pyspark.sql.functions import to_timestamp\n\n# Type casting to expected types\ndf = df.withColumn(\"Unique Key\",df[\"Unique Key\"].cast(IntegerType()))\ndf = df.withColumn(\"Due Date\",to_timestamp(df[\"Due Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Created Date\", to_timestamp(df[\"Created Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Closed Date\",to_timestamp(df[\"Closed Date\"],\"MM/dd/yyyy hh:mm:ss a\"))\ndf = df.withColumn(\"Incident Zip\",df[\"Incident Zip\"].cast(IntegerType()))\ndf = df.withColumn(\"BBL\",df[\"BBL\"].cast(IntegerType()))\ndf = df.withColumn(\"X Coordinate (State Plane)\",df[\"X Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Y Coordinate (State Plane)\",df[\"Y Coordinate (State Plane)\"].cast(IntegerType()))\ndf = df.withColumn(\"Resolution Action Updated Date\",to_timestamp(df[\"Resolution Action Updated Date\"],\"MM/dd/yyyy hh:mm:ss a\"))",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:17:52-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_304955099",
+      "id": "paragraph_1639350538792_1463312982",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7508",
+      "dateFinished": "2021-12-12T20:17:52-0500",
+      "dateStarted": "2021-12-12T20:17:52-0500"
+    },
+    {
+      "text": "%md\n\n## III. Inconsistency\n\nAs seen during profiling, there is incorrect data mostly in the \"Agency Name\" Column, but we will need to clean both \"Agency Name\" and \"Agency\" Columns.\n\nTo go over changes in \"Agency\", we need to make specific changes. For example, there were formatting errors with \"Mayorâ\", and because both are specific cases, we will fix those manually. For the other errors that were shown in Agency, we can either filter out these errors, or we can check the \"correct\" dataset to see if the Agency Name has a match in the good dataset and change the Agency accordingly. However, our main focus will be on Agency Names because Agency Names has significantly more errors than Agency, and therefore, we will not be implementing these changes in this document at the moment.\n\n\"Agency Name\" will be fixed by going through if there is a corresponding \"Agency\" in the same row that is also in the \"correct\" dataset. If there is a match, then we will change the value of the agency name to what it is supposed to be. There will be one type of Agency I will not be changing the name for: the DOE. This is because of the aformentioned \"School\" agency name problem where the name of the school that the DOE could be important. The 3-1-1 names will also go untouched for the same reason.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:15:15-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>III. Inconsistency</h2>\n<p>As seen during profiling, there is incorrect data mostly in the &ldquo;Agency Name&rdquo; Column, but we will need to clean both &ldquo;Agency Name&rdquo; and &ldquo;Agency&rdquo; Columns.</p>\n<p>To go over changes in &ldquo;Agency&rdquo;, we need to make specific changes. For example, there were formatting errors with &ldquo;Mayorâ&rdquo;, and because both are specific cases, we will fix those manually. For the other errors that were shown in Agency, we can either filter out these errors, or we can check the &ldquo;correct&rdquo; dataset to see if the Agency Name has a match in the good dataset and change the Agency accordingly. However, our main focus will be on Agency Names because Agency Names has significantly more errors than Agency, and therefore, we will not be implementing these changes in this document at the moment.</p>\n<p>&ldquo;Agency Name&rdquo; will be fixed by going through if there is a corresponding &ldquo;Agency&rdquo; in the same row that is also in the &ldquo;correct&rdquo; dataset. If there is a match, then we will change the value of the agency name to what it is supposed to be. There will be one type of Agency I will not be changing the name for: the DOE. This is because of the aformentioned &ldquo;School&rdquo; agency name problem where the name of the school that the DOE could be important. The 3-1-1 names will also go untouched for the same reason.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_249768201",
+      "id": "paragraph_1639350564214_1069098367",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7509",
+      "dateFinished": "2021-12-12T20:15:15-0500",
+      "dateStarted": "2021-12-12T20:15:15-0500"
+    },
+    {
+      "text": "%md\nRun the following cells to fix \"Mayorâ\" problem.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:10:57-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Run the following cells to fix &ldquo;Mayorâ&rdquo; problem.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_156582518",
+      "id": "paragraph_1639350766349_1277471852",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "READY",
+      "$$hashKey": "object:7510"
+    },
+    {
+      "text": "%pyspark\n# Fix the Mayora Problem by finding \"MAYORâ\" and replacing it in Agency\nfrom pyspark.sql.functions import when\n\ndf = df.withColumn(\"Agency\", \\\n              when(df[\"Agency\"][0:6] == \"MAYORâ\", \"OSE\").otherwise(df[\"Agency\"]))",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:17:54-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_643482476",
+      "id": "paragraph_1639350777130_766893032",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7511",
+      "dateFinished": "2021-12-12T20:17:55-0500",
+      "dateStarted": "2021-12-12T20:17:54-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Fix the Mayora Problem by finding \"Mayorâ\" and replacing it in Agency Name\n\ndf = df.withColumn(\"Agency Name\", \\\n              when(df[\"Agency Name\"][0:6] == \"Mayorâ\", \"Mayor's Special Office of Enforcement\").otherwise(df[\"Agency Name\"]))",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:17:56-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1885024560",
+      "id": "paragraph_1639350786334_1805478466",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7512",
+      "dateFinished": "2021-12-12T20:17:56-0500",
+      "dateStarted": "2021-12-12T20:17:56-0500"
+    },
+    {
+      "text": "%md\n\nBefore moving on, make sure to download and upload the [NYC-Agency-Names.csv](https://drive.google.com/file/d/1EHpyXNOwCpv-NM0OTTqFBHeKikKpBtd1/view?usp=sharing) dataset into the same folder/directory as where our dataset resides (i.e. for this colab notebook environment, the current working directory path should be /content/drive/MyDrive/evq_311_service_proj and the datasets should all be placed in the dataset/ folder inside the current working directory).\n\nThis dataset is needed for fixing inconsistencies in \"Agency Name\" and \"Agency\".",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:15:54-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Before moving on, make sure to download and upload the <a href=\"https://drive.google.com/file/d/1EHpyXNOwCpv-NM0OTTqFBHeKikKpBtd1/view?usp=sharing\">NYC-Agency-Names.csv</a> dataset into the same folder/directory as where our dataset resides (i.e. for this colab notebook environment, the current working directory path should be /content/drive/MyDrive/evq_311_service_proj and the datasets should all be placed in the dataset/ folder inside the current working directory).</p>\n<p>This dataset is needed for fixing inconsistencies in &ldquo;Agency Name&rdquo; and &ldquo;Agency&rdquo;.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1075362415",
+      "id": "paragraph_1639350796922_1722199088",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7513",
+      "dateFinished": "2021-12-12T20:15:54-0500",
+      "dateStarted": "2021-12-12T20:15:54-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Define path for NYC Agency Names dataset\n# (Note: make sure to update to your netid and dataset name)\nnycAgencyNames_path = \"/user/emc689/NYC-Agency-Names.csv\"",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:22:03-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1321135074",
+      "id": "paragraph_1639350805726_1474492231",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7514",
+      "dateFinished": "2021-12-12T20:18:04-0500",
+      "dateStarted": "2021-12-12T20:18:04-0500"
+    },
+    {
+      "text": "%pyspark\n\n# Read NYC Agency Names dataset \nagency_df = spark.read.csv(nycAgencyNames_path, header=True)\n\n# Show Schema for NYC Agency Names dataset\nagency_df.printSchema()",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:18:06-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- Agency Acronym: string (nullable = true)\n |-- Agency: string (nullable = true)\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=13",
+              "$$hashKey": "object:9539"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_2020145564",
+      "id": "paragraph_1639350814446_819517752",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7515",
+      "dateFinished": "2021-12-12T20:18:06-0500",
+      "dateStarted": "2021-12-12T20:18:06-0500"
+    },
+    {
+      "text": "%md\nRun the following cells to fix inconsistencies in \"Agency Name\" and \"Agency\".",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:10:57-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Run the following cells to fix inconsistencies in &ldquo;Agency Name&rdquo; and &ldquo;Agency&rdquo;.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_382624627",
+      "id": "paragraph_1639350827545_1402917281",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "READY",
+      "$$hashKey": "object:7516"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import coalesce\n\n# Checked the Agency Acronym and found the Agency Names for all rows this way any mistakes on spellings, uniformity can be removed at once.\nresult = df.join(agency_df,df[\"Agency\"] ==  agency_df[\"Agency Acronym\"],\"left\").select(df[\"Unique Key\"],df[\"Agency\"],agency_df[\"Agency\"].alias(\"agency_name_df\"),df[\"Agency Name\"].alias(\"df_Agency\"))\n\n# We want to now turn the value of agency_name_df to null when df_Agency contains school\nresult = result.withColumn(\"agency_name_df\", when( (result[\"Agency\"]== \"DOE\")& (result[\"df_Agency\"][0:6] == \"School\"), None).otherwise(result[\"agency_name_df\"]) )\ntemp = result.select(result[\"Unique Key\"].alias(\"Temp Key\"),coalesce(result[\"agency_name_df\"], result[\"df_Agency\"]).alias(\"Final Agency\"))",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:18:09-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1183357167",
+      "id": "paragraph_1639350836304_436458592",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7517",
+      "dateFinished": "2021-12-12T20:18:09-0500",
+      "dateStarted": "2021-12-12T20:18:09-0500"
+    },
+    {
+      "text": "%pyspark\n# Update our Agency Name Column with the new Data\ndf = df.join(temp,df[\"Unique Key\"] ==  temp[\"Temp Key\"],how=\"left\")\ndf = df.drop(\"Temp Key\")\ndf = df.withColumn(\"Agency Name\", df[\"Final Agency\"])\ndf = df.drop(\"Final Agency\")",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:18:10-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1881470114",
+      "id": "paragraph_1639350845635_999510718",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7518",
+      "dateFinished": "2021-12-12T20:18:10-0500",
+      "dateStarted": "2021-12-12T20:18:10-0500"
+    },
+    {
+      "text": "%md\n### Run the following cells to see the improvements!\n",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:16:51-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h3>Run the following cells to see the improvements!</h3>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1291597685",
+      "id": "paragraph_1639350870658_174749273",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7519",
+      "dateFinished": "2021-12-12T20:16:51-0500",
+      "dateStarted": "2021-12-12T20:16:51-0500"
+    },
+    {
+      "text": "%pyspark\n# Show that the \"MAYORâ\" problem is fixed\ndf.select(\"Agency\", \"Agency Name\").filter(df[\"Agency\"] == \"OSE\").show(20,False)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:18:13-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------+-------------------------------------+\n|Agency|Agency Name                          |\n+------+-------------------------------------+\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n|OSE   |Mayor's Special Office of Enforcement|\n+------+-------------------------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=14",
+              "$$hashKey": "object:9585"
+            },
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=15",
+              "$$hashKey": "object:9586"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1192087911",
+      "id": "paragraph_1639350894491_1956416327",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7520",
+      "dateFinished": "2021-12-12T20:20:26-0500",
+      "dateStarted": "2021-12-12T20:18:13-0500"
+    },
+    {
+      "text": "%md\nWe can observe in the following result that the Agency Name looks more consistent and more accurate.",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:10:57-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>We can observe in the following result that the Agency Name looks more consistent and more accurate.</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1053553681",
+      "id": "paragraph_1639350904701_607331464",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "READY",
+      "$$hashKey": "object:7521"
+    },
+    {
+      "text": "%md\n\nRun the following cell to further show the data set has improved by looking at incorrect data. We can observe that there is much less inconsistencies compared to what we saw during profiling (Note: we are not counting 3-1-1 and the variations of that as inconsistent).",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:10:57-0500",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Run the following cell to further show the data set has improved by looking at incorrect data. We can observe that there is much less inconsistencies compared to what we saw during profiling (Note: we are not counting 3-1-1 and the variations of that as inconsistent).</p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1965834827",
+      "id": "paragraph_1639350915247_632049475",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "READY",
+      "$$hashKey": "object:7522"
+    },
+    {
+      "text": "%pyspark\n\n# All distinct agency name present in the dataset\ndf5 = df.select(\"Agency Name\").distinct() \nlist_of_agency_names = list(df5.toPandas()['Agency Name']) \n\n# All agency present in the dataset\nlist_of_correct_agency_names = list(agency_df.select(\"Agency\").distinct().toPandas()['Agency']) ",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:20:35-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=16",
+              "$$hashKey": "object:9641"
+            },
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=17",
+              "$$hashKey": "object:9642"
+            },
+            {
+              "jobUrl": "http://hc15.nyu.cluster:41567/jobs/job?id=18",
+              "$$hashKey": "object:9643"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_193264374",
+      "id": "paragraph_1639350927935_999396891",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7523",
+      "dateFinished": "2021-12-12T20:23:05-0500",
+      "dateStarted": "2021-12-12T20:20:35-0500"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import asc\n\n# Show new values for Agency Name\ndf.select(\"Agency Name\").distinct().orderBy(asc(\"Agency Name\")).show(df.count(), False)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:10:57-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------------------------------------------------------------------------------------+\n|Agency Name                                                                                       |\n+--------------------------------------------------------------------------------------------------+\n|3-1-1                                                                                             |\n|3-1-1 Call Center                                                                                 |\n|311 Administrative Supervisor                                                                     |\n|Administration for Children's Services                                                            |\n|CEO                                                                                               |\n|Department for the Aging                                                                          |\n|Department of Buildings                                                                           |\n|Department of City Planning                                                                       |\n|Department of Citywide Administrative Services                                                    |\n|Department of Consumer Affairs                                                                    |\n|Department of Education                                                                           |\n|Department of Environmental Protection                                                            |\n|Department of Finance                                                                             |\n|Department of Health & Mental Hygiene                                                             |\n|Department of Homeless Servicess                                                                  |\n|Department of Information Technology & Telecommunications                                         |\n|Department of Parks & Recreation                                                                  |\n|Department of Records and Information Services                                                    |\n|Department of Sanitation                                                                          |\n|Department of Transportation                                                                      |\n|Department of Veteran's Services                                                                  |\n|Economic Development Corporation                                                                  |\n|Fire Department                                                                                   |\n|Housing Preservation & Development                                                                |\n|Human Resources Administration                                                                    |\n|MOC                                                                                               |\n|Mayor's Office of Management & Budget                                                             |\n|Mayor's Special Office of Enforcement                                                             |\n|New York City Conflicts of Interest Board                                                         |\n|Office of Emergency Management                                                                    |\n|Police Department                                                                                 |\n|School - 47 The American Sign Language and English Secondary School                               |\n|School - 51 Avenue Academy: The Path To Academic Excellence                                       |\n|School - A Philip Randolph Campus High School                                                     |\n|School - ACE Academy for Scholars at the Geraldine Ferraro Campus                                 |\n|School - ACORN Community High School                                                              |\n|School - ALC Bowling Green                                                                        |\n|School - ALC Boys Club                                                                            |\n|School - ALC Brooklyn Choices                                                                     |\n|School - ALC Choir Academy                                                                        |\n|School - ALC Fundamentals Academy                                                                 |\n|School - ALC Grady High School                                                                    |\n|School - ALC John Jay                                                                             |\n|School - ALC Lafayette Academy                                                                    |\n|School - ALC MS 246                                                                               |\n|School - ALC MS 258                                                                               |\n|School - ALC Park Place Academy                                                                   |\n|School - ALC Royal 180 Academy                                                                    |\n|School - Abraham Lincoln High School                                                              |\n|School - Academic Leadership Charter School                                                       |\n|School - Academy for College Preparation and Career Exploration: A College Board School           |\n|School - Academy for Environmental Leadership                                                     |\n|School - Academy for Health Careers                                                               |\n|School - Academy for Language and Technology                                                      |\n|School - Academy for Personal Leadership and Excellence                                           |\n|School - Academy for Public Relations                                                             |\n|School - Academy for Scholarship and Entrepreneurship                                             |\n|School - Academy for Scholarship and Entrepreneurship: A College Board School                     |\n|School - Academy for Social Action                                                                |\n|School - Academy for Software Engineering                                                         |\n|School - Academy for Young Writers A                                                              |\n|School - Academy for Young Writers B                                                              |\n|School - Academy of American Studies                                                              |\n|School - Academy of Applied Mathematics and Technology                                            |\n|School - Academy of Arts and Letters                                                              |\n|School - Academy of Collaborative Education                                                       |\n|School - Academy of Finance and Enterprise                                                        |\n|School - Academy of Hospitality and Tourism                                                       |\n|School - Academy of Innovative Technology                                                         |\n|School - Academy of Medical Technology: A College Board School                                    |\n|School - Academy of Public Relations                                                              |\n|School - Academy of the City Charter School                                                       |\n|School - Access GED - East at South Shore High School                                             |\n|School - Achievement First Apollo Charter School                                                  |\n|School - Achievement First Brownsville Charter School                                             |\n|School - Achievement First Crown Heights Charter School                                           |\n|School - Achievement First Endeavor Charter School                                                |\n|School - Acorn High School for Social Justice                                                     |\n|School - Adlai E Stevenson High School                                                            |\n|School - Adult and Continuing Education                                                           |\n|School - Agnes Y Humphrey School for Leadership                                                   |\n|School - Albert Shanker School for Visual and Performing Arts                                     |\n|School - Alfred E Smith Campus YABC                                                               |\n|School - All City Leadership Secondary School                                                     |\n|School - Amber Charter School                                                                     |\n|School - American Dream Charter School                                                            |\n|School - Amistad Dual Language School                                                             |\n|School - Ampark Neighborhood                                                                      |\n|School - Andries Hudde                                                                            |\n|School - Antonia Pantoja Preparatory Academy: A College Board School                              |\n|School - Archer Elementary School                                                                 |\n|School - Archimedes Academy for Math, Science and Technology Applications                         |\n|School - Archimedes Academy for Math, Science, and Technology Applications                        |\n|School - Art and Design High School                                                               |\n|School - Arts and Media Preparatory Academy                                                       |\n|School - Aspirations Diploma Plus High School                                                     |\n|School - Astor Collegiate Academy                                                                 |\n|School - August Martin High School                                                                |\n|School - Automotive High School                                                                   |\n|School - Aviation Career and Technical Education High School                                      |\n|School - Baccalaureate School for Global Education                                                |\n|School - Bard High School Early College                                                           |\n|School - Bard High School Early College Queens                                                    |\n|School - Baruch College Campus High School                                                        |\n|School - Bayard Rustin Educational Complex                                                        |\n|School - Baychester Academy                                                                       |\n|School - Baychester Middle School                                                                 |\n|School - Bayside High School                                                                      |\n|School - Beach Channel High School                                                                |\n|School - Beacon High School                                                                       |\n|School - Bedford Academy High School                                                              |\n|School - Bedford Park Elementary School                                                           |\n|School - Bedford Stuyvesant Collegiate Charter School                                             |\n|School - Bedford Stuyvesant New Beginnings Charter School                                         |\n|School - Bedford Stuyvesant Preparatory High School                                               |\n|School - Beginning With Children Charter School                                                   |\n|School - Beginning with Children Charter School II                                                |\n|School - Belmont Preparatory High School                                                          |\n|School - Benjamin Banneker Academy                                                                |\n|School - Benjamin Franklin High School for Finance and Information Technology                     |\n|School - Benjamin N Cardozo High School                                                           |\n|School - Boys and Girls High School                                                               |\n|School - Bread and Roses Integrated Arts High School                                              |\n|School - Brighter Choice Community School                                                         |\n|School - Brilla College Prep Charter School                                                       |\n|School - Bronx Academy for Software Engineering (BASE)                                            |\n|School - Bronx Academy of Health Careers                                                          |\n|School - Bronx Academy of Promise Charter School                                                  |\n|School - Bronx Aerospace High School                                                              |\n|School - Bronx Alliance Middle School                                                             |\n|School - Bronx Arena High School                                                                  |\n|School - Bronx Career and College Preparatory High School                                         |\n|School - Bronx Center for Science and Mathematics                                                 |\n|School - Bronx Charter School for Better Learning                                                 |\n|School - Bronx Charter School for Children                                                        |\n|School - Bronx Charter School for Excellence                                                      |\n|School - Bronx Charter School for the Arts                                                        |\n|School - Bronx Collaborative High School                                                          |\n|School - Bronx Collegiate Academy                                                                 |\n|School - Bronx Dance Academy School                                                               |\n|School - Bronx Delta School                                                                       |\n|School - Bronx Early College Academy for Teaching and Learning                                    |\n|School - Bronx Engineering and Technology Academy                                                 |\n|School - Bronx Green Middle School                                                                |\n|School - Bronx Health Sciences High School                                                        |\n|School - Bronx High School for Medical Science                                                    |\n|School - Bronx High School for Writing and Communication Arts                                     |\n|School - Bronx High School for the Visual Arts                                                    |\n|School - Bronx International High School                                                          |\n|School - Bronx Lab School                                                                         |\n|School - Bronx Leadership Academy High School                                                     |\n|School - Bronx Leadership Academy II High School                                                  |\n|School - Bronx Lighthouse Charter School                                                          |\n|School - Bronx Little School                                                                      |\n|School - Bronx Park Middle School                                                                 |\n|School - Bronx Preparatory Charter School                                                         |\n|School - Bronx Regional High School                                                               |\n|School - Bronx River High School                                                                  |\n|School - Bronx School for Law, Government and Justice                                             |\n|School - Bronx School of Law and Finance                                                          |\n|School - Bronx Studio School for Writers and Artists                                              |\n|School - Bronx Theatre High School                                                                |\n|School - Bronx Writing Academy                                                                    |\n|School - Bronxdale High School                                                                    |\n|School - Brooklyn Academy of Science and the Environment                                          |\n|School - Brooklyn Arbor Elementary School                                                         |\n|School - Brooklyn Ascend Charter School                                                           |\n|School - Brooklyn Brownstone School                                                               |\n|School - Brooklyn College Academy                                                                 |\n|School - Brooklyn Collegiate: A College Board School                                              |\n|School - Brooklyn Community Arts and Media High School (BCAM)                                     |\n|School - Brooklyn Democracy Academy                                                               |\n|School - Brooklyn Dreams Charter School                                                           |\n|School - Brooklyn East Collegiate Charter School                                                  |\n|School - Brooklyn Environmental Exploration School (BEES)                                         |\n|School - Brooklyn Excelsior Charter                                                               |\n|School - Brooklyn Excelsior Charter School                                                        |\n|School - Brooklyn Frontiers High School                                                           |\n|School - Brooklyn Gardens Elementary School                                                       |\n|School - Brooklyn High School for Law and Technology                                              |\n|School - Brooklyn High School for Leadership and Community Service                                |\n|School - Brooklyn High School of the Arts                                                         |\n|School - Brooklyn Institute for Liberal Arts                                                      |\n|School - Brooklyn International High School                                                       |\n|School - Brooklyn Lab School                                                                      |\n|School - Brooklyn Landmark Elementary School                                                      |\n|School - Brooklyn Preparatory High School                                                         |\n|School - Brooklyn Scholars Charter School                                                         |\n|School - Brooklyn School for Music and Theatre                                                    |\n|School - Brooklyn School of Inquiry                                                               |\n|School - Brooklyn Secondary School for Collaborative Studies                                      |\n|School - Brooklyn Studio Secondary School                                                         |\n|School - Brooklyn Technical High School                                                           |\n|School - Brooklyn Theatre Arts High School                                                        |\n|School - Brooklyn Urban Garden Charter School                                                     |\n|School - Broome Street Academy Charter School                                                     |\n|School - Brownsville Academy High School                                                          |\n|School - Brownsville Collaborative Middle School                                                  |\n|School - Brownsville Collegiate Charter School                                                    |\n|School - Bushwick Ascend Charter School                                                           |\n|School - Bushwick Community High School                                                           |\n|School - Bushwick Leaders High School for Academic Excellence                                     |\n|School - Business of Sports School                                                                |\n|School - Business, Computer Applications, and Entrepreneurship High School                        |\n|School - C Columbus High School YABC                                                              |\n|School - CSI High School for International Studies                                                |\n|School - Cambria Heights Academy                                                                  |\n|School - Canarsie Ascend Charter School                                                           |\n|School - Careers in Sports High School                                                            |\n|School - Carl C Icahn Bronx North Charter School                                                  |\n|School - Carl C Icahn South Bronx Charter School                                                  |\n|School - Castle Bridge School                                                                     |\n|School - Catherine and Count Basie MS 72                                                          |\n|School - Celia Cruz Bronx High School of Music                                                    |\n|School - Central Park East I                                                                      |\n|School - Central Park East II                                                                     |\n|School - Challenge Preparatory Charter School                                                     |\n|School - Chelsea Career and Technical Education High School                                       |\n|School - Childrens Workshop at PS 361                                                             |\n|School - Choir Academy of Harlem                                                                  |\n|School - Christopher Avenue Community School                                                      |\n|School - Christopher Columbus High School                                                         |\n|School - Citizens of the World Charter School New York 2 Crown Heights                            |\n|School - City College Academy of the Arts                                                         |\n|School - City Polytechnic High School of Engineering, Architecture, and Technology                |\n|School - Civic Leadership Academy                                                                 |\n|School - Clara Barton High School                                                                 |\n|School - Claremont International High School                                                      |\n|School - Cobble Hill School of American Studies                                                   |\n|School - Collaborative Academy of Science, Technology, and Law                                    |\n|School - Collaborative Arts Middle School                                                         |\n|School - Columbia Secondary School                                                                |\n|School - Community Action School MS 258                                                           |\n|School - Community Health Academy of the Heights                                                  |\n|School - Community Math and Science Prep                                                          |\n|School - Community Partnership Charter School                                                     |\n|School - Community Roots Charter School                                                           |\n|School - Community School for Social Justice                                                      |\n|School - Community Voices Middle School                                                           |\n|School - Comprehensive Model School Project MS 327                                                |\n|School - Concourse Village Elementary School                                                      |\n|School - Coney Island Preparatory Public Charter School                                           |\n|School - Conselyea Preparatory School                                                             |\n|School - Cornerstone Academy for Social Action                                                    |\n|School - Cornerstone Academy for Social Action Middle School (CASA)                               |\n|School - Creston Academy                                                                          |\n|School - Crotona International High School                                                        |\n|School - Cultural Academy for the Arts and Sciences                                               |\n|School - Curtis High School                                                                       |\n|School - Cynthia Jenkins School                                                                   |\n|School - Cypress Hills Collegiate Preparatory School                                              |\n|School - DREAM Charter School                                                                     |\n|School - DeWitt Clinton High School                                                               |\n|School - Democracy Prep Endurance Charter School                                                  |\n|School - Democracy Prep Harlem Charter School                                                     |\n|School - Digital Arts and Cinema Technology High School                                           |\n|School - Discovery High School                                                                    |\n|School - Dock Street School for STEAM Studies                                                     |\n|School - Dr Jacqueline Peek-Davis School                                                          |\n|School - Dr Susan S McKinney Secondary School of the Arts                                         |\n|School - EBC High School for Public Service Bushwick                                              |\n|School - ESMT - IS 190                                                                            |\n|School - Eagle Academy for Young Men                                                              |\n|School - Eagle Academy for Young Men II                                                           |\n|School - Eagle Academy for Young Men III                                                          |\n|School - Earth School                                                                             |\n|School - East Bronx Academy for the Future                                                        |\n|School - East Brooklyn Community High School                                                      |\n|School - East Flatbush Community Research School                                                  |\n|School - East Harlem Scholars Academy Charter School                                              |\n|School - East Harlem Scholars Academy Charter School II                                           |\n|School - East New York Elementary School of Excellence                                            |\n|School - East New York Family Academy                                                             |\n|School - East New York Middle School of Excellence                                                |\n|School - East River Academy                                                                       |\n|School - East Side Community High School                                                          |\n|School - East Side Community School                                                               |\n|School - East Side Elementary School PS 267                                                       |\n|School - East Side Middle School                                                                  |\n|School - East Williamsburg Scholars Academy                                                       |\n|School - East-West School of International Studies                                                |\n|School - Ebbets Field Middle School                                                               |\n|School - Edward A Reynolds West Side High School                                                  |\n|School - Edward R Murrow High School                                                              |\n|School - El Puente Academy for Peace and Justice                                                  |\n|School - Eleanor Roosevelt High School                                                            |\n|School - Elementary School for Math, Science, and Technology                                      |\n|School - Elijah Stroud Middle School                                                              |\n|School - Ella Baker School                                                                        |\n|School - Elm Tree Elementary School                                                               |\n|School - Emma Lazarus High School                                                                 |\n|School - Emolior Academy                                                                          |\n|School - Energy Tech High School                                                                  |\n|School - Enterprise, Business, and Technology High School                                         |\n|School - Entrada Academy                                                                          |\n|School - Erasmus YABC                                                                             |\n|School - Esperanza Preparatory Academy                                                            |\n|School - Essence School                                                                           |\n|School - Essex Street Academy                                                                     |\n|School - Evander Childs Evening High School                                                       |\n|School - Evergreen Middle School for Urban Exploration                                            |\n|School - Excellence Boys Charter School                                                           |\n|School - Excelsior Preparatory High School                                                        |\n|School - Eximius College Preparatory Academy: A College Board School                              |\n|School - Explorations Academy High School                                                         |\n|School - Explore Charter School                                                                   |\n|School - Explore Exceed Charter School                                                            |\n|School - FDNY Captain Vernon A Richard High School for Fire and Life Safety                       |\n|School - Fairmont Neighborhood School                                                             |\n|School - Family Life Academy Charter School                                                       |\n|School - Family Life Academy Charter School II                                                    |\n|School - Fannie Lou Hamer Freedom High School                                                     |\n|School - Fannie Lou Hamer Middle School                                                           |\n|School - Fanny High School for Fire and Life Safety                                               |\n|School - Far Rockaway High School                                                                 |\n|School - Fiorello H LaGuardia High School of Music and Art and Performing Arts                    |\n|School - Flushing High School                                                                     |\n|School - Food and Finance High School                                                             |\n|School - Fordham Leadership Academy                                                               |\n|School - Foreign Language Academy of Global Studies                                               |\n|School - Forest Hills High School                                                                 |\n|School - Forsyth Satellite Academy                                                                |\n|School - Fort Greene Preparatory Academy                                                          |\n|School - Fort Hamilton High School                                                                |\n|School - Foundations Academy                                                                      |\n|School - Frances Perkins Academy                                                                  |\n|School - Francis Lewis High School                                                                |\n|School - Frank Mccourt High School                                                                |\n|School - Frank Sinatra School of the Arts High School                                             |\n|School - Franklin Delano Roosevelt High School                                                    |\n|School - Franklin K Lane Campus YABC                                                              |\n|School - Franklin K Lane High School                                                              |\n|School - Frederick Douglass Academy                                                               |\n|School - Frederick Douglass Academy II Secondary School                                           |\n|School - Frederick Douglass Academy III Secondary School                                          |\n|School - Frederick Douglass Academy IV Secondary School                                           |\n|School - Frederick Douglass Academy V Middle School                                               |\n|School - Frederick Douglass Academy VI High School                                                |\n|School - Frederick Douglass Academy VII High School                                               |\n|School - Frederick Douglass Academy VIII Middle School                                            |\n|School - Freedom Academy High School                                                              |\n|School - Future Leaders Institute Charter School                                                  |\n|School - G Westinghouse Evening High School                                                       |\n|School - Gateway School for Environmental Research and Technology                                 |\n|School - Gaynor McCown Expeditionary Learning School                                              |\n|School - General D Chappie James Elementary School of Science                                     |\n|School - George Washington Carver High School for the Sciences                                    |\n|School - George Washington YABC                                                                   |\n|School - George Westinghouse Career and Technical Education High School                           |\n|School - Girls Preparatory Charter School of New York                                             |\n|School - Global Community Charter School                                                          |\n|School - Global Enterprise High School                                                            |\n|School - Global Neighborhood Secondary School                                                     |\n|School - Global Technology Preparatory                                                            |\n|School - Globe School for Environmental Research                                                  |\n|School - Goldie Maple Academy                                                                     |\n|School - Gotham Collaborative High School                                                         |\n|School - Grace Dodge Career and Technical Education High School                                   |\n|School - Gramercy Arts High School                                                                |\n|School - Grant Avenue Elementary School                                                           |\n|School - Great Oaks Charter School                                                                |\n|School - Gregorio Luperon High School for Science and Mathematics                                 |\n|School - Grover Cleveland High School                                                             |\n|School - Growing Up Green Charter School                                                          |\n|School - HS 560 City As School                                                                    |\n|School - Hamilton Heights School                                                                  |\n|School - Harbor Science and Arts Charter School                                                   |\n|School - Harlem Children's Zone Promise Academy 1 Charter School                                  |\n|School - Harlem Children's Zone Promise Academy Charter School                                    |\n|School - Harlem Children's Zone Promise Academy II                                                |\n|School - Harlem Children's Zone Promise Academy II Charter School                                 |\n|School - Harlem Hebrew Language Charter School                                                    |\n|School - Harlem Link Charter School                                                               |\n|School - Harlem Prep Charter School                                                               |\n|School - Harlem Renaissance High School                                                           |\n|School - Harlem Success Academy I Charter School                                                  |\n|School - Harlem Village Academy Leadership Charter School                                         |\n|School - Harriet Tubman Charter School                                                            |\n|School - Harry S Truman High School                                                               |\n|School - Harvest Collegiate High School                                                           |\n|School - Hawtree Creek Middle School                                                              |\n|School - Health Opportunities High School                                                         |\n|School - Health Professions and Human Services                                                    |\n|School - Hebrew Language Academy Charter School                                                   |\n|School - Hellenic Classical Charter School                                                        |\n|School - Herbert H Lehman High School                                                             |\n|School - Herbert H Lehman YABC                                                                    |\n|School - High School for Arts and Business                                                        |\n|School - High School for Community Leadership                                                     |\n|School - High School for Construction Trades, Engineering and Architecture                        |\n|School - High School for Energy and Technology                                                    |\n|School - High School for Environmental Studies                                                    |\n|School - High School for Excellence and Innovation                                                |\n|School - High School for Health Careers and Sciences                                              |\n|School - High School for Health Professions and Human Services                                    |\n|School - High School for Law Enforcement and Public Safety                                        |\n|School - High School for Law and Public Service                                                   |\n|School - High School for Law, Advocacy, and Community Justice                                     |\n|School - High School for Leadership and Public Service                                            |\n|School - High School for Mathematics, Science and Engineering at City College                     |\n|School - High School for Media and Communications                                                 |\n|School - High School for Medical Professions                                                      |\n|School - High School for Public Service: Heroes of Tomorrow                                       |\n|School - High School for Service and Learning at Erasmus                                          |\n|School - High School for Teaching and the Professions                                             |\n|School - High School for Violin and Dance                                                         |\n|School - High School for Youth and Community Development at Erasmus                               |\n|School - High School of Applied Communication                                                     |\n|School - High School of Arts and Technology                                                       |\n|School - High School of Computers and Technology                                                  |\n|School - High School of Economics and Finance                                                     |\n|School - High School of Graphic Communication Arts                                                |\n|School - High School of Hospitality Management                                                    |\n|School - High School of Sports Management                                                         |\n|School - High School of Telecommunication Arts and Technology                                     |\n|School - High School of World Cultures                                                            |\n|School - Highland Park Community School                                                           |\n|School - Hillcrest High School                                                                    |\n|School - Holcombe L Rucker School of Community Research                                           |\n|School - Hostos-Lincoln Academy of Science                                                        |\n|School - Hudson High School of Learning Technologies                                              |\n|School - Humanities Preparatory Academy                                                           |\n|School - Humanities and Arts Magnet High School                                                   |\n|School - Hunters Point Community Middle School                                                    |\n|School - Hyde Leadership Charter School Bronx                                                     |\n|School - IS 10 Horace Greeley                                                                     |\n|School - IS 117 Joseph H Wade                                                                     |\n|School - IS 119 The Glendale                                                                      |\n|School - IS 125 Thom J McCann Woodside                                                            |\n|School - IS 131 Dr Sun Yat Sen                                                                    |\n|School - IS 136 Charles O Dewey                                                                   |\n|School - IS 141 The Steinway                                                                      |\n|School - IS 145 Joseph Pulitzer                                                                   |\n|School - IS 171 Abraham Lincoln                                                                   |\n|School - IS 181 Pablo Casals                                                                      |\n|School - IS 187                                                                                   |\n|School - IS 192 The Linden                                                                        |\n|School - IS 195 Roberto Clemente                                                                  |\n|School - IS 2 George L Egbert                                                                     |\n|School - IS 204 Oliver W Holmes                                                                   |\n|School - IS 206 Ann Mersereau                                                                     |\n|School - IS 211 John Wilson                                                                       |\n|School - IS 218 Salome Urena                                                                      |\n|School - IS 219 New Venture School                                                                |\n|School - IS 227 Louis Armstrong                                                                   |\n|School - IS 228 David A Boody                                                                     |\n|School - IS 229 Roland Patterson                                                                  |\n|School - IS 230                                                                                   |\n|School - IS 231 Magnetech 2000                                                                    |\n|School - IS 232                                                                                   |\n|School - IS 237                                                                                   |\n|School - IS 238 Susan B Anthony Academy                                                           |\n|School - IS 24 Myra S Barnes                                                                      |\n|School - IS 25 Adrien Block                                                                       |\n|School - IS 250 The Robert F Kennedy Community Middle School                                      |\n|School - IS 254                                                                                   |\n|School - IS 27 Anning S Prall                                                                     |\n|School - IS 281 Joseph B Cavallaro                                                                |\n|School - IS 285 Meyer Levin                                                                       |\n|School - IS 296 The Anna Gonzalez Community School                                                |\n|School - IS 303 Herbert S Eisenberg                                                               |\n|School - IS 303 Leadership and Community Service                                                  |\n|School - IS 313 School of Leadership Development                                                  |\n|School - IS 318 Eugenio Maria De Hostos                                                           |\n|School - IS 318 Math, Science, and Technology Through Arts                                        |\n|School - IS 339                                                                                   |\n|School - IS 34 Tottenville                                                                        |\n|School - IS 340                                                                                   |\n|School - IS 347 School of Humanities                                                              |\n|School - IS 349 Math, Science, and Technology                                                     |\n|School - IS 364 Gateway                                                                           |\n|School - IS 381                                                                                   |\n|School - IS 392                                                                                   |\n|School - IS 49 Berta A Dreyfus                                                                    |\n|School - IS 5 The Walter Crowley Intermediate School                                              |\n|School - IS 51 Edwin Markham                                                                      |\n|School - IS 528 Bea Fuller Rodgers School                                                         |\n|School - IS 584                                                                                   |\n|School - IS 59 Springfield Gardens                                                                |\n|School - IS 61 Leonardo Da Vinci                                                                  |\n|School - IS 61 William A Morris                                                                   |\n|School - IS 68 Isaac Bildersee                                                                    |\n|School - IS 7 Elias Bernstein                                                                     |\n|School - IS 72 Rocco Laurie                                                                       |\n|School - IS 73 The Frank Sansivieri Intermediate School                                           |\n|School - IS 75 Frank D Paulo                                                                      |\n|School - IS 77                                                                                    |\n|School - IS 93 Ridgewood                                                                          |\n|School - IS 96 Seth Low                                                                           |\n|School - IS 98 Bay Academy                                                                        |\n|School - Icahn Charter School                                                                     |\n|School - Icahn Charter School 2                                                                   |\n|School - Icahn Charter School 3                                                                   |\n|School - Icahn Charter School 5                                                                   |\n|School - In-Tech Academy (MS-HS 368)                                                              |\n|School - In-Tech Academy MS-HS 368                                                                |\n|School - Independence High School                                                                 |\n|School - Information Technology High School                                                       |\n|School - Innovation Diploma Plus                                                                  |\n|School - Institute for Collaborative Education                                                    |\n|School - International Community High School                                                      |\n|School - International High School at LaGuardia Community College                                 |\n|School - International High School at Lafayette                                                   |\n|School - International High School at Prospect Heights                                            |\n|School - International High School at Union Square                                                |\n|School - International Leadership Charter High School                                             |\n|School - International Leadership Charter School                                                  |\n|School - International School for Liberal Arts                                                    |\n|School - Inwood Academy for Leadership Charter School                                             |\n|School - Irwin Altman MS 172                                                                      |\n|School - Isaac Newton Middle School for Math and Science                                          |\n|School - It Takes a Village Academy                                                               |\n|School - J M Rapport School Career Development                                                    |\n|School - JHS 104 Simon Baruch                                                                     |\n|School - JHS 113 Ronald Edmonds Learning Center                                                   |\n|School - JHS 118 William W Niles                                                                  |\n|School - JHS 123 James M Kieran                                                                   |\n|School - JHS 125 Henry Hudson                                                                     |\n|School - JHS 127 The Castle Hill                                                                  |\n|School - JHS 13 Jackie Robinson                                                                   |\n|School - JHS 131 Albert Einstein                                                                  |\n|School - JHS 14 Shell Bank                                                                        |\n|School - JHS 142 John Philip Sousa                                                                |\n|School - JHS 143 Eleanor Roosevelt                                                                |\n|School - JHS 145 Arturo Toscaninni                                                                |\n|School - JHS 151 Lou Gehrig                                                                       |\n|School - JHS 157 Stephen A Halsey                                                                 |\n|School - JHS 158 Marie Curie                                                                      |\n|School - JHS 162 Lola Rodriguez De Tio                                                            |\n|School - JHS 162 The Willoughby                                                                   |\n|School - JHS 166 George Gershwin                                                                  |\n|School - JHS 167 Robert F Wagner                                                                  |\n|School - JHS 185 Edward Bleeker                                                                   |\n|School - JHS 189 Daniel Carter Beard                                                              |\n|School - JHS 190 Russell Sage                                                                     |\n|School - JHS 194 William Carr                                                                     |\n|School - JHS 201 The Dyker Heights                                                                |\n|School - JHS 202 Robert H Goddard                                                                 |\n|School - JHS 210 Elizabeth Blackwell                                                              |\n|School - JHS 216 George J Ryan                                                                    |\n|School - JHS 217 Robert A Van Wyck                                                                |\n|School - JHS 218 James P Sinnott                                                                  |\n|School - JHS 22 Jordan L Mott                                                                     |\n|School - JHS 220 John J Pershing                                                                  |\n|School - JHS 223 The Montauk                                                                      |\n|School - JHS 226 Virgil I Grissom                                                                 |\n|School - JHS 227 Edward B Shallow                                                                 |\n|School - JHS 234 Arthur W Cunningham                                                              |\n|School - JHS 259 William Mckinley                                                                 |\n|School - JHS 265 Susan S McKinney                                                                 |\n|School - JHS 278 Marine Park                                                                      |\n|School - JHS 291 Roland Hayes                                                                     |\n|School - JHS 292 Margaret S Douglas                                                               |\n|School - JHS 302 Rafael Cordero                                                                   |\n|School - JHS 318 Eugenio Maria De Hostos                                                          |\n|School - JHS 383 Philippa Schuyler                                                                |\n|School - JHS 45 John S Roberts                                                                    |\n|School - JHS 45 Thomas C Giordano                                                                 |\n|School - JHS 50 John D Wells                                                                      |\n|School - JHS 52 Inwood                                                                            |\n|School - JHS 54 Booker T Washington                                                               |\n|School - JHS 57 Whitelaw Reid                                                                     |\n|School - JHS 62 Ditmas                                                                            |\n|School - JHS 67 Louis Pasteur                                                                     |\n|School - JHS 72 Catherine and Count Basie                                                         |\n|School - JHS 74 Nathaniel Hawthorne                                                               |\n|School - JHS 78 Roy H Mann                                                                        |\n|School - JHS 8 Richard S Grossley                                                                 |\n|School - JHS 80 The Mosholu Parkway                                                               |\n|School - JHS 88 Peter Rouget                                                                      |\n|School - JHS 98 Herman Ridder                                                                     |\n|School - Jacqueline Kennedy Onassis High School                                                   |\n|School - Jamaica Gateway to the Sciences                                                          |\n|School - Jamaica High School                                                                      |\n|School - James Madison High School                                                                |\n|School - James Weldon Johnson                                                                     |\n|School - Jane Addams High School for Academic Careers                                             |\n|School - Jean Nuzzi Intermediate School                                                           |\n|School - John Adams Evening High School - Mondays and Wednesdays                                  |\n|School - John Adams High School                                                                   |\n|School - John Bowne High School                                                                   |\n|School - John Dewey High School                                                                   |\n|School - John Ericsson Middle School 126                                                          |\n|School - John F Kennedy High School                                                               |\n|School - John F Kennedy Jr School                                                                 |\n|School - John Jay School for Law                                                                  |\n|School - John V Lindsay Wildcat Academy Charter School                                            |\n|School - Jonas Bronck Academy                                                                     |\n|School - Jonathan Levin High School for Media and Communications                                  |\n|School - Juan Morel Campos Secondary School                                                       |\n|School - KAPPA IV                                                                                 |\n|School - KIPP AMP Charter School                                                                  |\n|School - KIPP Academy Charter School                                                              |\n|School - KIPP Infinity Charter School                                                             |\n|School - KIPP STAR College Prep Charter School                                                    |\n|School - Kappa                                                                                    |\n|School - Kappa II                                                                                 |\n|School - Kappa III                                                                                |\n|School - Khalil Gibran International Academy B                                                    |\n|School - Kings Collegiate Charter School                                                          |\n|School - Kingsborough Early College School                                                        |\n|School - Kingsbridge International High School                                                    |\n|School - Kipp STAR College Preparatory                                                            |\n|School - Knowledge and Power Preparatory Academy International High School (Kappa)                |\n|School - Kurt Hahn Expeditionary Learning School                                                  |\n|School - Lafayette High School                                                                    |\n|School - Landmark High School                                                                     |\n|School - Leaders of Tomorrow                                                                      |\n|School - Leadership Prep Bedford Stuyvesant Uncommon Prep Charter School                          |\n|School - Leadership Preparatory Ocean Hill Charter School                                         |\n|School - Leadership and Public Service High School                                                |\n|School - Learners and Leaders                                                                     |\n|School - Learning to Work YABC at Monroe Academy                                                  |\n|School - Legacy School                                                                            |\n|School - Legacy School for Integrated Studies                                                     |\n|School - Leon M Goldstein High School for the Sciences                                            |\n|School - Liberation Diploma Plus                                                                  |\n|School - Life Academy High School for Film and Music                                              |\n|School - Life Sciences Secondary School                                                           |\n|School - Lighthouse Elementary School                                                             |\n|School - Linden Tree Elementary School                                                            |\n|School - Long Island City High School                                                             |\n|School - Longwood Preparatory Academy                                                             |\n|School - Louis D Brandeis High School                                                             |\n|School - Lower East Side Preparatory High School                                                  |\n|School - Lower East Side School at PS 315                                                         |\n|School - Lower Manhattan Arts Academy                                                             |\n|School - Lower Manhattan Community Middle School                                                  |\n|School - Luisa Pineiro Fuentes School of Science and Discovery                                    |\n|School - Lyons Community School                                                                   |\n|School - MS 101 Edward R Byrne                                                                    |\n|School - MS 113 Ronald Edmonds Learning Center                                                    |\n|School - MS 126 John Ericsson                                                                     |\n|School - MS 129 Academy for Independent Learning and Leadership                                   |\n|School - MS 131                                                                                   |\n|School - MS 137 America's School of Heroes                                                        |\n|School - MS 142 John Philip Sousa                                                                 |\n|School - MS 158 Marie Curie                                                                       |\n|School - MS 172 Irwin Altman                                                                      |\n|School - MS 180 Dr Daniel Hale Williams                                                           |\n|School - MS 2                                                                                     |\n|School - MS 203                                                                                   |\n|School - MS 224 Manhattan East School for Arts and Academics                                      |\n|School - MS 243 Center School                                                                     |\n|School - MS 246 Walt Whitman                                                                      |\n|School - MS 250 West Side Collaborative Middle School                                             |\n|School - MS 260 Clinton School Writers and Artists                                                |\n|School - MS 266 Park Place Community Middle School                                                |\n|School - MS 267 Math, Science and Technology                                                      |\n|School - MS 301 Paul L Dunbar                                                                     |\n|School - MS 302 Luisa Dessus Cruz                                                                 |\n|School - MS 319 Maria Teresa                                                                      |\n|School - MS 322                                                                                   |\n|School - MS 324 Patria Mirabal                                                                    |\n|School - MS 326 - Writers Today and Leaders Tomorrow                                              |\n|School - MS 35 Stephen Decatur                                                                    |\n|School - MS 390                                                                                   |\n|School - MS 394                                                                                   |\n|School - MS 399                                                                                   |\n|School - MS 51 William Alexander                                                                  |\n|School - MS 53 Brian Piccolo                                                                      |\n|School - MS 582                                                                                   |\n|School - MS 596 Peace Academy                                                                     |\n|School - MS 61 Dr Gladstone H Atwell                                                              |\n|School - MS 839                                                                                   |\n|School - MS M245 The Computer School                                                              |\n|School - MS X101 Edward R Byrne                                                                   |\n|School - Madiba Prep Middle School                                                                |\n|School - Magnet School for Science and Technology                                                 |\n|School - Magnet School of Math, Science and Design Technology                                     |\n|School - Manhattan Academy for Arts and Language                                                  |\n|School - Manhattan Bridges High School                                                            |\n|School - Manhattan Business Academy                                                               |\n|School - Manhattan Center for Science and Mathematics                                             |\n|School - Manhattan Charter School II                                                              |\n|School - Manhattan Comprehensive Night and Day High School                                        |\n|School - Manhattan Early College School for Advertising                                           |\n|School - Manhattan Hunter Science High School                                                     |\n|School - Manhattan International High School                                                      |\n|School - Manhattan School for Career Development                                                  |\n|School - Manhattan Theatre Lab High School                                                        |\n|School - Manhattan Village Academy                                                                |\n|School - Mark Twain IS 239 for the Gifted and Talented                                            |\n|School - Marsh Avenue School for Expeditionary Learning                                           |\n|School - Marta Valle High School                                                                  |\n|School - Marta Valle Secondary School                                                             |\n|School - Martin Van Buren High School                                                             |\n|School - Maspeth High School                                                                      |\n|School - Mathematics, Science Research, and Technology Magnet High School                         |\n|School - Medgar Evers College Preparatory School                                                  |\n|School - Merrick Academy Queens Public Charter School                                             |\n|School - Metropolitan Diploma Plus High School                                                    |\n|School - Metropolitan Expeditionary Learning School                                               |\n|School - Metropolitan Lighthouse Charter School                                                   |\n|School - Middle School 322                                                                        |\n|School - Middle School for Academic and Social Excellence                                         |\n|School - Middle School for Art and Philosophy                                                     |\n|School - Middle School for the Arts                                                               |\n|School - Middle School of Marketing and Legal Studies                                             |\n|School - Midwood High School                                                                      |\n|School - Millennium High School                                                                   |\n|School - Milton Fein School                                                                       |\n|School - Monroe Academy for Business-Law                                                          |\n|School - Monroe Academy for Visual Arts and Design                                                |\n|School - Morris Academy for Collaborative Studies                                                 |\n|School - Mosaic Preparatory Academy                                                               |\n|School - Mott Hall Bronx High School                                                              |\n|School - Mott Hall Community School                                                               |\n|School - Mott Hall Elementary School                                                              |\n|School - Mott Hall High School                                                                    |\n|School - Mott Hall II                                                                             |\n|School - Mott Hall IV                                                                             |\n|School - Mott Hall V                                                                              |\n|School - Mott Haven Academy Charter School                                                        |\n|School - Mott Haven Community High School                                                         |\n|School - Mott Haven Village Preparatory High School                                               |\n|School - Mount Eden Children's Academy                                                            |\n|School - Multicultural High School                                                                |\n|School - Murray Hill Academy                                                                      |\n|School - Murry Bergtraum High School for Business Careers                                         |\n|School - Muscota                                                                                  |\n|School - NYC Charter High School for Architecture, Engineering, and Construction Industries (AECI)|\n|School - NYC Lab School for Collaborative Studies                                                 |\n|School - NYC Museum School                                                                        |\n|School - Neighborhood Charter School of Harlem                                                    |\n|School - Neighborhood School                                                                      |\n|School - New Bridges Elementary                                                                   |\n|School - New Day Academy                                                                          |\n|School - New Design High School                                                                   |\n|School - New Design Middle School                                                                 |\n|School - New Dorp Evening High School - Mondays and Wednesdays                                    |\n|School - New Dorp High School                                                                     |\n|School - New Explorations Science, Technology and Math High School                                |\n|School - New Explorations into Science, Technology, and Math High School                          |\n|School - New Explorers High School                                                                |\n|School - New Heights Academy Charter School                                                       |\n|School - New Heights Middle School                                                                |\n|School - New Hope Academy Charter School                                                          |\n|School - New Horizons School                                                                      |\n|School - New Millennium Business Academy Middle School                                            |\n|School - New School 1 at PS 60                                                                    |\n|School - New Utrecht Evening High School - Mondays and Wednesdays                                 |\n|School - New Utrecht High School                                                                  |\n|School - New Visions AIM Charter High School I                                                    |\n|School - New Visions AIM Charter High School II                                                   |\n|School - New Visions Charter High School for the Humanities II                                    |\n|School - New Voices School of Academic and Creative Arts                                          |\n|School - New World High School                                                                    |\n|School - New World Preparatory Charter School                                                     |\n|School - New York City Academy for Discovery                                                      |\n|School - New York City Lab Middle School for Collaborative Studies                                |\n|School - New York City Montessori Charter School                                                  |\n|School - New York French American Charter School                                                  |\n|School - Newcomers High School                                                                    |\n|School - Newtown High School                                                                      |\n|School - Norma Adams Clemons Academy                                                              |\n|School - Norman Thomas High School                                                                |\n|School - North Bronx School of Empowerment                                                        |\n|School - North Queens Community High School                                                       |\n|School - Northside Charter High School                                                            |\n|School - One World Middle School at Edenwald                                                      |\n|School - Orchard Collegiate Academy                                                               |\n|School - Origins High School                                                                      |\n|School - Our World Neighborhood Charter School                                                    |\n|School - P186X Walter J Damrosch School                                                           |\n|School - PAVE Academy Charter School                                                              |\n|School - PROGRESS High School for Professional Careers                                            |\n|School - PS 1 Alfred E Smith                                                                      |\n|School - PS 1 Courtlandt School                                                                   |\n|School - PS 1 The Bergen                                                                          |\n|School - PS 1 Tottenville                                                                         |\n|School - PS 10                                                                                    |\n|School - PS 100 Glen Morris                                                                       |\n|School - PS 100 Isaac Clason                                                                      |\n|School - PS 100 The Coney Island School                                                           |\n|School - PS 101 Andrew Draper                                                                     |\n|School - PS 101 School in the Gardens                                                             |\n|School - PS 101 The Verrazano                                                                     |\n|School - PS 102 Bayview                                                                           |\n|School - PS 102 Jacques Cartier                                                                   |\n|School - PS 102 Joseph O Loretan                                                                  |\n|School - PS 102 The Bayview                                                                       |\n|School - PS 103 Hector Fontanez                                                                   |\n|School - PS 104 The Bays Water                                                                    |\n|School - PS 105 Senator Abraham Bernstein                                                         |\n|School - PS 105 The Bay School                                                                    |\n|School - PS 105 The Blythebourne                                                                  |\n|School - PS 106 Edward Everett Hale                                                               |\n|School - PS 106 Parkchester                                                                       |\n|School - PS 107                                                                                   |\n|School - PS 107 John W Kimball                                                                    |\n|School - PS 107 Thomas A Dooley                                                                   |\n|School - PS 108 Assemblyman Angelo Del Toro Educational Complex                                   |\n|School - PS 108 Captain Vincent G Fowler                                                          |\n|School - PS 108 Philip J Abinanti                                                                 |\n|School - PS 108 Sal Abbracciamento                                                                |\n|School - PS 109                                                                                   |\n|School - PS 109 Sedgwick                                                                          |\n|School - PS 11 Highbridge                                                                         |\n|School - PS 11 Kathryn Phelan                                                                     |\n|School - PS 11 Purvis J Behan                                                                     |\n|School - PS 11 Thomas Dongan School                                                               |\n|School - PS 11 William T Harris                                                                   |\n|School - PS 110                                                                                   |\n|School - PS 110 Florence Nightingale                                                              |\n|School - PS 110 The Monitor                                                                       |\n|School - PS 110 Theodore Schoenfeld                                                               |\n|School - PS 111 Adolph S Ochs                                                                     |\n|School - PS 111 Jacob Blackwell                                                                   |\n|School - PS 111 Seton Falls                                                                       |\n|School - PS 112 Bronxwood                                                                         |\n|School - PS 112 Dutch Kills                                                                       |\n|School - PS 112 Jose Celso Barbosa                                                                |\n|School - PS 112 Lefferts Park                                                                     |\n|School - PS 113 Isaac Chauncey                                                                    |\n|School - PS 114 - Luis Llorens Torres Schools                                                     |\n|School - PS 114 Ryder Elementary                                                                  |\n|School - PS 115 Alexander Humboldt                                                                |\n|School - PS 115 Daniel Mucatel School                                                             |\n|School - PS 116 Elizabeth L Farrell                                                               |\n|School - PS 116 Mary Lindley Murray                                                               |\n|School - PS 117 J Keld Briarwood School                                                           |\n|School - PS 118 Lorraine Hansberry                                                                |\n|School - PS 119 Amersfort                                                                         |\n|School - PS 12 James B Colgate                                                                    |\n|School - PS 12 Lewis and Clark School                                                             |\n|School - PS 120 Carlos Tapia                                                                      |\n|School - PS 120 Queens                                                                            |\n|School - PS 121 Nelson A Rockefeller                                                              |\n|School - PS 121 Queens                                                                            |\n|School - PS 121 Throop                                                                            |\n|School - PS 122 Mamie Fay                                                                         |\n|School - PS 123                                                                                   |\n|School - PS 123 Mahalia Jackson                                                                   |\n|School - PS 123 Suydam                                                                            |\n|School - PS 124 Osmond A Church                                                                   |\n|School - PS 124 Silas B Dutcher                                                                   |\n|School - PS 124 Yung Wing                                                                         |\n|School - PS 125 Ralph Bunche                                                                      |\n|School - PS 126 Dr Marjorie H Dunbar                                                              |\n|School - PS 126 Jacob August Riis                                                                 |\n|School - PS 126 Jacob Riis Community School                                                       |\n|School - PS 127 Aerospace Science Magnet School                                                   |\n|School - PS 127 Mckinley Park                                                                     |\n|School - PS 128 Audubon                                                                           |\n|School - PS 128 Bensonhurst                                                                       |\n|School - PS 128 The Lorraine Tuzzo Juniper Valley Elementary School                               |\n|School - PS 129 John H Finley                                                                     |\n|School - PS 129 Patricia Larkin                                                                   |\n|School - PS 129 Twin Parks Upper                                                                  |\n|School - PS 13 Clement C Moore                                                                    |\n|School - PS 13 M L Lindemeyer                                                                     |\n|School - PS 13 Roberto Clemente                                                                   |\n|School - PS 130                                                                                   |\n|School - PS 130 Abram Stevens Hewitt                                                              |\n|School - PS 130 Hernando De Soto                                                                  |\n|School - PS 130 Hernando Desoto                                                                   |\n|School - PS 130 The Parkside                                                                      |\n|School - PS 131 Abigail Adams                                                                     |\n|School - PS 131 Brooklyn                                                                          |\n|School - PS 132 Garret A Morgan                                                                   |\n|School - PS 132 Juan Pablo Duarte                                                                 |\n|School - PS 132 Ralph Bunche                                                                      |\n|School - PS 132 The Conselyea School                                                              |\n|School - PS 133                                                                                   |\n|School - PS 133 Fred R Moore                                                                      |\n|School - PS 133 Queens                                                                            |\n|School - PS 133 William A Butler                                                                  |\n|School - PS 134                                                                                   |\n|School - PS 134 George F Bristow                                                                  |\n|School - PS 134 Henrietta Szold                                                                   |\n|School - PS 134 Hollis                                                                            |\n|School - PS 135 Sheldon A Brookner                                                                |\n|School - PS 136 Roy Wilkins                                                                       |\n|School - PS 137 John L Bernstein                                                                  |\n|School - PS 138                                                                                   |\n|School - PS 138 Brooklyn                                                                          |\n|School - PS 138 Samuel Randall                                                                    |\n|School - PS 139 Alexine A Fenty                                                                   |\n|School - PS 139 Rego Park                                                                         |\n|School - PS 14 Cornelius Vanderbilt                                                               |\n|School - PS 14 Fairview                                                                           |\n|School - PS 14 Senator John Calandra                                                              |\n|School - PS 140                                                                                   |\n|School - PS 140 Edward K Ellington                                                                |\n|School - PS 140 Nathan Straus                                                                     |\n|School - PS 141                                                                                   |\n|School - PS 142 Amalia Castro                                                                     |\n|School - PS 143 Louis Armstrong                                                                   |\n|School - PS 144 Col Jeromus Remsen                                                                |\n|School - PS 145 Andrew Jackson                                                                    |\n|School - PS 145 The Bloomingdale School                                                           |\n|School - PS 146 Ann M Short                                                                       |\n|School - PS 146 Edward Collins                                                                    |\n|School - PS 146 Howard Beach                                                                      |\n|School - PS 147 Isaac Remsen                                                                      |\n|School - PS 148 Queens                                                                            |\n|School - PS 149 Christa Mcauliffe                                                                 |\n|School - PS 149 Danny Kaye                                                                        |\n|School - PS 149 Sojourner Truth                                                                   |\n|School - PS 15 Institute for Environmental Learning                                               |\n|School - PS 15 Jackie Robinson                                                                    |\n|School - PS 15 Patrick F Daly                                                                     |\n|School - PS 15 Roberto Clemente                                                                   |\n|School - PS 150 Charles James Fox                                                                 |\n|School - PS 150 Christopher                                                                       |\n|School - PS 150 Queens                                                                            |\n|School - PS 150 Tribeca Learning Center                                                           |\n|School - PS 151 Lyndon B Johnson                                                                  |\n|School - PS 151 Mary D Carter                                                                     |\n|School - PS 152 Dyckman Valley                                                                    |\n|School - PS 152 Evergreen                                                                         |\n|School - PS 152 Gwendoline N Alleyne School                                                       |\n|School - PS 153 Adam Clayton Powell                                                               |\n|School - PS 153 Helen Keller                                                                      |\n|School - PS 153 Hellen Keller                                                                     |\n|School - PS 153 Homecrest                                                                         |\n|School - PS 153 Maspeth Elem                                                                      |\n|School - PS 154 Harriet Tubman                                                                    |\n|School - PS 154 Jonathan D Hyatt                                                                  |\n|School - PS 154 Queens                                                                            |\n|School - PS 155                                                                                   |\n|School - PS 155 William Paca                                                                      |\n|School - PS 156 Laurelton                                                                         |\n|School - PS 156 Waverly                                                                           |\n|School - PS 157 Grove Hill                                                                        |\n|School - PS 158 Bayard Taylor                                                                     |\n|School - PS 158 Warwick                                                                           |\n|School - PS 159                                                                                   |\n|School - PS 159 Luis Munoz Marin Biling                                                           |\n|School - PS 16 John J Driscoll                                                                    |\n|School - PS 16 Leonard Dunkly                                                                     |\n|School - PS 16 Wakefield                                                                          |\n|School - PS 160 Walt Disney                                                                       |\n|School - PS 160 Walter Francis Bishop                                                             |\n|School - PS 160 William T Sampson                                                                 |\n|School - PS 161 Juan Ponce De Leon School                                                         |\n|School - PS 161 Pedro Albizu Campos                                                               |\n|School - PS 161 The Crown                                                                         |\n|School - PS 162 John Golden                                                                       |\n|School - PS 163 Alfred E Smith                                                                    |\n|School - PS 163 Arthur A Schomburg                                                                |\n|School - PS 163 Bath Beach                                                                        |\n|School - PS 163 Flushing Heights                                                                  |\n|School - PS 164 Caesar Rodney                                                                     |\n|School - PS 164 Queens Valley                                                                     |\n|School - PS 165 Edith K Bergtraum                                                                 |\n|School - PS 165 Ida Posner                                                                        |\n|School - PS 165 Robert E Simon                                                                    |\n|School - PS 166 Henry Gradstein                                                                   |\n|School - PS 166 The Richard Rodgers School of the Arts and Technology                             |\n|School - PS 167 The Parkway                                                                       |\n|School - PS 168                                                                                   |\n|School - PS 169 Bay Terrace                                                                       |\n|School - PS 169 Sunset Park                                                                       |\n|School - PS 17                                                                                    |\n|School - PS 17 Henry D Woodworth                                                                  |\n|School - PS 17 Henry David Thoreau                                                                |\n|School - PS 170                                                                                   |\n|School - PS 171 Patrick Henry                                                                     |\n|School - PS 171 Peter G Van Alst                                                                  |\n|School - PS 172 Beacon School of Excellence                                                       |\n|School - PS 173                                                                                   |\n|School - PS 173 Fresh Meadows                                                                     |\n|School - PS 174 Dumont                                                                            |\n|School - PS 174 William Sidney Mount                                                              |\n|School - PS 175 City Island                                                                       |\n|School - PS 175 Henry H Garnet                                                                    |\n|School - PS 175 The Lynn Gross Discovery School                                                   |\n|School - PS 176                                                                                   |\n|School - PS 176 Cambria Heights                                                                   |\n|School - PS 176 Ovington                                                                          |\n|School - PS 177                                                                                   |\n|School - PS 177 The Marlboro                                                                      |\n|School - PS 178 Dr Selman Waksman                                                                 |\n|School - PS 178 Saint Clair Mckelway                                                              |\n|School - PS 179                                                                                   |\n|School - PS 179 Kensington                                                                        |\n|School - PS 18 Edward Bush                                                                        |\n|School - PS 18 John G Whittier                                                                    |\n|School - PS 18 John Peter Zenger                                                                  |\n|School - PS 18 Park Terrace                                                                       |\n|School - PS 18 Winchester                                                                         |\n|School - PS 180 Hugo Newman                                                                       |\n|School - PS 181 Brookfield                                                                        |\n|School - PS 181 Brooklyn                                                                          |\n|School - PS 182                                                                                   |\n|School - PS 182 Samantha Smith                                                                    |\n|School - PS 183 Dr Richard R Green                                                                |\n|School - PS 183 Robert L Stevenson                                                                |\n|School - PS 184 Flushing Manor                                                                    |\n|School - PS 184 Newport                                                                           |\n|School - PS 184 Shuang Wen                                                                        |\n|School - PS 184m Shuang Wen                                                                       |\n|School - PS 185 The Early Childhood Discovery and Design Magnet School                            |\n|School - PS 185 Walter Kassenbrock                                                                |\n|School - PS 186 Castlewood                                                                        |\n|School - PS 186 Dr Irving A Gladstone                                                             |\n|School - PS 186 Walter J Damrosch School                                                          |\n|School - PS 187 Hudson Cliffs                                                                     |\n|School - PS 188                                                                                   |\n|School - PS 188 Island School                                                                     |\n|School - PS 188 Kingsbury                                                                         |\n|School - PS 188 Michael E Berdy                                                                   |\n|School - PS 188 The Island School                                                                 |\n|School - PS 189                                                                                   |\n|School - PS 189 The Bilingual Center                                                              |\n|School - PS 19 Asher Levy                                                                         |\n|School - PS 19 Judith K Weiss                                                                     |\n|School - PS 19 Marino Jeantet                                                                     |\n|School - PS 19 Roberto Clemente                                                                   |"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 102400 bytes. Learn more about <strong>ZEPPELIN_INTERPRETER_OUTPUT_LIMIT</strong></div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857095_1410117553",
+      "id": "paragraph_1639350991994_1145826143",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "READY",
+      "$$hashKey": "object:7524"
+    },
+    {
+      "text": "%pyspark\n\nlist_of_wrong_agency_names_final = []\nfor i in list_of_agency_names:\n  if (i[0:6] != \"School\") and i not in list_of_correct_agency_names:\n    list_of_wrong_agency_names_final.append(i)\nfor j in list_of_wrong_agency_names_final:\n  print(j)",
+      "user": "nbuser",
+      "dateUpdated": "2021-12-12T20:23:15-0500",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "3-1-1\nTAX\nMOC\n3-1-1 Call Center\n311 Administrative Supervisor\nCEO\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1639357857096_184441190",
+      "id": "paragraph_1639350938880_1251053485",
+      "dateCreated": "2021-12-12T20:10:57-0500",
+      "status": "FINISHED",
+      "$$hashKey": "object:7525",
+      "dateFinished": "2021-12-12T20:23:15-0500",
+      "dateStarted": "2021-12-12T20:23:15-0500"
+    }
+  ],
+  "name": "Cleaning_Dataset_peel_Inconsistency",
+  "id": "2GP5VB9GA",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Cleaning_Dataset_peel_Inconsistency"
+}
